@@ -1,0 +1,8 @@
+# 临时/脚本文件（无需推送到 GitHub Pages）
+raw/
+*.bak.json
+parse.py
+clean.py
+todo.md
+upload.py
+node_modules/
