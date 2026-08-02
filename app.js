@@ -257,15 +257,16 @@ function bindSettings(){
   const st=document.getElementById('settings');
   st.querySelector('[data-close]').onclick=closeSettings;
   st.addEventListener('click',e=>{if(e.target===st)closeSettings();});
-  document.getElementById('sSave').onclick=()=>{
-    settings.dailyNew=Math.min(100,Math.max(1,+document.getElementById('sDaily').value||20));
-    settings.theme=document.getElementById('sTheme').value;saveSettings();
-    saveGh({user:document.getElementById('ghUser').value.trim(),repo:document.getElementById('ghRepo').value.trim(),branch:document.getElementById('ghBranch').value.trim()||'main',token:document.getElementById('ghToken').value.trim()});
-    toast('设置已保存 ✔');closeSettings();
-  };
-  document.getElementById('sPull').onclick=async()=>{toast('拉取中…');await pullAll();renderCurrentView();updateSummary();toast('已拉取并合并');};
-  document.getElementById('sPush').onclick=async()=>{const ok=await pushAll();toast(ok?'已同步到仓库 ✔':'同步失败（检查配置）');};
+  document.getElementById('sSave').onclick=()=>{saveGhForm();toast('设置已保存 ✔');closeSettings();};
+  document.getElementById('sPull').onclick=async()=>{saveGhForm();toast('拉取中…');await pullAll();renderCurrentView();updateSummary();toast(ghReady()?'已拉取并合并 ✔':'⚠️ 未配置GitHub，请填写配置');};
+  document.getElementById('sPush').onclick=async()=>{saveGhForm();const ok=await pushAll();toast(ok?'已同步到仓库 ✔':'⚠️ 同步失败，请检查配置是否填写正确');};
   document.getElementById('sExport').onclick=()=>{const blob=new Blob([JSON.stringify(allCards,null,2)],{type:'application/json'});const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='生词本备份_'+todayStr()+'.json';a.click();toast('已导出备份');};
+}
+// 把设置表单里的 GitHub 配置立即写入 localStorage
+function saveGhForm(){
+  settings.dailyNew=Math.min(100,Math.max(1,+document.getElementById('sDaily').value||20));
+  settings.theme=document.getElementById('sTheme').value;saveSettings();
+  saveGh({user:document.getElementById('ghUser').value.trim(),repo:document.getElementById('ghRepo').value.trim(),branch:document.getElementById('ghBranch').value.trim()||'main',token:document.getElementById('ghToken').value.trim()});
 }
 
 // ---------- 事件 ----------
