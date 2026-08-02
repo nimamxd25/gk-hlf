@@ -122,13 +122,15 @@ function cardHTML(c){
     </div>
   </div>`;
 }
+function goLibrary(){browseMode=true;currentSearch='';currentFilter='all';document.getElementById('searchInput').value='';renderCurrentView();}
 function renderLibrary(){
   const v=document.getElementById('view');
   let list=allCards;
   if(currentFilter!=='all')list=list.filter(c=>c.status===currentFilter);
   if(currentSearch){const q=currentSearch.trim();list=list.filter(c=>c.word.includes(q)||(c.meaning||'').includes(q)||(c.thinking||'').includes(q));}
-  if(!list.length){v.innerHTML=`<div class="empty"><div class="icon">🔍</div><div>没有匹配的词</div></div>`;return;}
-  v.innerHTML=`<div class="section-title"><span>词库 · ${list.length} 词</span></div>${list.map(cardHTML).join('')}`;
+  const backBar=browseMode?`<div class="lib-back"><button data-back-home>‹ 返回今日</button><span>${allCards.length} 个词</span></div>`:'';
+  if(!list.length){v.innerHTML=`${backBar}<div class="empty"><div class="icon">🔍</div><div>没有匹配的词</div></div>`;return;}
+  v.innerHTML=`${backBar}<div class="section-title"><span>词库 · ${list.length} 词</span></div>${list.map(cardHTML).join('')}`;
   bindCardActions(v);
 }
 function bindCardActions(v){
@@ -272,7 +274,16 @@ function bindEvents(){
     else{const due=allCards.filter(c=>c.status!=='fresh'&&c.status!=='mastered'&&c.due<=todayStr());if(due.length)reviewFlow();else toast('还没有新词，先添加或去复习');}
   };
   document.getElementById('btnReview').onclick=()=>{browseMode=false;currentSearch='';document.getElementById('searchInput').value='';renderCurrentView();reviewFlow();};
-  document.getElementById('btnLibrary').onclick=()=>{browseMode=!browseMode;currentSearch='';currentFilter='all';document.getElementById('searchInput').value='';renderCurrentView();};
+  document.getElementById('btnLibrary').onclick=goLibrary;
+  // "总词汇"卡片点击也进入词库
+  const totalCell=document.getElementById('totalCell');
+  if(totalCell) totalCell.onclick=goLibrary;
+  document.querySelectorAll('[data-goto="library"]').forEach(el=>{ if(el&&el.id!=='totalCell') el.onclick=goLibrary; });
+  // 词库视图内的"返回今日"按钮（委托点击）
+  document.getElementById('view').addEventListener('click',e=>{
+    const back=e.target.closest('[data-back-home]');
+    if(back){browseMode=false;currentSearch='';document.getElementById('searchInput').value='';renderCurrentView();}
+  });
   document.getElementById('btnAdd').onclick=()=>{browseMode=false;openEditor();};
   document.getElementById('btnSettings').onclick=openSettings;
   document.getElementById('searchInput').addEventListener('input',e=>{browseMode=true;currentSearch=e.target.value;renderLibrary();});
