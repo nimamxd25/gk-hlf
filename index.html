@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <title>我的生词本</title>
-<link rel="stylesheet" href="style.css?v=38">
+<link rel="stylesheet" href="style.css?v=39">
 </head>
 <body>
 <div id="app">
@@ -21,7 +21,7 @@
   <div class="summary" id="summary">
     <div class="sum-cell"><div class="num" id="sNew">0</div><div class="lbl">今日新词</div></div>
     <div class="sum-cell"><div class="num" id="sDue">0</div><div class="lbl">待复习</div></div>
-    <div class="sum-cell"><div class="num" id="sMastered">0</div><div class="lbl">已掌握</div></div>
+    <div class="sum-cell clickable" id="masteredCell" data-stat="mastered"><div class="num" id="sMastered">0</div><div class="lbl">已掌握 ›</div></div>
     <div class="sum-cell clickable" id="totalCell" data-goto="library"><div class="num" id="sTotal">0</div><div class="lbl">总词汇 ›</div></div>
   </div>
 
@@ -75,13 +75,6 @@
       <input id="eWord" placeholder="词语 / 成语" autocomplete="off">
       <textarea id="eMeaning" rows="2" placeholder="解释"></textarea>
       <textarea id="eThinking" rows="3" placeholder="思考 / 联想（原例句栏目）"></textarea>
-      <div class="image-pick">
-        <img id="eImagePreview" class="e-image-prev hidden">
-        <label class="image-btn"><span id="imageBtnText">＋ 添加图片</span>
-          <input type="file" id="eImage" accept="image/*" style="display:none">
-        </label>
-        <button class="image-remove hidden" id="eImageRemove">移除图片</button>
-      </div>
     </div>
     <div class="editor-footer"><button class="save-btn" id="eSave">保存</button></div>
   </div>
@@ -108,13 +101,13 @@
         <button class="secondary-btn" id="sPush">☁️ 立即同步</button>
         <button class="secondary-btn" id="sExport">导出备份</button>
       </div>
-      <div style="font-size:12px;color:var(--muted);line-height:1.7;margin-top:8px">图片存仓库 images/ 目录，词条存 words.json，进度存 progress.json。Token 只存本机，不进仓库。</div>
+      <div style="font-size:12px;color:var(--muted);line-height:1.7;margin-top:8px">词条存 words.json，进度存 progress.json。Token 只存本机，不进仓库。</div>
     </div>
   </div>
 </div>
 
 <div id="toast" class="toast hidden"></div>
 
-<script src="app.js?v=38"></script>
+<script src="app.js?v=39"></script>
 </body>
 </html>
