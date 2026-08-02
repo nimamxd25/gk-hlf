@@ -201,12 +201,35 @@ function openEditor(card){
   document.getElementById('eWord').value=card?card.word:'';
   document.getElementById('eMeaning').value=card?card.meaning:'';
   document.getElementById('eThinking').value=card?card.thinking:'';
+  // 重置预览区为隐藏
+  document.getElementById('eMeaningPreview').classList.add('hidden');
+  document.getElementById('eThinkingPreview').classList.add('hidden');
+  document.getElementById('eMeaningToggle').textContent='👁 实时预览';
+  document.getElementById('eThinkingToggle').textContent='👁 实时预览';
   document.getElementById('editor').classList.remove('hidden');
 }
 function closeEditor(){document.getElementById('editor').classList.add('hidden');}
+// Markdown 实时预览：点 toggle 切换 编辑/预览
+function bindMdPreview(textareaId, previewId, toggleId){
+  const ta=document.getElementById(textareaId);
+  const pv=document.getElementById(previewId);
+  const tg=document.getElementById(toggleId);
+  const update=()=>{
+    if(!pv.classList.contains('hidden')){ pv.innerHTML=md(ta.value); pv.scrollTop=0; }
+  };
+  ta.addEventListener('input',update);
+  tg.onclick=()=>{
+    const showing=pv.classList.contains('hidden');
+    pv.classList.toggle('hidden', !showing);
+    tg.textContent=showing?'✏️ 编辑':'👁 实时预览';
+    if(showing){ pv.innerHTML=md(ta.value); pv.scrollTop=0; }
+  };
+}
 function bindEditor(){
   document.getElementById('editor').querySelector('[data-close]').onclick=closeEditor;
   document.getElementById('editor').addEventListener('click',e=>{if(e.target===document.getElementById('editor'))closeEditor();});
+  bindMdPreview('eMeaning','eMeaningPreview','eMeaningToggle');
+  bindMdPreview('eThinking','eThinkingPreview','eThinkingToggle');
   document.getElementById('eSave').onclick=()=>{
     const word=document.getElementById('eWord').value.trim();
     const meaning=document.getElementById('eMeaning').value.trim();
@@ -330,6 +353,12 @@ function bindEvents(){
   document.getElementById('searchInput').addEventListener('input',e=>{browseMode=true;currentSearch=e.target.value;renderLibrary();});
   document.getElementById('flipCard').addEventListener('click',flip);
   document.querySelectorAll('#gradeRow .grade').forEach(b=>b.onclick=()=>gradeFromButton(+b.dataset.grade));
+  // 退出学习按钮：关闭覆盖层，回到主界面（保留已学进度并同步）
+  document.getElementById('studyExit').addEventListener('click',()=>{
+    if(refs && refs.overlay) refs.overlay.classList.add('hidden');
+    saveCards();pushAll();updateSummary();renderCurrentView();
+    toast('已退出学习');
+  });
 }
 
 // ---------- boot ----------
