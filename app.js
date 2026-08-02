@@ -504,12 +504,17 @@ function downloadJSON(obj,name){
 
 const GH_API='https://api.github.com';
 
-// 读取仓库某文件内容（解码 base64），失败返回 null
+// 读取仓库某文件内容（解码 base64，还原 UTF-8），失败返回 null
 async function ghGet(path, ghc){
   const url=`${GH_API}/repos/${ghc.user}/${ghc.repo}/contents/${encodeURIComponent(path)}?ref=${encodeURIComponent(ghc.branch||'main')}`;
   try{
     const res=await fetch(url,{headers:{Authorization:`token ${ghc.token}`,Accept:'application/vnd.github+json'}});
-    if(res.ok){ const j=await res.json(); if(j.content) return {content:atob(j.content.replace(/\n/g,'')), sha:j.sha}; }
+    if(res.ok){ const j=await res.json(); if(j.content){
+      let txt;
+      try{ txt=decodeURIComponent(escape(atob(j.content.replace(/\n/g,'')))); }
+      catch(e){ txt=atob(j.content.replace(/\n/g,'')); }
+      return {content:txt, sha:j.sha};
+    } }
     if(res.status===404) return {content:null, sha:null}; // 文件不存在
     return null;
   }catch(e){ return null; }
