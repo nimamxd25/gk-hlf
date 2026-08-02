@@ -111,6 +111,7 @@ function cardHTML(c){
     <div class="wc-action">
       <button class="edit" data-id="${c.id}">编辑</button>
       <button class="study" data-id="${c.id}">学习</button>
+      <button class="del" data-id="${c.id}">删除</button>
     </div>
   </div>`;
 }
@@ -136,6 +137,18 @@ function renderLibrary(){
 function bindCardActions(v){
   v.querySelectorAll('.edit').forEach(b=>b.onclick=e=>{e.stopPropagation();openEditor(allCards.find(x=>x.id===b.dataset.id));});
   v.querySelectorAll('.study').forEach(b=>b.onclick=e=>{e.stopPropagation();startStudy([b.dataset.id]);});
+  v.querySelectorAll('.del').forEach(b=>b.onclick=e=>{e.stopPropagation();deleteCard(b.dataset.id);});
+}
+// 删除生词（确认后移除，并同步到仓库）
+function deleteCard(id){
+  const card=allCards.find(c=>c.id===id);
+  if(!card)return;
+  if(!window.confirm(`确定删除「${card.word}」吗？`))return;
+  allCards=allCards.filter(c=>c.id!==id);
+  saveCards();
+  updateSummary();renderCurrentView();
+  pushAll();
+  toast(`已删除「${card.word}」`);
 }
 
 // ---------- 编辑器 ----------
