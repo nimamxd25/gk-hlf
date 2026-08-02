@@ -11,6 +11,48 @@ const todayStr=()=>{const d=new Date();return `${d.getFullYear()}-${String(d.get
 const addDays=(s,n)=>{const p=s.split('-');const d=new Date(+p[0],+p[1]-1,+p[2]+n);return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;};
 const uid=()=>'c'+Date.now().toString(36)+Math.random().toString(36).slice(2,6);
 const esc=s=>String(s==null?'':s).replace(/[&<>"]/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[m]));
+// 轻量 Markdown 渲染器（转义后处理行内格式 + 段落/列表/标题/引用/代码）
+function md(src){
+  if(!src)return '';
+  let s=esc(src);
+  // 先保护代码块
+  const codeBlocks=[];
+  s=s.replace(/```([\s\S]*?)```/g,(m,c)=>{codeBlocks.push(`<pre><code>${c}</code></pre>`);return '%%CODE'+ (codeBlocks.length-1)+'%%';});
+  // 行内代码
+  s=s.replace(/`([^`]+)`/g,(m,c)=>'<code>'+c+'</code>');
+  // 行内粗体/斜体
+  s=s.replace(/\*\*([^*]+)\*\*/g,'<b>$1</b>');
+  s=s.replace(/__([^_]+)__/g,'<b>$1</b>');
+  s=s.replace(/\*([^*]+)\*/g,'<i>$1</i>');
+  s=s.replace(/_([^_]+)_/g,'<i>$1</i>');
+  // 换行 -> 逐行处理
+  const lines=s.split('\n');
+  let html='', inList=null, inQuote=false;
+  const closeList=()=>{if(inList){html+='</'+inList+'>';inList=null;}};
+  for(const raw of lines){
+    const line=raw.trim();
+    if(!line){closeList();inQuote=false;html+='';continue;}
+    if(line==='%%END'){}
+    // 代码块占位
+    const cm=line.match(/^%%CODE(\d+)%%$/);
+    if(cm){closeList();html+=codeBlocks[+cm[1]];continue;}
+    // 标题
+    let h=line.match(/^(#{1,6})\s+(.+)$/);
+    if(h){closeList();const lv=h[1].length;html+=`<h${lv}>${h[2]}</h${lv}>`;continue;}
+    // 无序列表
+    let ul=line.match(/^[-*•]\s+(.+)$/);
+    if(ul){if(inList!=='ul'){closeList();html+='<ul>';inList='ul';}html+=`<li>${ul[1]}</li>`;continue;}
+    // 有序列表
+    let ol=line.match(/^\d+[.)]\s+(.+)$/);
+    if(ol){if(inList!=='ol'){closeList();html+='<ol>';inList='ol';}html+=`<li>${ol[1]}</li>`;continue;}
+    // 引用（esc 后 > 变成 &gt;）
+    if(line.indexOf('&gt;')===0||line.startsWith('>')){closeList();html+=`<blockquote>${line.replace(/^(&gt;|>)\s?/,'')}</blockquote>`;continue;}
+    closeList();
+    html+=`<p>${line}</p>`;
+  }
+  closeList();
+  return html;
+}
 const timeAgo=t=>{if(!t)return'';const s=(Date.now()-new Date(t))/1000;if(s<60)return'刚刚';if(s<3600)return Math.floor(s/60)+'分钟前';if(s<86400)return Math.floor(s/3600)+'小时前';const d=new Date(t);return `${d.getMonth()+1}月${d.getDate()}日`;};
 const STATUS={fresh:'🆕 新词',learning:'⏳ 学习中',reviewing:'🔁 复习中',mastered:'✅ 已掌握'};
 
@@ -103,7 +145,7 @@ function cardHTML(c){
   const tag=STATUS[c.status]||'🆕 新词';
   const word=esc(c.word||'');
   const meaning=esc(c.meaning||'')||'<i style="color:var(--muted)">（暂无解释）</i>';
-  const think=c.thinking?`<div class="wc-think">${esc(c.thinking)}</div>`:'';
+  const think=c.thinking?`<div class="wc-think">${md(c.thinking)}</div>`:'';
   return `<div class="word-card" data-id="${c.id}">
     <div class="wc-top"><span class="wc-word">${word}</span><span class="wc-tag">${tag}</span></div>
     <div class="wc-meaning">${meaning}</div>
@@ -175,8 +217,13 @@ function bindEditor(){
     if(card){card.word=word;card.meaning=meaning;card.thinking=thinking;card.updated_at=new Date().toISOString();}
     else{card=newCard({word,meaning,thinking});allCards.push(card);}
     saveCards();closeEditor();renderCurrentView();updateSummary();
-    toast(`已保存「${word}」`);
-    pushAll();
+    if(ghReady()){
+      const ok=pushAll(); // 异步，不阻塞
+      // 用 Promise 结果给反馈（若 token 无效/网络失败会 false）
+      Promise.resolve(ok).then(r=>{ toast(r?`已保存并同步「${word}」✔`:`已保存「${word}」但同步失败，请检查设置`); });
+    } else {
+      toast(`已保存「${word}」（未配置GitHub，未同步）`);
+    }
   };
 }
 
@@ -197,8 +244,8 @@ function renderStudyCard(){
   refs.pos.textContent=(studyIndex+1)+' / '+studyQueue.length;
   refs.front.innerHTML=`<div class="flip-word">${esc(c.word)}</div><div class="flip-pos">来源：${esc(c.source||'手动')}</div>`;
   let p=`<div class="back-word">${esc(c.word)}</div>`;
-  if(c.meaning){p+=`<div class="back-label">📖 释义</div><div class="back-text">${esc(c.meaning)}</div>`;}
-  if(c.thinking){p+=`<div class="back-label">💡 思考</div><div class="back-think">${esc(c.thinking)}</div>`;}
+  if(c.meaning){p+=`<div class="back-label">📖 释义</div><div class="back-text">${md(c.meaning)}</div>`;}
+  if(c.thinking){p+=`<div class="back-label">💡 思考</div><div class="back-think">${md(c.thinking)}</div>`;}
   refs.back.innerHTML=p;
   refs.flipCard.classList.remove('flipped');refs.hint.classList.remove('hidden');refs.gradeRow.classList.add('hidden');
   refs.back.scrollTop=0;
@@ -233,8 +280,8 @@ function openSettings(){
   const g=ghConfig();
   document.getElementById('sDaily').value=settings.dailyNew;
   document.getElementById('sTheme').value=settings.theme;
-  document.getElementById('ghUser').value=g.user||'';
-  document.getElementById('ghRepo').value=g.repo||'';
+  document.getElementById('ghUser').value=g.user||'nimamxd25';
+  document.getElementById('ghRepo').value=g.repo||'gk-hlf';
   document.getElementById('ghBranch').value=g.branch||'main';
   document.getElementById('ghToken').value=g.token||'';
   document.getElementById('settings').classList.remove('hidden');
