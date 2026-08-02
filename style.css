@@ -27,8 +27,11 @@ body{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei
 /* 摘要 */
 .summary{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:16px;}
 .sum-cell{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:13px 6px;text-align:center;box-shadow:var(--shadow);}
+.sum-cell.clickable{cursor:pointer;transition:transform .1s;}
+.sum-cell.clickable:active{transform:scale(.96);}
 .sum-cell .num{font-size:23px;font-weight:800;color:var(--primary);}
 .sum-cell .lbl{font-size:11px;color:var(--muted);margin-top:2px;}
+.sum-cell.clickable .lbl{color:var(--primary);font-weight:600;}
 
 /* 主按钮 */
 .actions{display:flex;flex-direction:column;gap:10px;margin-bottom:14px;}
@@ -52,6 +55,9 @@ body{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei
 .wc-action button{border:1px solid var(--border);background:var(--card);color:var(--primary);border-radius:20px;padding:6px 14px;font-size:13px;cursor:pointer;margin-left:6px;}
 
 .section-title{font-size:14px;font-weight:800;color:var(--muted);margin:16px 0 10px;display:flex;justify-content:space-between;align-items:center;}
+.lib-back{display:flex;justify-content:space-between;align-items:center;margin:6px 0 6px;}
+.lib-back button{border:none;background:none;color:var(--primary);font-size:14px;font-weight:600;padding:8px 0;cursor:pointer;}
+.lib-back span{font-size:12px;color:var(--muted);}
 .empty{padding:40px 20px;text-align:center;color:var(--muted);}
 .empty .icon{font-size:46px;margin-bottom:12px;}
 .empty button{margin-top:14px;padding:11px 22px;border:none;border-radius:12px;background:linear-gradient(135deg,#4f6df5,#7a5df5);color:#fff;font-weight:700;font-size:15px;cursor:pointer;}
