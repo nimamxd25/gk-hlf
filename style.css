@@ -50,7 +50,6 @@ body{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei
 .wc-tag{font-size:11px;color:var(--primary);background:rgba(79,109,245,.12);padding:3px 9px;border-radius:20px;flex:none;}
 .wc-meaning{font-size:14px;color:var(--muted);margin:6px 0;}
 .wc-think{font-size:13px;color:var(--text);border-left:3px solid var(--accent);padding-left:10px;margin-top:8px;line-height:1.6;background:rgba(255,107,53,.06);padding:8px 10px;border-radius:0 8px 8px 0;}
-.wc-image img{width:100%;border-radius:8px;margin-top:8px;max-height:200px;object-fit:cover;}
 .wc-action{margin-top:8px;text-align:right;}
 .wc-action button{border:1px solid var(--border);background:var(--card);color:var(--primary);border-radius:20px;padding:6px 14px;font-size:13px;cursor:pointer;margin-left:6px;}
 
@@ -81,8 +80,6 @@ body{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei
 .back-text{font-size:16px;line-height:1.75;color:var(--text);white-space:pre-wrap;word-break:break-word;}
 .back-think{font-size:15px;line-height:1.75;color:#4a5266;border-left:4px solid var(--accent);padding-left:12px;margin-top:5px;white-space:pre-wrap;word-break:break-word;}
 [data-theme=dark] .back-think{color:#c9cede;}
-.back-image{margin-top:10px;border-radius:10px;overflow:hidden;}
-.back-image img{width:100%;display:block;border-radius:10px;}
 .card-hint{color:#fff;opacity:.7;text-align:center;padding-top:10px;font-size:13px;}
 .grade-row{display:flex;gap:8px;padding-top:12px;}
 .grade{flex:1;border:none;border-radius:14px;padding:15px 4px;font-size:15px;font-weight:700;color:#fff;cursor:pointer;}
@@ -98,10 +95,6 @@ body{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei
 .editor-body{overflow-y:auto;flex:1;padding-bottom:8px;}
 .editor-body input,.editor-body textarea{width:100%;margin-bottom:10px;padding:12px 14px;border:1px solid var(--border);border-radius:10px;background:var(--bg);color:var(--text);font-size:15px;font-family:inherit;resize:none;outline:none;}
 .editor-body input:focus,.editor-body textarea:focus{border-color:var(--primary);}
-.image-pick{display:flex;flex-direction:column;gap:8px;}
-.e-image-prev{width:100%;max-height:240px;object-fit:cover;border-radius:10px;border:1px solid var(--border);}
-.image-btn{display:inline-flex;align-items:center;justify-content:center;gap:6px;padding:11px;border:1px dashed var(--border);border-radius:10px;color:var(--muted);font-size:14px;cursor:pointer;width:100%;background:var(--bg);}
-.image-remove{border:1px solid var(--border);background:none;color:var(--bad);border-radius:10px;padding:9px;font-size:13px;cursor:pointer;}
 .editor-footer{padding:10px 0 0;}
 .save-btn{width:100%;padding:15px;border:none;border-radius:12px;background:linear-gradient(135deg,#4f6df5,#7a5df5);color:#fff;font-size:16px;font-weight:700;cursor:pointer;}
 
