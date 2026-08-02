@@ -78,9 +78,25 @@ body{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei
 .flip-face.back{background:var(--card);color:var(--text);transform:rotateY(180deg);padding:22px 18px;}
 .back-word{font-size:26px;font-weight:800;}
 .back-label{font-size:12px;font-weight:700;color:var(--primary);margin:14px 0 6px;letter-spacing:.5px;}
-.back-text{font-size:16px;line-height:1.75;color:var(--text);white-space:pre-wrap;word-break:break-word;}
-.back-think{font-size:15px;line-height:1.75;color:#4a5266;border-left:4px solid var(--accent);padding-left:12px;margin-top:5px;white-space:pre-wrap;word-break:break-word;}
+.back-text{font-size:16px;line-height:1.75;color:var(--text);word-break:break-word;}
+.back-think{font-size:15px;line-height:1.75;color:#4a5266;border-left:4px solid var(--accent);padding-left:12px;margin-top:5px;background:rgba(255,107,53,.04);border-radius:0 8px 8px 0;padding-top:6px;padding-bottom:6px;word-break:break-word;}
 [data-theme=dark] .back-think{color:#c9cede;}
+
+/* Markdown 元素样式 */
+.wc-think p,.back-text p,.back-think p{margin:4px 0;}
+.wc-think h1,.wc-think h2,.wc-think h3,.wc-think h4,
+.back-text h1,.back-text h2,.back-text h3,.back-text h4,
+.back-think h1,.back-think h2,.back-think h3,.back-think h4{margin:8px 0 4px;line-height:1.4;}
+.wc-think h1,.back-text h1,.back-think h1{font-size:1.3em;}
+.wc-think h2,.back-text h2,.back-think h2{font-size:1.2em;}
+.wc-think h3,.back-text h3,.back-think h3{font-size:1.1em;}
+.wc-think ul,.wc-think ol,.back-text ul,.back-text ol,.back-think ul,.back-think ol{margin:4px 0;padding-left:1.5em;}
+.wc-think li,.back-text li,.back-think li{margin:2px 0;}
+.wc-think blockquote,.back-text blockquote,.back-think blockquote{margin:6px 0;padding:2px 12px;border-left:3px solid var(--accent);color:var(--muted);background:rgba(255,107,53,.05);border-radius:0 6px 6px 0;}
+.wc-think code,.back-text code,.back-think code{background:rgba(79,109,245,.1);padding:1px 5px;border-radius:4px;font-size:.9em;font-family:ui-monospace,Menlo,monospace;}
+.wc-think pre,.back-text pre,.back-think pre{background:#f1f2f5;padding:8px 10px;border-radius:8px;overflow-x:auto;margin:6px 0;}
+[data-theme=dark] .wc-think pre,[data-theme=dark] .back-text pre,[data-theme=dark] .back-think pre{background:#2a2f3e;}
+.wc-think pre code,.back-text pre code,.back-think pre code{background:none;padding:0;}
 .card-hint{color:#fff;opacity:.7;text-align:center;padding-top:10px;font-size:13px;}
 .grade-row{display:flex;gap:8px;padding-top:12px;}
 .grade{flex:1;border:none;border-radius:14px;padding:15px 4px;font-size:15px;font-weight:700;color:#fff;cursor:pointer;}
@@ -89,15 +105,26 @@ body{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei
 /* 弹窗/编辑器 */
 .modal{position:fixed;inset:0;background:rgba(10,12,22,.55);z-index:60;display:flex;align-items:flex-end;justify-content:center;}
 .modal.hidden{display:none;}
+/* 编辑器全屏模式 */
+.modal.fullscreen{align-items:stretch;}
+.modal.fullscreen .editor-sheet{height:100dvh;max-height:none;border-radius:0;padding-top:6px;}
+.modal.fullscreen .editor-title{font-size:20px;}
 .editor-sheet{background:var(--card);width:100%;max-width:520px;border-radius:20px 20px 0 0;padding:0 20px calc(20px + env(safe-area-inset-bottom));max-height:88vh;display:flex;flex-direction:column;}
-.editor-head{display:flex;justify-content:space-between;align-items:center;padding:18px 0 10px;}
+.editor-head{display:flex;justify-content:space-between;align-items:center;padding:18px 0 12px;flex:none;}
 .editor-title{font-size:17px;font-weight:700;}
-.editor-close{border:none;background:var(--border);border-radius:8px;width:30px;height:30px;cursor:pointer;font-size:14px;color:var(--muted);}
+.editor-close{border:none;background:var(--border);border-radius:8px;width:32px;height:32px;cursor:pointer;font-size:15px;color:var(--muted);}
 .editor-body{overflow-y:auto;flex:1;padding-bottom:8px;}
-.editor-body input,.editor-body textarea{width:100%;margin-bottom:10px;padding:12px 14px;border:1px solid var(--border);border-radius:10px;background:var(--bg);color:var(--text);font-size:15px;font-family:inherit;resize:none;outline:none;}
-.editor-body input:focus,.editor-body textarea:focus{border-color:var(--primary);}
-.editor-footer{padding:10px 0 0;}
-.save-btn{width:100%;padding:15px;border:none;border-radius:12px;background:linear-gradient(135deg,#4f6df5,#7a5df5);color:#fff;font-size:16px;font-weight:700;cursor:pointer;}
+.editor-field{margin-bottom:14px;}
+.editor-field label{display:block;font-size:13px;font-weight:600;color:var(--muted);margin-bottom:6px;}
+.modal.fullscreen .editor-body{padding-top:4px;}
+.editor-body input,.editor-body textarea{width:100%;padding:14px 16px;border:1px solid var(--border);border-radius:12px;background:var(--bg);color:var(--text);font-size:16px;font-family:inherit;resize:vertical;outline:none;line-height:1.6;}
+.editor-body input#eWord{font-size:18px;font-weight:600;padding-top:16px;padding-bottom:16px;}
+.editor-body textarea#eMeaning{min-height:110px;}
+.editor-body textarea#eThinking{min-height:240px;}
+.editor-body input:focus,.editor-body textarea:focus{border-color:var(--primary);background:#fff;}
+[data-theme=dark] .editor-body input:focus,[data-theme=dark] .editor-body textarea:focus{background:#262b3a;}
+.editor-footer{padding:12px 0 0;flex:none;}
+.save-btn{width:100%;padding:16px;border:none;border-radius:14px;background:linear-gradient(135deg,#4f6df5,#7a5df5);color:#fff;font-size:17px;font-weight:700;cursor:pointer;}
 
 /* 设置 */
 .form-block-title{font-size:14px;font-weight:700;margin:6px 0 10px;}
