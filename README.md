@@ -1,57 +1,49 @@
-# 考公词汇 · 我的生词本（GitHub Pages 版）
+# 考公词汇 · 我的生词本（GitHub 自动同步版）
 
-一个**空白起步**的考公词汇 Anki 式记忆应用。做逻辑填空时遇到生词，加进你的生词本，系统按 SM-2 间隔重复算法帮你复习，直至掌握。
+一个**空白起步**的考公词汇 Anki 式记忆应用。做逻辑填空遇到生词，加进生词本，系统按 SM-2 间隔重复算法复习，**学习数据和进度全自动同步到你的私有 GitHub 仓库**。
 
 **没有任何内置词**——所有词语都是你自己收录的。
 
 ## 核心功能
 - ➕ **添加生词**：做题遇词记下（词、释义、例句）
-- 🎯 **今日学习**：每天 N 个新词，全屏大字卡片翻转记意思
+- 🎯 **今日学习**：每天 N 个新词，全屏大字卡片翻转记忆
 - 🔁 **复习**：SM-2 间隔重复，到期自动提醒
 - 📊 **统计**：待学 / 学习中 / 复习中 / 已掌握
-- 📚 **搜索 / 词库**：模糊搜索已收录词语
-- ⬆️⬇️ **导入导出**：词库与进度均可导出 JSON / 导入（换设备、同步用）
-- 🎨 深色模式
+- ☁️ **自动同步**：生词 + 学习进度自动写入 GitHub 私有仓库（无需手动）
 
-## 数据存储与同步（GitHub 仓库）
-- **词库数据**存在仓库的 **`words.json`** 文件里，它的内容就是你的词条列表。
-- **学习进度**（每张卡的记忆次数/到期日/掌握度）存浏览器的 localStorage。
-- 想把词库分享到多设备 / 多人 / 备份到仓库：
-  1. 手机上「设置 → 导出词库 JSON」
-  2. 把导出的 `words_我的生词.json` 内容合并/覆盖到仓库的 `words.json`
-  3. `git add . && git commit -m "更新生词" && git push`
-  4. 其他设备重新打开页面即加载最新词库（进度各自在本地保持）
+## 自动同步（重点）
+- 在 **设置 → GitHub 自动同步** 填一次：用户名、仓库名、分支、GitHub Token。
+- 之后**添加生词**和**完成一组学习**时，自动把数据写回仓库：
+  - `words.json`：你的生词库
+  - `progress.json`：学习进度（记忆次数/到期日/掌握度）
+- 换设备登录时，**启动自动拉取**远端数据合并到本地，学习不断档。
 
-`words.json` 格式：
-```json
-[
-  { "word": "沆瀣一气", "meaning": "比喻臭味相投的人勾结在一起。", "examples": ["例句1", "例句2"] }
-]
-```
+### Token 说明（安全）
+- 用 GitHub **Fine-grained Token**，权限只给**那一个私有仓库**、`Contents: Read and write`。
+- Token **只存在你的浏览器 localStorage**，绝不写进仓库代码（`.gitignore` 已排除）。即使 token 泄露，也仅限于编辑该一个仓库，风险范围很小。
 
-> 提示：因为词汇永久保存在你控制的 GitHub 仓库里，即使换手机/清浏览器，词库也不丢；进度可在「设置→导出进度」做整机备份。
+### 如何生成 Fine-grained Token
+1. GitHub → 头像 → **Settings** → **Developer settings** → **Personal access tokens** → **Fine-grained tokens** → **Generate new token**
+2. 有效期建议较长（如 90 天或自定义）
+3. **Repository access** → `Only select repositories` → 选你的私有仓库
+4. **Repository permissions** → **Contents** → **Read and write**
+5. 生成后复制 `github_pat_...` 填入应用设置。
 
-## 部署到 GitHub Pages（一次性）
-1. 在 GitHub 新建一个仓库（如 `shengci`），公开(Public)即可。
-2. 把本目录下这些文件推上去：
-   ```
-   index.html  app.js  style.css  words.json  .github/
-   ```
-   可用命令行或网页上传所有文件（注意保留 `.github/workflows/pages.yml`）。
-3. 仓库 **Settings → Pages** → Source 选 **GitHub Actions**。
-4. 访问 `https://你的用户名.github.io/仓库名/` 即可使用。
+## 部署到 GitHub Pages（让手机浏览器能打开）
+仓库文件已就绪在 `main` 分支。启用方式：
+1. 仓库 **Settings → Pages**
+2. **Source** 选 **Deploy from a branch**
+3. **Branch** 选 `main`，`/ (root)`
+4. Save，等 1~2 分钟，访问 `https://您用户名.github.io/仓库名/`
 
-- 之后**每次 push 更新 `words.json`**，GitHub Actions 会自动重新部署，几分钟内生效。
-- 也支持 **File → Open** 直接本地打开 `index.html` 离线使用（此时词库从本地 words.json 读取，多设备同步改用导入导出）。
+> 私有仓库的 Pages 站点有访问控制：需登录有权限的 GitHub 账号访问；若希望免登录公开访问，需把仓库设为 **Public**（数据中的生词会公开，请自行权衡）。
 
-## 部署交互式说明
-推送时若用命令行（电脑上先装 git）：
-```bash
-cd 项目目录
-git init
-git add .
-git commit -m "init"
-git branch -M main
-git remote add origin https://github.com/用户名/仓库名.git
-git push -u origin main
-```
+## 开源部署 / 本地离线使用
+- 也可直接用浏览器打开本地 `index.html`（完全离线），此时词库读本地 `words.json`。
+- 自动同步依赖 GitHub，离线模式下用「设置 → 导出/导入」做备份。
+
+## 仓库文件
+- `index.html` / `app.js` / `style.css` — 应用
+- `words.json` — 你的生词库（自动同步）
+- `progress.json` — 学习进度（自动同步，运行时生成，无需手动创建）
+- `README.md` — 本说明
