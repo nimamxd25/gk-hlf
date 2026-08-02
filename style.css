@@ -52,6 +52,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei
 .wc-think{font-size:13px;color:var(--text);border-left:3px solid var(--accent);padding-left:10px;margin-top:8px;line-height:1.6;background:rgba(255,107,53,.06);padding:8px 10px;border-radius:0 8px 8px 0;}
 .wc-action{margin-top:8px;text-align:right;}
 .wc-action button{border:1px solid var(--border);background:var(--card);color:var(--primary);border-radius:20px;padding:6px 14px;font-size:13px;cursor:pointer;margin-left:6px;}
+.wc-action button.del{color:var(--bad);border-color:rgba(239,75,81,.4);background:rgba(239,75,81,.06);}
 
 .section-title{font-size:14px;font-weight:800;color:var(--muted);margin:16px 0 10px;display:flex;justify-content:space-between;align-items:center;}
 .lib-back{display:flex;justify-content:space-between;align-items:center;margin:6px 0 6px;}
