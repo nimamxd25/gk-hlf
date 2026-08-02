@@ -1,20 +1,9 @@
 {
   "app": "gkCiHui",
-  "updated": "2026-08-02T01:31:19.233Z",
+  "updated": "2026-08-02T01:33:07.686Z",
   "cards": [
     {
-      "id": "cmsb48pv2yo6n",
-      "status": "fresh",
-      "ef": 2.5,
-      "interval": 0,
-      "reps": 0,
-      "lapses": 0,
-      "due": "2026-08-02",
-      "totalRating": 0,
-      "history": []
-    },
-    {
-      "id": "cmsb4jkuop8ys",
+      "id": "cmsb4luw9k1l6",
       "status": "fresh",
       "ef": 2.5,
       "interval": 0,
