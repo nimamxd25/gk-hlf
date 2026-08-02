@@ -1,6 +1,6 @@
 // ============ 我的生词本 · 简洁 Anki 界面 ============
-// 数据：word/meaning/thinking(思考)/image(仓库图片名)/SM2
-// 同步：words.json + progress.json + images/ 全存 GitHub 仓库
+// 数据：word/meaning/thinking(思考)/SM2
+// 同步：words.json + progress.json 存 GitHub 仓库
 (function(){
 'use strict';
 
@@ -28,7 +28,7 @@ const ghReady=()=>{const g=ghConfig();return !!(g&&g.token&&g.user&&g.repo);};
 
 // ---------- 卡片 ----------
 function state0(){return{status:'fresh',ef:2.5,interval:0,reps:0,lapses:0,due:todayStr(),totalRating:0,history:[]};}
-function newCard(f){return{id:uid(),word:f.word||'',meaning:f.meaning||'',thinking:f.thinking||'',image:f.image||'',updated_at:new Date().toISOString(),source:'手动',...state0()};}
+function newCard(f){return{id:uid(),word:f.word||'',meaning:f.meaning||'',thinking:f.thinking||'',updated_at:new Date().toISOString(),source:'手动',...state0()};}
 
 // ---------- GitHub API ----------
 async function ghGet(path){
@@ -44,17 +44,10 @@ async function ghPutText(path,text,msg){
   const ex=await ghGet(path);if(ex&&ex.sha)body.sha=ex.sha;
   try{const r=await fetch(url,{method:'PUT',headers:{Authorization:`token ${g.token}`,Accept:'application/vnd.github+json'},body:JSON.stringify(body)});return r.ok;}catch(e){return false;}
 }
-async function ghPutImage(path,base64Data,msg){
-  const g=ghConfig();const url=`${GH_API}/repos/${g.user}/${g.repo}/contents/${encodeURIComponent(path)}`;
-  const body={message:msg||'upload image',content:base64Data};
-  const ex=await ghGet(path);if(ex&&ex.sha)body.sha=ex.sha;
-  try{const r=await fetch(url,{method:'PUT',headers:{Authorization:`token ${g.token}`,Accept:'application/vnd.github+json'},body:JSON.stringify(body)});return r.ok;}catch(e){return false;}
-}
-// 生成图片的 raw 完整 URL（上传成功后在保存时记录到 card.image）
-function rawImageURL(name){const g=ghConfig();const b=g.branch||'main';return `https://raw.githubusercontent.com/${g.user}/${g.repo}/${b}/images/${name}`;}
+
 
 // ---------- 同步 ----------
-function buildWordsJSON(){return JSON.stringify(allCards.map(c=>({id:c.id,word:c.word,meaning:c.meaning,thinking:c.thinking,image:c.image,updated_at:c.updated_at})),null,2);}
+function buildWordsJSON(){return JSON.stringify(allCards.map(c=>({id:c.id,word:c.word,meaning:c.meaning,thinking:c.thinking,updated_at:c.updated_at})),null,2);}
 function buildProgressJSON(){return JSON.stringify({app:'gkCiHui',updated:new Date().toISOString(),cards:allCards.map(c=>({id:c.id,status:c.status,ef:c.ef,interval:c.interval,reps:c.reps,lapses:c.lapses,due:c.due,totalRating:c.totalRating,history:c.history}))},null,2);}
 async function pushAll(){if(!ghReady())return false;await ghPutText('words.json',buildWordsJSON(),'auto sync words');await ghPutText('progress.json',buildProgressJSON(),'auto sync progress');return true;}
 async function pullAll(){
@@ -62,7 +55,7 @@ async function pullAll(){
   const w=await ghGet('words.json');
   if(w&&w.content){try{const remote=JSON.parse(w.content);if(Array.isArray(remote)){
     const map=new Map(remote.map(c=>[c.id,c]));
-    allCards.forEach(c=>{if(map.has(c.id)){const r=map.get(c.id);Object.assign(c,{word:r.word,meaning:r.meaning,thinking:r.thinking,image:r.image,updated_at:r.updated_at});}});
+    allCards.forEach(c=>{if(map.has(c.id)){const r=map.get(c.id);Object.assign(c,{word:r.word,meaning:r.meaning,thinking:r.thinking,updated_at:r.updated_at});}});
     map.forEach((c,id)=>{if(!allCards.some(x=>x.id===id))allCards.push({...newCard(c),...c});});
     saveCards();
   }}catch(e){}}
@@ -111,12 +104,10 @@ function cardHTML(c){
   const word=esc(c.word||'');
   const meaning=esc(c.meaning||'')||'<i style="color:var(--muted)">（暂无解释）</i>';
   const think=c.thinking?`<div class="wc-think">${esc(c.thinking)}</div>`:'';
-  const img=c.image?`<div class="wc-image"><img src="${esc(c.image)}" loading="lazy" onerror="this.style.display='none'"></div>`:'';
   return `<div class="word-card" data-id="${c.id}">
     <div class="wc-top"><span class="wc-word">${word}</span><span class="wc-tag">${tag}</span></div>
     <div class="wc-meaning">${meaning}</div>
     ${think}
-    ${img}
     <div class="wc-action">
       <button class="edit" data-id="${c.id}">编辑</button>
       <button class="study" data-id="${c.id}">学习</button>
@@ -124,14 +115,22 @@ function cardHTML(c){
   </div>`;
 }
 function goLibrary(){browseMode=true;currentSearch='';currentFilter='all';document.getElementById('searchInput').value='';renderCurrentView();}
+// 按状态浏览（如：已掌握 / 待学 / 复习中）
+function goStatView(status){
+  browseMode=true;currentSearch='';currentFilter=status;
+  document.getElementById('searchInput').value='';
+  renderCurrentView();
+}
 function renderLibrary(){
   const v=document.getElementById('view');
   let list=allCards;
   if(currentFilter!=='all')list=list.filter(c=>c.status===currentFilter);
   if(currentSearch){const q=currentSearch.trim();list=list.filter(c=>c.word.includes(q)||(c.meaning||'').includes(q)||(c.thinking||'').includes(q));}
-  const backBar=browseMode?`<div class="lib-back"><button data-back-home>‹ 返回今日</button><span>${allCards.length} 个词</span></div>`:'';
+  const filterLabels={all:'全部词汇',fresh:'今日新词(待学)',learning:'学习中',reviewing:'复习中',mastered:'已掌握'};
+  const label=filterLabels[currentFilter]||'词库';
+  const backBar=browseMode?`<div class="lib-back"><button data-back-home>‹ 返回今日</button><span>${list.length} 个</span></div>`:'';
   if(!list.length){v.innerHTML=`${backBar}<div class="empty"><div class="icon">🔍</div><div>没有匹配的词</div></div>`;return;}
-  v.innerHTML=`${backBar}<div class="section-title"><span>词库 · ${list.length} 词</span></div>${list.map(cardHTML).join('')}`;
+  v.innerHTML=`${backBar}<div class="section-title"><span>${label} · ${list.length} 个</span></div>${list.map(cardHTML).join('')}`;
   bindCardActions(v);
 }
 function bindCardActions(v){
@@ -140,33 +139,20 @@ function bindCardActions(v){
 }
 
 // ---------- 编辑器 ----------
-let editingId=null, pendingImageData=null, imageRemovedRecently=false;
+let editingId=null;
 function openEditor(card){
-  editingId=card?card.id:null;pendingImageData=null;imageRemovedRecently=false;
+  editingId=card?card.id:null;
   document.getElementById('editorTitle').textContent=card?'编辑生词':'记录生词';
   document.getElementById('eWord').value=card?card.word:'';
   document.getElementById('eMeaning').value=card?card.meaning:'';
   document.getElementById('eThinking').value=card?card.thinking:'';
-  const img=document.getElementById('eImagePreview'),rem=document.getElementById('eImageRemove'),ibt=document.getElementById('imageBtnText');
-  if(card&&card.image){img.src=card.image;img.classList.remove('hidden');rem.classList.remove('hidden');ibt.textContent='更换图片';}
-  else{img.classList.add('hidden');rem.classList.add('hidden');ibt.textContent='＋ 添加图片';}
   document.getElementById('editor').classList.remove('hidden');
 }
 function closeEditor(){document.getElementById('editor').classList.add('hidden');}
 function bindEditor(){
   document.getElementById('editor').querySelector('[data-close]').onclick=closeEditor;
   document.getElementById('editor').addEventListener('click',e=>{if(e.target===document.getElementById('editor'))closeEditor();});
-  document.getElementById('eImage').onchange=e=>{
-    const f=e.target.files[0];if(!f)return;
-    const r=new FileReader();
-    r.onload=()=>{const m=r.result.match(/^data:[^;]+;base64,(.+)$/);if(m){pendingImageData=m[2];window.__pid=m[2].slice(0,10);}else{window.__pid='NO-MATCH:'+r.result.slice(0,30);}
-      const img=document.getElementById('eImagePreview'),rem=document.getElementById('eImageRemove'),ibt=document.getElementById('imageBtnText');
-      img.src=r.result;img.classList.remove('hidden');rem.classList.remove('hidden');ibt.textContent='更换图片';};
-    r.readAsDataURL(f);
-  };
-  document.getElementById('eImageRemove').onclick=()=>{pendingImageData=null;imageRemovedRecently=true;document.getElementById('eImage').value='';
-    document.getElementById('eImagePreview').classList.add('hidden');document.getElementById('eImageRemove').classList.add('hidden');document.getElementById('imageBtnText').textContent='＋ 添加图片';};
-  document.getElementById('eSave').onclick=async()=>{
+  document.getElementById('eSave').onclick=()=>{
     const word=document.getElementById('eWord').value.trim();
     const meaning=document.getElementById('eMeaning').value.trim();
     const thinking=document.getElementById('eThinking').value.trim();
@@ -175,17 +161,6 @@ function bindEditor(){
     if(editingId)card=allCards.find(c=>c.id===editingId);
     if(card){card.word=word;card.meaning=meaning;card.thinking=thinking;card.updated_at=new Date().toISOString();}
     else{card=newCard({word,meaning,thinking});allCards.push(card);}
-    if(pendingImageData&&typeof pendingImageData==='string'){
-      const name=`${card.id}.png`;
-      if(ghReady()){
-        const ok=await ghPutImage('images/'+name,pendingImageData,'upload '+name);
-        if(ok){ card.image=rawImageURL(name); } // 存完整URL，卡片直接用
-        else{ toast('⚠️ 图片上传失败'); }
-      } else {
-        toast('⚠️ 未配置GitHub，无法上传图片，请在设置里填写');
-      }
-      pendingImageData=null;
-    }else if(pendingImageData===null&&imageRemovedRecently){card.image='';imageRemovedRecently=false;}
     saveCards();closeEditor();renderCurrentView();updateSummary();
     toast(`已保存「${word}」`);
     pushAll();
@@ -211,7 +186,6 @@ function renderStudyCard(){
   let p=`<div class="back-word">${esc(c.word)}</div>`;
   if(c.meaning){p+=`<div class="back-label">📖 释义</div><div class="back-text">${esc(c.meaning)}</div>`;}
   if(c.thinking){p+=`<div class="back-label">💡 思考</div><div class="back-think">${esc(c.thinking)}</div>`;}
-  if(c.image){p+=`<div class="back-label">🖼 图片</div><div class="back-image"><img src="${esc(c.image)}"></div>`;}
   refs.back.innerHTML=p;
   refs.flipCard.classList.remove('flipped');refs.hint.classList.remove('hidden');refs.gradeRow.classList.add('hidden');
   refs.back.scrollTop=0;
@@ -282,6 +256,10 @@ function bindEvents(){
   const totalCell=document.getElementById('totalCell');
   if(totalCell) totalCell.onclick=goLibrary;
   document.querySelectorAll('[data-goto="library"]').forEach(el=>{ if(el&&el.id!=='totalCell') el.onclick=goLibrary; });
+  // "已掌握"统计卡点击 → 查看已掌握词汇
+  document.querySelectorAll('[data-stat]').forEach(el=>{
+    el.onclick=()=>goStatView(el.dataset.stat);
+  });
   // 词库视图内的"返回今日"按钮（委托点击）
   document.getElementById('view').addEventListener('click',e=>{
     const back=e.target.closest('[data-back-home]');
@@ -308,18 +286,9 @@ function toast(msg){const t=document.getElementById('toast');t.textContent=msg;t
 // ---------- 暴露给快捷指令 / 外部 ----------
 window.__pushNow=function(){return pushAll();};
 window.__configureGh=function(u,r,b,t){saveGh({user:u,repo:r,branch:b||'main',token:t});return !!u&&!!r&&!!t;};
-window.__uploadImage=function(name,base64){return ghPutImage('images/'+name,base64,'upload '+name);};
-window.__addCardFromShortcut=async function(word,meaning,thinking,imageName,imageBase64){
+window.__addCardFromShortcut=async function(word,meaning,thinking){
   const card=newCard({word,meaning,thinking});
   allCards.push(card);saveCards();
-  if(imageBase64&&imageName){
-    const ok=await ghPutImage('images/'+imageName,imageBase64,'upload '+imageName);
-    if(ok)card.image=rawImageURL(imageName);
-  } else if(imageName) {
-    // 已上传过，直接用URL
-    card.image=rawImageURL(imageName);
-  }
-  saveCards();
   await pushAll();updateSummary();renderCurrentView();
   return card.id;
 };
