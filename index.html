@@ -3,91 +3,30 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<meta name="theme-color" content="#4f6df5">
-<title>考公词汇 · 每日记忆</title>
-<link rel="stylesheet" href="style.css?v=10">
+<meta name="theme-color" content="#ffffff">
+<title>我的生词卡</title>
+<link rel="stylesheet" href="style.css?v=23">
 </head>
 <body>
 <div id="app">
-  <!-- 顶部标题 -->
-  <header class="topbar">
-    <div class="brand">
-      <span class="brand-icon">📖</span>
-      <span class="brand-text">我的生词本</span>
+  <!-- 极简顶栏 -->
+  <header class="masthead">
+    <div class="masthead-inner">
+      <span class="masthead-dot">·</span>
+      <span class="masthead-title">我的生词卡</span>
+      <button class="add-btn" id="btnAdd" title="添加生词">＋</button>
     </div>
-    <button class="icon-btn add-fab" id="btnAdd" title="添加生词">＋</button>
   </header>
 
-  <!-- 今日主卡片（渐变 header） -->
-  <section class="today-card" id="todayCard">
-    <div class="today-top">
-      <div class="today-label">今日学习</div>
-      <div class="today-date" id="todayDate"></div>
-    </div>
-    <div class="today-main">
-      <div class="today-numbers">
-        <div class="today-num-block">
-          <div class="today-num" id="sNew">0</div>
-          <div class="today-numlbl">待学新词</div>
-        </div>
-        <div class="today-divider"></div>
-        <div class="today-num-block">
-          <div class="today-num" id="sDue">0</div>
-          <div class="today-numlbl">待复习</div>
-        </div>
-        <div class="today-divider"></div>
-        <div class="today-num-block">
-          <div class="today-num" id="sMastered">0</div>
-          <div class="today-numlbl">已掌握</div>
-        </div>
-      </div>
-      <button class="study-btn" id="btnStudy">
-        <span class="study-btn-icon">🎯</span>
-        <span class="study-btn-text" id="studyBtnText">开始今日学习</span>
-      </button>
-    </div>
-    <div class="today-stats-row">
-      <div class="today-stat-item">
-        <span>总词汇</span><b id="sTotal">0</b>
-      </div>
-      <div class="today-stat-item">
-        <span>学习进度</span><b><span id="pctText">0%</span></b>
-      </div>
-    </div>
-  </section>
+  <!-- 信息流容器 -->
+  <main class="stream" id="stream"></main>
 
-  <!-- Tab 内容区 -->
-  <main class="tab-content">
-    <!-- 今日 tab -->
-    <div class="tab-panel active" id="tab-today">
-      <div id="view"></div>
-    </div>
-    <!-- 词库 tab -->
-    <div class="tab-panel" id="tab-library">
-      <div class="lib-header">
-        <input id="searchInput" type="text" placeholder="🔍 搜索词语 / 释义 / 例句…">
-        <div class="filter-row" id="filterRow"></div>
-      </div>
-      <div id="libView" class="view"></div>
-    </div>
-    <!-- 统计 tab -->
-    <div class="tab-panel" id="tab-stats">
-      <div id="statsView"></div>
-    </div>
-    <!-- 设置 tab -->
-    <div class="tab-panel" id="tab-settings">
-      <div id="settingsView"></div>
-    </div>
-  </main>
-
-  <!-- 底部导航 -->
-  <nav class="tabbar" id="tabbar">
-    <button class="tab-btn active" data-tab="today"><span class="ti">🏠</span><span class="tl">今日</span></button>
-    <button class="tab-btn" data-tab="library"><span class="ti">📚</span><span class="tl">词库</span></button>
-    <button class="tab-btn" data-tab="stats"><span class="ti">📊</span><span class="tl">统计</span></button>
-    <button class="tab-btn" data-tab="settings"><span class="ti">⚙️</span><span class="tl">设置</span></button>
-  </nav>
+  <!-- 底部设置入口 -->
+  <div class="foot-gear" id="footGear">· · ·</div>
 </div>
+
+<!-- pin 状态栏 -->
+<div id="pinStatus" class="pin-status hidden"></div>
 
 <!-- 卡片学习覆盖层 -->
 <div id="overlay" class="overlay hidden">
@@ -112,9 +51,65 @@
   </div>
 </div>
 
-<div id="toast" class="toast hidden"></div>
-<div id="modal" class="modal hidden"><div class="modal-box" id="modalBody"></div></div>
+<!-- 词条编辑弹层 -->
+<div id="editor" class="modal hidden">
+  <div class="editor-sheet">
+    <div class="editor-head">
+      <span class="editor-title">记录生词</span>
+      <button class="editor-close" data-close>✕</button>
+    </div>
+    <div class="editor-body">
+      <input id="eWord" placeholder="词语 / 成语" autocomplete="off">
+      <textarea id="eMeaning" rows="2" placeholder="解释"></textarea>
+      <textarea id="eThinking" rows="3" placeholder="思考 / 联想（原例句栏目）"></textarea>
+      <div class="image-pick" id="imagePick">
+        <img id="eImagePreview" class="e-image-prev hidden" alt="preview">
+        <label class="image-btn">
+          <span id="imageBtnText">＋ 添加图片</span>
+          <input type="file" id="eImage" accept="image/*" style="display:none">
+        </label>
+        <button class="image-remove hidden" id="eImageRemove">移除图片</button>
+      </div>
+    </div>
+    <div class="editor-footer">
+      <button class="save-btn" id="eSave">保存</button>
+    </div>
+  </div>
+</div>
 
-<script src="app.js?v=10"></script>
+<!-- 设置面板 -->
+<div id="settings" class="modal hidden">
+  <div class="editor-sheet">
+    <div class="editor-head">
+      <span class="editor-title">设置与同步</span>
+      <button class="editor-close" data-close>✕</button>
+    </div>
+    <div class="editor-body">
+      <div class="form-group"><label>每日新词数量</label><input id="sDaily" type="number" min="5" max="100" value="20"></div>
+      <div class="form-group"><label>主题</label>
+        <select id="sTheme"><option value="light">浅色</option><option value="dark">深色</option></select>
+      </div>
+      <div class="form-block-title">☁️ GitHub 自动同步</div>
+      <div class="form-group"><label>用户名</label><input id="ghUser" placeholder="username"></div>
+      <div class="form-group"><label>仓库名</label><input id="ghRepo" placeholder="repo"></div>
+      <div class="form-group"><label>分支</label><input id="ghBranch" placeholder="main"></div>
+      <div class="form-group"><label>Token（存本机）</label><input id="ghToken" type="password" placeholder="github_pat_..."></div>
+      <div class="set-actions">
+        <button class="save-btn" id="sSave">保存设置</button>
+        <button class="secondary-btn" id="sPull">⬇️ 拉取仓库</button>
+        <button class="secondary-btn" id="sPush">☁️ 立即同步</button>
+        <button class="secondary-btn" id="sExport">导出备份</button>
+      </div>
+      <div style="font-size:12px;color:var(--muted);line-height:1.7;margin-top:8px">
+        图片会传到仓库 images/ 目录。数据存 words.json(词条) + progress.json(进度)。token仅存本机，不进仓库。
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- toast -->
+<div id="toast" class="toast hidden"></div>
+
+<script src="app.js?v=23"></script>
 </body>
 </html>
