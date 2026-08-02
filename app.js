@@ -80,9 +80,9 @@ function updateSummary(){
 }
 
 // ---------- 视图 ----------
-let currentSearch='', currentFilter='all';
+let currentSearch='', currentFilter='all', browseMode=false;
 function renderCurrentView(){
-  if(currentSearch||currentFilter!=='all'){renderLibrary();return;}
+  if(browseMode||currentSearch||currentFilter!=='all'){renderLibrary();return;}
   const v=document.getElementById('view');
   const fresh=allCards.filter(c=>c.status==='fresh');
   const due=allCards.filter(c=>c.status!=='fresh'&&c.status!=='mastered'&&c.due<=todayStr());
@@ -257,16 +257,16 @@ function bindSettings(){
 
 // ---------- 事件 ----------
 function bindEvents(){
-  document.getElementById('btnStudy').onclick=()=>{
+  document.getElementById('btnStudy').onclick=()=>{browseMode=false;currentSearch='';document.getElementById('searchInput').value='';renderCurrentView();
     const fresh=allCards.filter(c=>c.status==='fresh');
     if(fresh.length)startStudy(fresh.slice(0,settings.dailyNew).map(c=>c.id));
     else{const due=allCards.filter(c=>c.status!=='fresh'&&c.status!=='mastered'&&c.due<=todayStr());if(due.length)reviewFlow();else toast('还没有新词，先添加或去复习');}
   };
-  document.getElementById('btnReview').onclick=reviewFlow;
-  document.getElementById('btnLibrary').onclick=()=>{currentSearch='';currentFilter='all';document.getElementById('searchInput').value='';renderCurrentView();};
-  document.getElementById('btnAdd').onclick=openEditor;
+  document.getElementById('btnReview').onclick=()=>{browseMode=false;currentSearch='';document.getElementById('searchInput').value='';renderCurrentView();reviewFlow();};
+  document.getElementById('btnLibrary').onclick=()=>{browseMode=!browseMode;currentSearch='';currentFilter='all';document.getElementById('searchInput').value='';renderCurrentView();};
+  document.getElementById('btnAdd').onclick=()=>{browseMode=false;openEditor();};
   document.getElementById('btnSettings').onclick=openSettings;
-  document.getElementById('searchInput').addEventListener('input',e=>{currentSearch=e.target.value;renderLibrary();});
+  document.getElementById('searchInput').addEventListener('input',e=>{browseMode=true;currentSearch=e.target.value;renderLibrary();});
   document.getElementById('flipCard').addEventListener('click',flip);
   document.querySelectorAll('#gradeRow .grade').forEach(b=>b.onclick=()=>gradeFromButton(+b.dataset.grade));
 }
