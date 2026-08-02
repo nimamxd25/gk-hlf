@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <title>我的生词本</title>
-<link rel="stylesheet" href="style.css?v=34">
+<link rel="stylesheet" href="style.css?v=36">
 </head>
 <body>
 <div id="app">
@@ -22,7 +22,7 @@
     <div class="sum-cell"><div class="num" id="sNew">0</div><div class="lbl">今日新词</div></div>
     <div class="sum-cell"><div class="num" id="sDue">0</div><div class="lbl">待复习</div></div>
     <div class="sum-cell"><div class="num" id="sMastered">0</div><div class="lbl">已掌握</div></div>
-    <div class="sum-cell"><div class="num" id="sTotal">0</div><div class="lbl">总词汇</div></div>
+    <div class="sum-cell clickable" id="totalCell" data-goto="library"><div class="num" id="sTotal">0</div><div class="lbl">总词汇 ›</div></div>
   </div>
 
   <!-- 主操作按钮 -->
@@ -115,6 +115,6 @@
 
 <div id="toast" class="toast hidden"></div>
 
-<script src="app.js?v=34"></script>
+<script src="app.js?v=36"></script>
 </body>
 </html>
