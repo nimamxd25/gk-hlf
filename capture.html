@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>收录生词</title>
+<style>
+body{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",sans-serif;background:#f7f7f5;color:#1f2328;margin:0;min-height:100vh;display:flex;align-items:center;justify-content:center;padding:24px;}
+.box{background:#fff;border-radius:18px;box-shadow:0 1px 4px rgba(0,0,0,.06),0 8px 24px rgba(0,0,0,.06);padding:28px;max-width:400px;width:100%;text-align:center;}
+h1{font-size:20px;font-weight:800;margin:0 0 6px;}
+p.sub{color:#6b7280;font-size:14px;margin:0 0 22px;}
+.status{font-size:15px;line-height:1.7;min-height:60px;display:flex;align-items:center;justify-content:center;}
+.ok{color:#27ae60;font-weight:700;}
+.fail{color:#ef4b51;font-weight:700;}
+.btn{display:inline-block;margin-top:14px;border:none;border-radius:10px;background:#1f2328;color:#fff;padding:12px 24px;font-size:15px;font-weight:600;cursor:pointer;text-decoration:none;}
+</style>
+</head>
+<body>
+<div class="box">
+  <h1>📥 收录生词</h1>
+  <p class="sub">从快捷指令传来的生词，正在自动保存并同步到仓库…</p>
+  <div class="status" id="status">解析中…</div>
+  <a class="btn" id="toApp" style="display:none" href="./index.html">去生词本查看</a>
+</div>
+<script>
+(function(){
+  async function main(){
+    const status=document.getElementById('status'), toApp=document.getElementById('toApp');
+    // 读取从快捷指令传来的数据（放在 location.hash 里）
+    let data={};
+    try{
+      const h=decodeURIComponent(location.hash.replace(/^#capture\??/,''));
+      // 支持两种：?word=&meaning= 或 JSON
+      if(h.indexOf('{')===0){ data=JSON.parse(h); }
+      else{
+        const usp=new URLSearchParams(h.startsWith('?')?h:'?'+h);
+        usp.forEach((v,k)=>{data[k]=v;});
+      }
+    }catch(e){ data={}; }
+    const word=(data.word||'').trim(), meaning=(data.meaning||'').trim(), thinking=(data.thinking||'').trim();
+    if(!word){ status.className='status fail'; status.textContent='未收到词语（请从快捷指令发起）'; return; }
+    status.textContent=`收录：${word}`;
+    toApp.style.display='inline-block';
+    // 同步到 GitHub：走和主应用相同的逻辑（复用 app.js 的 window API 不可行，这里独立实现）
+    try{
+      const g=JSON.parse(localStorage.getItem('gk_gh')||'{}');
+      if(!(g.token&&g.user&&g.repo)){ status.className='status fail'; status.innerHTML='未配置 GitHub。<br>请先在生词本 App 的设置里填写 token'; return; }
+      const GH_API='https://api.github.com';
+      async function ghGet(path){const r=await fetch(`${GH_API}/repos/${g.user}/${g.repo}/contents/${encodeURIComponent(path)}?ref=${encodeURIComponent(g.branch||'main')}`,{headers:{Authorization:`token ${g.token}`,Accept:'application/vnd.github+json'}});if(r.ok){const j=await r.json();return{content:decodeURIComponent(escape(atob(j.content.replace(/\n/g,'')))),sha:j.sha};}if(r.status===404)return{content:null,sha:null};return null;}
+      async function ghPutText(path,text,msg){const url=`${GH_API}/repos/${g.user}/${g.repo}/contents/${encodeURIComponent(path)}`;const body={message:msg||'update',content:btoa(unescape(encodeURIComponent(text)))};const ex=await ghGet(path);if(ex&&ex.sha)body.sha=ex.sha;const r=await fetch(url,{method:'PUT',headers:{Authorization:`token ${g.token}`,Accept:'application/vnd.github+json'},body:JSON.stringify(body)});return r.ok;}
+      // 读现有词库
+      let words=[];const w=await ghGet('words.json');if(w&&w.content){try{words=JSON.parse(w.content);}catch(e){words=[];}}
+      if(!Array.isArray(words))words=[];
+      // 防重复（同词语则更新）
+      const id='c'+Date.now().toString(36)+Math.random().toString(36).slice(2,6);
+      const idx=words.findIndex(x=>x.word===word);
+      const card={id,word,meaning,thinking,image:'',updated_at:new Date().toISOString()};
+      if(idx>=0){card.id=words[idx].id;words[idx]=card;}else{words.push(card);}
+      // 写回
+      const okW=await ghPutText('words.json',JSON.stringify(words,null,2),'录入 '+word);
+      if(okW){ status.className='status ok'; status.textContent=`✅ 已保存并同步「${word}」`; }
+      else{ status.className='status fail'; status.textContent='提交仓库失败，请检查 token 权限'; }
+    }catch(err){ status.className='status fail'; status.textContent='同步出错：'+err.message; }
+  }
+  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',main);else main();
+})();
+</script>
+</body>
+</html>
