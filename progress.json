@@ -1,42 +1,25 @@
 {
   "app": "gkCiHui",
-  "updated": "2026-08-02T05:37:29.586Z",
+  "updated": "2026-08-02T05:48:09.392Z",
   "cards": [
     {
-      "id": "cmsb5totoh0sf",
-      "status": "mastered",
+      "id": "cmsbc32t5rrx2",
+      "status": "reviewing",
       "ef": 2.5,
-      "interval": 0,
-      "reps": 0,
+      "interval": 2,
+      "reps": 1,
       "lapses": 0,
-      "due": "2026-08-02",
-      "totalRating": 0,
-      "history": []
+      "due": "2026-08-04",
+      "totalRating": 2,
+      "history": [
+        {
+          "date": "2026-08-02",
+          "grade": 2
+        }
+      ]
     },
     {
-      "id": "cmsb5try2055j",
-      "status": "fresh",
-      "ef": 2.5,
-      "interval": 0,
-      "reps": 0,
-      "lapses": 0,
-      "due": "2026-08-02",
-      "totalRating": 0,
-      "history": []
-    },
-    {
-      "id": "test1",
-      "status": "fresh",
-      "ef": 2.5,
-      "interval": 0,
-      "reps": 0,
-      "lapses": 0,
-      "due": "2026-08-02",
-      "totalRating": 0,
-      "history": []
-    },
-    {
-      "id": "cmsbdc7n05t9a",
+      "id": "cmsbczi9r5b0p",
       "status": "fresh",
       "ef": 2.5,
       "interval": 0,
