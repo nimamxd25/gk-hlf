@@ -106,11 +106,16 @@ function renderCurrentView(){
   bindCardActions(v);
 }
 function cardHTML(c){
+  const tag=STATUS[c.status]||'🆕 新词';
+  const word=esc(c.word||'');
+  const meaning=esc(c.meaning||'')||'<i style="color:var(--muted)">（暂无解释）</i>';
+  const think=c.thinking?`<div class="wc-think">${esc(c.thinking)}</div>`:'';
+  const img=c.image?`<div class="wc-image"><img src="${esc(imageURL(c.image))}" loading="lazy" onerror="this.style.display='none'"></div>`:'';
   return `<div class="word-card" data-id="${c.id}">
-    <div class="wc-top"><span class="wc-word">${esc(c.word)}</span><span class="wc-tag">${STATUS[c.status]||c.status}</span></div>
-    <div class="wc-meaning">${esc(c.meaning)||'<i style="color:var(--muted)">（暂无解释）</i>'}</div>
-    ${c.thinking?`<div class="wc-think">${esc(c.thinking)}</div>`:''}
-    ${c.image?`<div class="wc-image"><img src="${esc(imageURL(c.image))}" loading="lazy"></div>`:''}
+    <div class="wc-top"><span class="wc-word">${word}</span><span class="wc-tag">${tag}</span></div>
+    <div class="wc-meaning">${meaning}</div>
+    ${think}
+    ${img}
     <div class="wc-action">
       <button class="edit" data-id="${c.id}">编辑</button>
       <button class="study" data-id="${c.id}">学习</button>
@@ -168,9 +173,13 @@ function bindEditor(){
     if(card){card.word=word;card.meaning=meaning;card.thinking=thinking;card.updated_at=new Date().toISOString();}
     else{card=newCard({word,meaning,thinking});allCards.push(card);}
     if(pendingImageData&&typeof pendingImageData==='string'){
-      const name=`${card.id}.png`;card.image=name;
-      if(ghReady()){const ok=await ghPutImage('images/'+name,pendingImageData,'upload '+name);if(!ok)toast('⚠️ 图片上传失败');}
-      else{card.image=name;}
+      const name=`${card.id}.png`;
+      if(ghReady()){
+        const ok=await ghPutImage('images/'+name,pendingImageData,'upload '+name);
+        if(ok){card.image=name;} else {toast('⚠️ 图片上传失败');}
+      } else {
+        toast('⚠️ 未配置GitHub，图片暂不保存');
+      }
       pendingImageData=null;
     }else if(pendingImageData===null&&imageRemovedRecently){card.image='';imageRemovedRecently=false;}
     saveCards();closeEditor();renderCurrentView();updateSummary();
