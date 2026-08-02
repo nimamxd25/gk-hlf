@@ -1,9 +1,31 @@
 {
   "app": "gkCiHui",
-  "updated": "2026-08-02T02:07:08.521Z",
+  "updated": "2026-08-02T04:41:15.003Z",
   "cards": [
     {
       "id": "cmsb5totoh0sf",
+      "status": "mastered",
+      "ef": 2.5,
+      "interval": 0,
+      "reps": 0,
+      "lapses": 0,
+      "due": "2026-08-02",
+      "totalRating": 0,
+      "history": []
+    },
+    {
+      "id": "cmsb5try2055j",
+      "status": "fresh",
+      "ef": 2.5,
+      "interval": 0,
+      "reps": 0,
+      "lapses": 0,
+      "due": "2026-08-02",
+      "totalRating": 0,
+      "history": []
+    },
+    {
+      "id": "cmsbbbvpkvwgs",
       "status": "fresh",
       "ef": 2.5,
       "interval": 0,
