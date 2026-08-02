@@ -156,10 +156,24 @@ function updateSummary(){
   const fresh=allCards.filter(c=>c.status==='fresh').length;
   const due=allCards.filter(c=>c.status!=='mastered'&&c.status!=='fresh'&&c.due<=todayStr()).length;
   const mastered=allCards.filter(c=>c.status==='mastered').length;
+  const total=allCards.length;
   document.getElementById('sNew').textContent=fresh;
   document.getElementById('sDue').textContent=due;
   document.getElementById('sMastered').textContent=mastered;
-  document.getElementById('sTotal').textContent=allCards.length;
+  document.getElementById('sTotal').textContent=total;
+  // 今日日期
+  const d=new Date();
+  const week=['日','一','二','三','四','五','六'];
+  document.getElementById('todayDate').textContent=`${d.getMonth()+1}月${d.getDate()}日 周${week[d.getDay()]}`;
+  // 学习按钮文案
+  const btnText=document.getElementById('studyBtnText');
+  if(fresh>0) btnText.textContent='开始今日学习';
+  else if(due>0) btnText.textContent=`复习 ${due} 个`;
+  else if(mastered>0) btnText.textContent='复习巩固';
+  else btnText.textContent='我的生词本';
+  // 进度百分比
+  const pct=total?Math.round((total-fresh)/total*100):0;
+  document.getElementById('pctText').textContent=pct+'%';
 }
 
 // ---------- 视图 ----------
@@ -237,6 +251,102 @@ function renderLibrary(v,searchMode){
   });
 }
 function esc(s){ return String(s||'').replace(/[&<>"]/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[m])); }
+
+// ---------- Tab 系统 ----------
+function switchTab(tab){
+  document.querySelectorAll('.tab-panel').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
+  document.getElementById('tab-'+tab).classList.add('active');
+  const btn=document.querySelector(`.tab-btn[data-tab="${tab}"]`); if(btn) btn.classList.add('active');
+  if(tab==='library') renderLibraryPanel();
+  else if(tab==='stats') renderStatsView();
+  else if(tab==='settings') renderSettingsView();
+  else renderCurrentView();
+}
+function renderLibraryPanel(){
+  renderLibrary(document.getElementById('libView'), document.getElementById('searchInput').value?true:false);
+  renderFilterRow();
+}
+function renderFilterRow(){
+  const fr=document.getElementById('filterRow');
+  const chips=[['all','全部'],['fresh','新词'],['learning','学习中'],['reviewing','复习'],['mastered','已掌握']];
+  fr.innerHTML=chips.map(c=>`<button class="filter-chip ${currentFilter===c[0]?'active':''}" data-f="${c[0]}">${c[1]}</button>`).join('');
+  fr.querySelectorAll('.filter-chip').forEach(ch=>{
+    ch.onclick=()=>{ currentFilter=ch.dataset.f; renderFilterRow(); renderLibrary(document.getElementById('libView'), document.getElementById('searchInput').value?true:false); };
+  });
+}
+function renderStatsView(){
+  const v=document.getElementById('statsView');
+  const fresh=allCards.filter(c=>c.status==='fresh').length;
+  const learning=allCards.filter(c=>c.status==='learning').length;
+  const reviewing=allCards.filter(c=>c.status==='reviewing').length;
+  const mastered=allCards.filter(c=>c.status==='mastered').length;
+  const total=allCards.length;
+  const pct=total?Math.round((total-fresh)/total*100):0;
+  v.innerHTML=`
+    <div class="section-title"><span>📊 学习统计</span></div>
+    <div class="stats-grid">
+      <div class="stat-item"><div class="n">${fresh}</div><div class="t">待学</div></div>
+      <div class="stat-item"><div class="n">${learning}</div><div class="t">学习中</div></div>
+      <div class="stat-item"><div class="n">${reviewing}</div><div class="t">复习中</div></div>
+      <div class="stat-item"><div class="n">${mastered}</div><div class="t">已掌握</div></div>
+    </div>
+    <div class="section-card" style="margin-top:14px">
+      <div class="section-title" style="margin:0 0 8px"><span>总进度</span><span>${pct}%</span></div>
+      <div class="stat-bar"><div style="width:${pct}%"></div></div>
+    </div>`;
+}
+function renderSettingsView(){
+  const v=document.getElementById('settingsView');
+  const ghc=getGhConfig();
+  v.innerHTML=`
+    <div class="section-title"><span>⚙️ 设置</span></div>
+    <div class="section-card" style="margin-bottom:12px">
+      <div class="form-group"><label>每日新词数量</label><input id="sDaily" type="number" min="5" max="100" value="${settings.dailyNew}"></div>
+      <div class="form-group"><label>主题</label><select id="sTheme"><option value="light" ${settings.theme==='light'?'selected':''}>浅色</option><option value="dark" ${settings.theme==='dark'?'selected':''}>深色</option></select></div>
+    </div>
+    <div class="section-title">☁️ GitHub 自动同步</div>
+    <div class="section-card" style="margin-bottom:12px">
+      <div class="form-group"><label>GitHub 用户名</label><input id="ghUser" value="${ghc.user||''}" placeholder="username"></div>
+      <div class="form-group"><label>仓库名</label><input id="ghRepo" value="${ghc.repo||''}" placeholder="repo"></div>
+      <div class="form-group"><label>分支</label><input id="ghBranch" value="${ghc.branch||'main'}" placeholder="main"></div>
+      <div class="form-group"><label>Token（存本地）</label><input id="ghToken" type="password" value="${ghc.token||''}" placeholder="github_pat_..."></div>
+      <div style="display:flex;gap:8px;flex-wrap:wrap">
+        <button class="btn-primary" data-savetoken style="flex:1;font-size:14px;padding:12px">💾 保存</button>
+        <button class="btn-primary" data-pull style="flex:1;font-size:14px;padding:12px;background:#2f80ed">⬇️ 拉取</button>
+        <button class="btn-primary" data-push style="flex:1;font-size:14px;padding:12px;background:#27ae60">☁️ 同步</button>
+      </div>
+      <div style="display:flex;gap:8px;margin-top:10px;flex-wrap:wrap">
+        <button class="btn-primary" data-expwords style="flex:1;font-size:13px;padding:12px">导出词库</button>
+        <button class="btn-primary" data-expprogress style="flex:1;font-size:13px;padding:12px;background:#2f80ed">导出进度</button>
+        <button class="btn-primary" data-import style="flex:1;font-size:13px;padding:12px;background:#8e44ad">导入</button>
+      </div>
+    </div>
+    <div style="font-size:12px;color:var(--muted);padding:0 4px">• Token 只存本机浏览器，不进仓库<br>• 添加生词 / 学完一组自动写回仓库 <br>• 启动自动拉取远端数据合并<br>• 进度数据存浏览器 localStorage，可导出备份</div>
+    <input type="file" id="sFile" accept=".json" style="display:none">`;
+  // 事件
+  v.querySelector('#sDaily').onchange=e=>{settings.dailyNew=Math.min(100,Math.max(5,+e.target.value||20));saveSettings();};
+  v.querySelector('#sTheme').onchange=e=>{settings.theme=e.target.value;saveSettings();};
+  v.querySelector('[data-savetoken]').onclick=()=>{
+    saveGhConfig({user:v.querySelector('#ghUser').value.trim(),repo:v.querySelector('#ghRepo').value.trim(),branch:v.querySelector('#ghBranch').value.trim()||'main',token:v.querySelector('#ghToken').value.trim()});
+    toast('同步设置已保存');
+  };
+  v.querySelector('[data-pull]').onclick=async()=>{ await pullFromRepo(); toast('已拉取并合并'); };
+  v.querySelector('[data-push]').onclick=async()=>{ const ok=await pushToRepo(true); toast(ok?'已同步到仓库 ✔':'同步失败，请检查配置'); };
+  v.querySelector('[data-expwords]').onclick=exportWordsJSON;
+  v.querySelector('[data-expprogress]').onclick=exportProgress;
+  v.querySelector('[data-import]').onclick=()=>v.querySelector('#sFile').click();
+  v.querySelector('#sFile').onchange=e=>{
+    const f=e.target.files[0]; if(!f)return;
+    const r=new FileReader(); r.onload=()=>{
+      try{ const data=JSON.parse(r.result);
+        if(Array.isArray(data)){ importWordList(data); }
+        else if(data&&data.cards){ allCards=data.cards; }
+        saveAllToStorage(); updateSummary(); renderCurrentView(); renderLibraryPanel(); toast('导入成功 ✔');
+      }catch(err){toast('导入文件格式错误');}
+    }; r.readAsText(f);
+  };
+}
 
 // ---------- 学习流程 ----------
 let studyQueue=[],studyIndex=0;
@@ -628,15 +738,26 @@ function openStat(){
 function bindEvents(){
   document.getElementById('btnStudy').onclick=()=>{
     const fresh=allCards.filter(c=>c.status==='fresh');
-    if(!fresh.length){toast('没有新词了，先添加或去复习');return;}
-    startStudy(fresh.slice(0,settings.dailyNew).map(c=>c.id));
+    if(fresh.length){ startStudy(fresh.slice(0,settings.dailyNew).map(c=>c.id)); }
+    else {
+      const due=allCards.filter(c=>c.status!=='mastered'&&c.status!=='fresh'&&c.due<=todayStr());
+      if(due.length){ reviewFlow(); return; }
+      const learned=allCards.filter(c=>c.status!=='fresh'&&c.status!=='mastered');
+      if(learned.length){ reviewFlow(); }
+      else { toast('还没有词，先添加一个吧'); }
+    }
   };
-  document.getElementById('btnReview').onclick=reviewFlow;
-  document.getElementById('btnLibrary').onclick=()=>{currentSearch='';currentFilter='all';document.getElementById('searchInput').value='';renderCurrentView();};
-  document.getElementById('btnStat').onclick=openStat;
   document.getElementById('btnAdd').onclick=openAdd;
-  document.getElementById('btnSettings').onclick=openSettings;
-  document.getElementById('searchInput').addEventListener('input',e=>{currentSearch=e.target.value;renderCurrentView();});
+  // 底部 Tab 切换
+  document.querySelectorAll('.tab-btn').forEach(btn=>{
+    btn.onclick=()=>switchTab(btn.dataset.tab);
+  });
+  // 搜索（词库页）
+  document.getElementById('searchInput').addEventListener('input',e=>{
+    currentSearch=e.target.value;
+    renderLibraryPanel();
+  });
+  // 卡片翻转与自评
   document.getElementById('flipCard').addEventListener('click',flipCard);
   document.querySelectorAll('#gradeRow .grade').forEach(btn=>{ btn.onclick=()=>gradeFromButton(+btn.dataset.grade); });
   document.querySelector('.modal').addEventListener('click',e=>{ if(e.target.classList.contains('modal')) e.target.classList.add('hidden'); });
