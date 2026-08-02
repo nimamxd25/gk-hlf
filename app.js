@@ -50,7 +50,8 @@ async function ghPutImage(path,base64Data,msg){
   const ex=await ghGet(path);if(ex&&ex.sha)body.sha=ex.sha;
   try{const r=await fetch(url,{method:'PUT',headers:{Authorization:`token ${g.token}`,Accept:'application/vnd.github+json'},body:JSON.stringify(body)});return r.ok;}catch(e){return false;}
 }
-function imageURL(name){const g=ghConfig();const b=g.branch||'main';return `https://raw.githubusercontent.com/${g.user}/${g.repo}/${b}/images/${name}`;}
+// 生成图片的 raw 完整 URL（上传成功后在保存时记录到 card.image）
+function rawImageURL(name){const g=ghConfig();const b=g.branch||'main';return `https://raw.githubusercontent.com/${g.user}/${g.repo}/${b}/images/${name}`;}
 
 // ---------- 同步 ----------
 function buildWordsJSON(){return JSON.stringify(allCards.map(c=>({id:c.id,word:c.word,meaning:c.meaning,thinking:c.thinking,image:c.image,updated_at:c.updated_at})),null,2);}
@@ -110,7 +111,7 @@ function cardHTML(c){
   const word=esc(c.word||'');
   const meaning=esc(c.meaning||'')||'<i style="color:var(--muted)">（暂无解释）</i>';
   const think=c.thinking?`<div class="wc-think">${esc(c.thinking)}</div>`:'';
-  const img=c.image?`<div class="wc-image"><img src="${esc(imageURL(c.image))}" loading="lazy" onerror="this.style.display='none'"></div>`:'';
+  const img=c.image?`<div class="wc-image"><img src="${esc(c.image)}" loading="lazy" onerror="this.style.display='none'"></div>`:'';
   return `<div class="word-card" data-id="${c.id}">
     <div class="wc-top"><span class="wc-word">${word}</span><span class="wc-tag">${tag}</span></div>
     <div class="wc-meaning">${meaning}</div>
@@ -147,7 +148,7 @@ function openEditor(card){
   document.getElementById('eMeaning').value=card?card.meaning:'';
   document.getElementById('eThinking').value=card?card.thinking:'';
   const img=document.getElementById('eImagePreview'),rem=document.getElementById('eImageRemove'),ibt=document.getElementById('imageBtnText');
-  if(card&&card.image){img.src=imageURL(card.image);img.classList.remove('hidden');rem.classList.remove('hidden');ibt.textContent='更换图片';}
+  if(card&&card.image){img.src=card.image;img.classList.remove('hidden');rem.classList.remove('hidden');ibt.textContent='更换图片';}
   else{img.classList.add('hidden');rem.classList.add('hidden');ibt.textContent='＋ 添加图片';}
   document.getElementById('editor').classList.remove('hidden');
 }
@@ -178,9 +179,10 @@ function bindEditor(){
       const name=`${card.id}.png`;
       if(ghReady()){
         const ok=await ghPutImage('images/'+name,pendingImageData,'upload '+name);
-        if(ok){card.image=name;} else {toast('⚠️ 图片上传失败');}
+        if(ok){ card.image=rawImageURL(name); } // 存完整URL，卡片直接用
+        else{ toast('⚠️ 图片上传失败'); }
       } else {
-        toast('⚠️ 未配置GitHub，图片暂不保存');
+        toast('⚠️ 未配置GitHub，无法上传图片，请在设置里填写');
       }
       pendingImageData=null;
     }else if(pendingImageData===null&&imageRemovedRecently){card.image='';imageRemovedRecently=false;}
@@ -209,7 +211,7 @@ function renderStudyCard(){
   let p=`<div class="back-word">${esc(c.word)}</div>`;
   if(c.meaning){p+=`<div class="back-label">📖 释义</div><div class="back-text">${esc(c.meaning)}</div>`;}
   if(c.thinking){p+=`<div class="back-label">💡 思考</div><div class="back-think">${esc(c.thinking)}</div>`;}
-  if(c.image){p+=`<div class="back-label">🖼 图片</div><div class="back-image"><img src="${esc(imageURL(c.image))}"></div>`;}
+  if(c.image){p+=`<div class="back-label">🖼 图片</div><div class="back-image"><img src="${esc(c.image)}"></div>`;}
   refs.back.innerHTML=p;
   refs.flipCard.classList.remove('flipped');refs.hint.classList.remove('hidden');refs.gradeRow.classList.add('hidden');
   refs.back.scrollTop=0;
@@ -308,9 +310,15 @@ window.__configureGh=function(u,r,b,t){saveGh({user:u,repo:r,branch:b||'main',to
 window.__uploadImage=function(name,base64){return ghPutImage('images/'+name,base64,'upload '+name);};
 window.__addCardFromShortcut=async function(word,meaning,thinking,imageName,imageBase64){
   const card=newCard({word,meaning,thinking});
-  if(imageName)card.image=imageName;
   allCards.push(card);saveCards();
-  if(imageBase64&&imageName){await ghPutImage('images/'+imageName,imageBase64,'upload '+imageName);}
+  if(imageBase64&&imageName){
+    const ok=await ghPutImage('images/'+imageName,imageBase64,'upload '+imageName);
+    if(ok)card.image=rawImageURL(imageName);
+  } else if(imageName) {
+    // 已上传过，直接用URL
+    card.image=rawImageURL(imageName);
+  }
+  saveCards();
   await pushAll();updateSummary();renderCurrentView();
   return card.id;
 };
