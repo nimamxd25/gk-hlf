@@ -70,7 +70,7 @@ const ghReady=()=>{const g=ghConfig();return !!(g&&g.token&&g.user&&g.repo);};
 
 // ---------- 卡片 ----------
 function state0(){return{status:'fresh',ef:2.5,interval:0,reps:0,lapses:0,due:todayStr(),totalRating:0,history:[]};}
-function newCard(f){return{id:uid(),word:f.word||'',meaning:f.meaning||'',thinking:f.thinking||'',updated_at:new Date().toISOString(),source:'手动',...state0()};}
+function newCard(f){return{id:uid(),word:f.word||'',meaning:f.meaning||'',thinking:f.thinking||'',focus:f.focus||'',tone:f.tone||'',compare:f.compare||'',updated_at:new Date().toISOString(),source:'手动',...state0()};}
 
 // ---------- GitHub API ----------
 async function ghGet(path){
@@ -89,7 +89,7 @@ async function ghPutText(path,text,msg){
 
 
 // ---------- 同步 ----------
-function buildWordsJSON(){return JSON.stringify(allCards.map(c=>({id:c.id,word:c.word,meaning:c.meaning,thinking:c.thinking,updated_at:c.updated_at})),null,2);}
+function buildWordsJSON(){return JSON.stringify(allCards.map(c=>({id:c.id,word:c.word,meaning:c.meaning,thinking:c.thinking,focus:c.focus,tone:c.tone,compare:c.compare,updated_at:c.updated_at})),null,2);}
 function buildProgressJSON(){return JSON.stringify({app:'gkCiHui',updated:new Date().toISOString(),cards:allCards.map(c=>({id:c.id,status:c.status,ef:c.ef,interval:c.interval,reps:c.reps,lapses:c.lapses,due:c.due,totalRating:c.totalRating,history:c.history}))},null,2);}
 async function pushAll(){if(!ghReady())return false;await ghPutText('words.json',buildWordsJSON(),'auto sync words');await ghPutText('progress.json',buildProgressJSON(),'auto sync progress');return true;}
 async function pullAll(){
@@ -97,7 +97,7 @@ async function pullAll(){
   const w=await ghGet('words.json');
   if(w&&w.content){try{const remote=JSON.parse(w.content);if(Array.isArray(remote)){
     const map=new Map(remote.map(c=>[c.id,c]));
-    allCards.forEach(c=>{if(map.has(c.id)){const r=map.get(c.id);Object.assign(c,{word:r.word,meaning:r.meaning,thinking:r.thinking,updated_at:r.updated_at});}});
+    allCards.forEach(c=>{if(map.has(c.id)){const r=map.get(c.id);Object.assign(c,{word:r.word,meaning:r.meaning,thinking:r.thinking,focus:r.focus||c.focus,tone:r.tone||c.tone,compare:r.compare||c.compare,updated_at:r.updated_at});}});
     map.forEach((c,id)=>{if(!allCards.some(x=>x.id===id))allCards.push({...newCard(c),...c});});
     saveCards();
   }}catch(e){}}
@@ -145,11 +145,10 @@ function cardHTML(c){
   const tag=STATUS[c.status]||'🆕 新词';
   const word=esc(c.word||'');
   const meaning=esc(c.meaning||'')||'<i style="color:var(--muted)">（暂无解释）</i>';
-  const think=c.thinking?`<div class="wc-think">${md(c.thinking)}</div>`:'';
+  // 主页面仅显示释义（思考/侧重等在学习背面看）
   return `<div class="word-card" data-id="${c.id}">
     <div class="wc-top"><span class="wc-word">${word}</span><span class="wc-tag">${tag}</span></div>
     <div class="wc-meaning">${meaning}</div>
-    ${think}
     <div class="wc-action">
       <button class="edit" data-id="${c.id}">编辑</button>
       <button class="study" data-id="${c.id}">学习</button>
@@ -200,45 +199,100 @@ function openEditor(card){
   document.getElementById('editorTitle').textContent=card?'编辑生词':'记录生词';
   document.getElementById('eWord').value=card?card.word:'';
   document.getElementById('eMeaning').value=card?card.meaning:'';
+  document.getElementById('eFocus').value=card?card.focus:'';
+  document.getElementById('eTone').value=(card&&card.tone)?card.tone:'';
+  document.getElementById('eCompare').value=card?card.compare:'';
   document.getElementById('eThinking').value=card?card.thinking:'';
-  // 重置预览区为隐藏
+  // 重置预览区为隐藏（易混对比是常显预览，单独更新）
   document.getElementById('eMeaningPreview').classList.add('hidden');
   document.getElementById('eThinkingPreview').classList.add('hidden');
   document.getElementById('eMeaningToggle').textContent='👁 实时预览';
   document.getElementById('eThinkingToggle').textContent='👁 实时预览';
+  const cpv=document.getElementById('eComparePreview');
+  cpv.classList.remove('hidden');
+  cpv.innerHTML=md(document.getElementById('eCompare').value);
   document.getElementById('editor').classList.remove('hidden');
 }
 function closeEditor(){document.getElementById('editor').classList.add('hidden');}
-// Markdown 实时预览：点 toggle 切换 编辑/预览
+// Markdown 实时预览：点 toggle 切换 编辑/预览；无 toggle 时（toogleId=null）自动常显预览
 function bindMdPreview(textareaId, previewId, toggleId){
   const ta=document.getElementById(textareaId);
   const pv=document.getElementById(previewId);
-  const tg=document.getElementById(toggleId);
+  const tg=toggleId?document.getElementById(toggleId):null;
+  const render=()=>{ pv.innerHTML=md(ta.value); pv.scrollTop=0; };
   const update=()=>{
-    if(!pv.classList.contains('hidden')){ pv.innerHTML=md(ta.value); pv.scrollTop=0; }
+    if(!pv.classList.contains('hidden')) render();
   };
   ta.addEventListener('input',update);
-  tg.onclick=()=>{
-    const showing=pv.classList.contains('hidden');
-    pv.classList.toggle('hidden', !showing);
-    tg.textContent=showing?'✏️ 编辑':'👁 实时预览';
-    if(showing){ pv.innerHTML=md(ta.value); pv.scrollTop=0; }
-  };
+  if(tg){
+    tg.onclick=()=>{
+      const showing=pv.classList.contains('hidden');
+      pv.classList.toggle('hidden', !showing);
+      tg.textContent=showing?'✏️ 编辑':'👁 实时预览';
+      if(showing) render();
+    };
+  } else {
+    // 无 toggle → 常显实时预览（每次输入刷新）
+    pv.classList.remove('hidden');
+    ta.addEventListener('input',render);
+    render();
+  }
+}
+
+// Markdown 编辑快捷键：Tab缩进、Ctrl+B粗体、Ctrl+I斜体、Ctrl+` 行内代码
+function addMdShortcuts(id){
+  const ta=document.getElementById(id);
+  if(!ta)return;
+  ta.addEventListener('keydown',e=>{
+    const selStart=ta.selectionStart, selEnd=ta.selectionEnd;
+    const v=ta.value;
+    // Tab：插入两个空格缩进
+    if(e.key==='Tab'){
+      e.preventDefault();
+      const pad='  ';
+      ta.value=v.slice(0,selStart)+pad+v.slice(selEnd);
+      const pos=selStart+pad.length;
+      ta.setSelectionRange(pos,pos);
+      ta.dispatchEvent(new Event('input',{bubbles:true}));
+      return;
+    }
+    // 是否按下 ctrl/cmd
+    if(!(e.ctrlKey||e.metaKey))return;
+    let wrap='', before='';
+    if(e.key==='b'||e.key==='B'){wrap='**';}
+    else if(e.key==='i'||e.key==='I'){wrap='*';}
+    else if(e.key==='`'){wrap='`';}
+    else if(e.key==='k'||e.key==='K'){before='[',wrap='](url)';}
+    else return;
+    e.preventDefault();
+    const sel=v.slice(selStart,selEnd);
+    const replacement=(before?before:'')+wrap+sel+wrap;
+    ta.value=v.slice(0,selStart)+replacement+v.slice(selEnd);
+    const pos=selStart+replacement.length;
+    ta.setSelectionRange(pos,pos);
+    ta.dispatchEvent(new Event('input',{bubbles:true}));
+  });
 }
 function bindEditor(){
   document.getElementById('editor').querySelector('[data-close]').onclick=closeEditor;
   document.getElementById('editor').addEventListener('click',e=>{if(e.target===document.getElementById('editor'))closeEditor();});
   bindMdPreview('eMeaning','eMeaningPreview','eMeaningToggle');
+  bindMdPreview('eCompare','eComparePreview',null);
   bindMdPreview('eThinking','eThinkingPreview','eThinkingToggle');
+  // Markdown 快捷键：Tab 缩进、Ctrl+B 粗体、Ctrl+I 斜体、Ctrl+` 行内代码
+  ['eMeaning','eCompare','eThinking'].forEach(id=>addMdShortcuts(id));
   document.getElementById('eSave').onclick=()=>{
     const word=document.getElementById('eWord').value.trim();
     const meaning=document.getElementById('eMeaning').value.trim();
+    const focus=document.getElementById('eFocus').value.trim();
+    const tone=document.getElementById('eTone').value;
+    const compare=document.getElementById('eCompare').value.trim();
     const thinking=document.getElementById('eThinking').value.trim();
     if(!word){toast('请输入词语');return;}
     let card;
     if(editingId)card=allCards.find(c=>c.id===editingId);
-    if(card){card.word=word;card.meaning=meaning;card.thinking=thinking;card.updated_at=new Date().toISOString();}
-    else{card=newCard({word,meaning,thinking});allCards.push(card);}
+    if(card){card.word=word;card.meaning=meaning;card.focus=focus;card.tone=tone;card.compare=compare;card.thinking=thinking;card.updated_at=new Date().toISOString();}
+    else{card=newCard({word,meaning,focus,tone,compare,thinking});allCards.push(card);}
     saveCards();closeEditor();renderCurrentView();updateSummary();
     if(ghReady()){
       const ok=pushAll(); // 异步，不阻塞
@@ -268,6 +322,9 @@ function renderStudyCard(){
   refs.front.innerHTML=`<div class="flip-word">${esc(c.word)}</div><div class="flip-pos">来源：${esc(c.source||'手动')}</div>`;
   let p=`<div class="back-word">${esc(c.word)}</div>`;
   if(c.meaning){p+=`<div class="back-label">📖 释义</div><div class="back-text">${md(c.meaning)}</div>`;}
+  if(c.focus){p+=`<div class="back-label">🎯 侧重</div><div class="back-text">${md(c.focus)}</div>`;}
+  if(c.tone){p+=`<div class="back-label">🎭 感情色彩</div><div class="back-text">${esc(c.tone)}</div>`;}
+  if(c.compare){p+=`<div class="back-label">⚖️ 易混对比</div><div class="back-text">${md(c.compare)}</div>`;}
   if(c.thinking){p+=`<div class="back-label">💡 思考</div><div class="back-think">${md(c.thinking)}</div>`;}
   refs.back.innerHTML=p;
   refs.flipCard.classList.remove('flipped');refs.hint.classList.remove('hidden');refs.gradeRow.classList.add('hidden');
