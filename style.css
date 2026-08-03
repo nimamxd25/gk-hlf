@@ -121,6 +121,8 @@ body{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei
 .field-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;}
 .field-head label{margin-bottom:0;}
 .md-toggle{font-size:12px;color:var(--primary);cursor:pointer;padding:3px 8px;border-radius:6px;background:rgba(79,109,245,.1);}
+.dup-hint{font-size:12px;color:var(--bad);background:rgba(239,75,81,.08);padding:6px 10px;border-radius:8px;margin-top:6px;}
+.dup-hint.psing{color:var(--good);background:rgba(39,174,96,.08);}
 .md-toggle:active{opacity:.7;}
 .md-preview{background:var(--bg);border:1px dashed var(--border);border-radius:10px;padding:12px 14px;margin-top:8px;font-size:14px;line-height:1.7;color:var(--text);}
 .md-preview p{margin:4px 0;}
