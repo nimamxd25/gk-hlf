@@ -1,6 +1,6 @@
 {
   "app": "gkCiHui",
-  "updated": "2026-08-02T07:38:30.458Z",
+  "updated": "2026-08-03T01:36:45.059Z",
   "cards": [
     {
       "id": "cmsbc32t5rrx2",
@@ -20,25 +20,35 @@
     },
     {
       "id": "cmsbczi9r5b0p",
-      "status": "fresh",
+      "status": "reviewing",
       "ef": 2.5,
-      "interval": 0,
-      "reps": 0,
+      "interval": 2,
+      "reps": 1,
       "lapses": 0,
-      "due": "2026-08-02",
-      "totalRating": 0,
-      "history": []
+      "due": "2026-08-04",
+      "totalRating": 2,
+      "history": [
+        {
+          "date": "2026-08-02",
+          "grade": 2
+        }
+      ]
     },
     {
       "id": "cmsbe8q05zdus",
-      "status": "fresh",
+      "status": "reviewing",
       "ef": 2.5,
-      "interval": 0,
-      "reps": 0,
+      "interval": 2,
+      "reps": 1,
       "lapses": 0,
-      "due": "2026-08-02",
-      "totalRating": 0,
-      "history": []
+      "due": "2026-08-04",
+      "totalRating": 2,
+      "history": [
+        {
+          "date": "2026-08-02",
+          "grade": 2
+        }
+      ]
     },
     {
       "id": "cmsbg5tiv0t3h",
@@ -82,6 +92,17 @@
           "grade": 2
         }
       ]
+    },
+    {
+      "id": "cmsck6fs0ei9z",
+      "status": "fresh",
+      "ef": 2.5,
+      "interval": 0,
+      "reps": 0,
+      "lapses": 0,
+      "due": "2026-08-03",
+      "totalRating": 0,
+      "history": []
     }
   ]
 }
