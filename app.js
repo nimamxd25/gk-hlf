@@ -208,6 +208,7 @@ function openEditor(card){
   document.getElementById('eThinkingPreview').classList.add('hidden');
   document.getElementById('eMeaningToggle').textContent='👁 实时预览';
   document.getElementById('eThinkingToggle').textContent='👁 实时预览';
+  document.getElementById('eDupHint').classList.add('hidden');
   const cpv=document.getElementById('eComparePreview');
   cpv.classList.remove('hidden');
   cpv.innerHTML=md(document.getElementById('eCompare').value);
@@ -279,6 +280,15 @@ function bindEditor(){
   bindMdPreview('eMeaning','eMeaningPreview','eMeaningToggle');
   bindMdPreview('eCompare','eComparePreview',null);
   bindMdPreview('eThinking','eThinkingPreview','eThinkingToggle');
+  // 词语重复实时提示
+  document.getElementById('eWord').addEventListener('input',()=>{
+    const w=document.getElementById('eWord').value.trim();
+    const hint=document.getElementById('eDupHint');
+    if(!w){hint.classList.add('hidden');return;}
+    const dup=allCards.find(c=>c.word.toLowerCase()===w.toLowerCase() && c.id!==editingId);
+    if(dup){hint.textContent=`⚠「${dup.word}」已经存在`;hint.classList.remove('hidden');hint.classList.remove('psing');}
+    else{hint.classList.add('hidden');}
+  });
   // Markdown 快捷键：Tab 缩进、Ctrl+B 粗体、Ctrl+I 斜体、Ctrl+` 行内代码
   ['eMeaning','eCompare','eThinking'].forEach(id=>addMdShortcuts(id));
   document.getElementById('eSave').onclick=()=>{
@@ -289,6 +299,12 @@ function bindEditor(){
     const compare=document.getElementById('eCompare').value.trim();
     const thinking=document.getElementById('eThinking').value.trim();
     if(!word){toast('请输入词语');return;}
+    // 重复检查：同一词语（忽略大小写）已存在则提示，不保存
+    const dup=allCards.find(c=>c.word.toLowerCase()===word.toLowerCase());
+    if(dup && dup.id!==editingId){
+      toast(`「${dup.word}」已经存在，不用重复添加`);
+      return;
+    }
     let card;
     if(editingId)card=allCards.find(c=>c.id===editingId);
     if(card){card.word=word;card.meaning=meaning;card.focus=focus;card.tone=tone;card.compare=compare;card.thinking=thinking;card.updated_at=new Date().toISOString();}
