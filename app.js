@@ -27,32 +27,40 @@ function md(src){
   s=s.replace(/_([^_]+)_/g,'<i>$1</i>');
   // 换行 -> 逐行处理
   const lines=s.split('\n');
-  let html='', inList=null, inQuote=false;
-  const closeList=()=>{if(inList){html+='</'+inList+'>';inList=null;}};
+  let html='', listStack=[]; // listStack 存 {tag, indent}
+  const closeListsDownTo=(depth)=>{
+    while(listStack.length>depth){ const e=listStack.pop(); html+='</'+e.tag+'>'; }
+  };
+  const listTag=(line)=>line.match(/^([-*•])\s+/)?'ul':(line.match(/^\d+[.)]\s+/) ?'ol':null);
   for(const raw of lines){
+    if(!raw.trim()){ closeListsDownTo(0); html+=''; continue; }
+    // 计算缩进级别（2空格一级）
+    const indent=Math.floor((raw.match(/^ */)[0].length)/2);
     const line=raw.trim();
-    if(!line){closeList();inQuote=false;html+='';continue;}
-    if(line==='%%END'){}
-    // 代码块占位
     const cm=line.match(/^%%CODE(\d+)%%$/);
-    if(cm){closeList();html+=codeBlocks[+cm[1]];continue;}
-    // 标题
-    let h=line.match(/^(#{1,6})\s+(.+)$/);
-    if(h){closeList();const lv=h[1].length;html+=`<h${lv}>${h[2]}</h${lv}>`;continue;}
-    // 无序列表
-    let ul=line.match(/^[-*•]\s+(.+)$/);
-    if(ul){if(inList!=='ul'){closeList();html+='<ul>';inList='ul';}html+=`<li>${ul[1]}</li>`;continue;}
-    // 有序列表
-    let ol=line.match(/^\d+[.)]\s+(.+)$/);
-    if(ol){if(inList!=='ol'){closeList();html+='<ol>';inList='ol';}html+=`<li>${ol[1]}</li>`;continue;}
+    if(cm){ closeListsDownTo(0); html+=codeBlocks[+cm[1]]; continue; }
+    const h=line.match(/^(#{1,6})\s+(.+)$/);
+    if(h){ closeListsDownTo(0); const lv=h[1].length; html+=`<h${lv}>${h[2]}</h${lv}>`; continue; }
+    // 列表
+    const tag=listTag(line);
+    if(tag){
+      // 进入更深层级
+      closeListsDownTo(indent);
+      const top=listStack[listStack.length-1];
+      if(!top||top.tag!==tag){ html+=`<${tag}>`; listStack.push({tag,indent}); }
+      const content=line.replace(/^([-*•]|\d+[.)])\s+/,'');
+      html+=`<li>${content}</li>`;
+      continue;
+    }
     // 引用（esc 后 > 变成 &gt;）
-    if(line.indexOf('&gt;')===0||line.startsWith('>')){closeList();html+=`<blockquote>${line.replace(/^(&gt;|>)\s?/,'')}</blockquote>`;continue;}
-    closeList();
+    if(line.indexOf('&gt;')===0||line.startsWith('>')){ closeListsDownTo(0); html+=`<blockquote>${line.replace(/^(&gt;|>)\s?/,'')}</blockquote>`; continue; }
+    closeListsDownTo(0);
     html+=`<p>${line}</p>`;
   }
-  closeList();
+  closeListsDownTo(0);
   return html;
 }
+
 const timeAgo=t=>{if(!t)return'';const s=(Date.now()-new Date(t))/1000;if(s<60)return'刚刚';if(s<3600)return Math.floor(s/60)+'分钟前';if(s<86400)return Math.floor(s/3600)+'小时前';const d=new Date(t);return `${d.getMonth()+1}月${d.getDate()}日`;};
 const STATUS={fresh:'🆕 新词',learning:'⏳ 学习中',reviewing:'🔁 复习中',mastered:'✅ 已掌握'};
 
@@ -70,7 +78,12 @@ const ghReady=()=>{const g=ghConfig();return !!(g&&g.token&&g.user&&g.repo);};
 
 // ---------- 卡片 ----------
 function state0(){return{status:'fresh',ef:2.5,interval:0,reps:0,lapses:0,due:todayStr(),totalRating:0,history:[]};}
-function newCard(f){return{id:uid(),word:f.word||'',meaning:f.meaning||'',thinking:f.thinking||'',focus:f.focus||'',tone:f.tone||'',compare:f.compare||'',updated_at:new Date().toISOString(),source:'手动',...state0()};}
+function newCard(f){
+  const base={id:uid(),word:f.word||'',meaning:f.meaning||'',focus:f.focus||'',tone:f.tone||'',collocation:f.collocation||'',misconstrue:f.misconstrue||'',custom:Array.isArray(f.custom)?f.custom:[],updated_at:new Date().toISOString(),source:'手动',...state0()};
+  // 兼容旧数据：把旧 compare -> misconstrue，thinking 丢弃
+  if(f.compare&&!f.misconstrue) base.misconstrue=f.compare;
+  return base;
+}
 
 // ---------- GitHub API ----------
 async function ghGet(path){
@@ -89,7 +102,7 @@ async function ghPutText(path,text,msg){
 
 
 // ---------- 同步 ----------
-function buildWordsJSON(){return JSON.stringify(allCards.map(c=>({id:c.id,word:c.word,meaning:c.meaning,thinking:c.thinking,focus:c.focus,tone:c.tone,compare:c.compare,updated_at:c.updated_at})),null,2);}
+function buildWordsJSON(){return JSON.stringify(allCards.map(c=>({id:c.id,word:c.word,meaning:c.meaning,focus:c.focus,tone:c.tone,collocation:c.collocation,misconstrue:c.misconstrue||c.compare,custom:c.custom||[],updated_at:c.updated_at})),null,2);}
 function buildProgressJSON(){return JSON.stringify({app:'gkCiHui',updated:new Date().toISOString(),cards:allCards.map(c=>({id:c.id,status:c.status,ef:c.ef,interval:c.interval,reps:c.reps,lapses:c.lapses,due:c.due,totalRating:c.totalRating,history:c.history}))},null,2);}
 async function pushAll(){if(!ghReady())return false;await ghPutText('words.json',buildWordsJSON(),'auto sync words');await ghPutText('progress.json',buildProgressJSON(),'auto sync progress');return true;}
 async function pullAll(){
@@ -97,7 +110,7 @@ async function pullAll(){
   const w=await ghGet('words.json');
   if(w&&w.content){try{const remote=JSON.parse(w.content);if(Array.isArray(remote)){
     const map=new Map(remote.map(c=>[c.id,c]));
-    allCards.forEach(c=>{if(map.has(c.id)){const r=map.get(c.id);Object.assign(c,{word:r.word,meaning:r.meaning,thinking:r.thinking,focus:r.focus||c.focus,tone:r.tone||c.tone,compare:r.compare||c.compare,updated_at:r.updated_at});}});
+    allCards.forEach(c=>{if(map.has(c.id)){const r=map.get(c.id);Object.assign(c,{word:r.word,meaning:r.meaning,focus:r.focus||c.focus,tone:r.tone||c.tone,collocation:r.collocation||c.collocation,misconstrue:r.misconstrue||r.compare||c.misconstrue,custom:Array.isArray(r.custom)?r.custom:(c.custom||[]),updated_at:r.updated_at});}});
     map.forEach((c,id)=>{if(!allCards.some(x=>x.id===id))allCards.push({...newCard(c),...c});});
     saveCards();
   }}catch(e){}}
@@ -194,6 +207,7 @@ function deleteCard(id){
 
 // ---------- 编辑器 ----------
 let editingId=null;
+let customFields=[]; // 编辑器内自定义栏目 [{label,value}]
 function openEditor(card){
   editingId=card?card.id:null;
   document.getElementById('editorTitle').textContent=card?'编辑生词':'记录生词';
@@ -201,20 +215,53 @@ function openEditor(card){
   document.getElementById('eMeaning').value=card?card.meaning:'';
   document.getElementById('eFocus').value=card?card.focus:'';
   document.getElementById('eTone').value=(card&&card.tone)?card.tone:'';
-  document.getElementById('eCompare').value=card?card.compare:'';
-  document.getElementById('eThinking').value=card?card.thinking:'';
-  // 重置预览区为隐藏（易混对比是常显预览，单独更新）
+  document.getElementById('eCollocation').value=(card&&card.collocation)?card.collocation:'';
+  document.getElementById('eMisconstrue').value=(card&&(card.misconstrue||card.compare))?(card.misconstrue||card.compare):'';
+  // 渲染自定义栏目
+  customFields=[];
+  const cf=document.getElementById('eCustomFields'); cf.innerHTML='';
+  const customs=(card&&Array.isArray(card.custom))?card.custom:[];
+  (customs.length?customs:[{label:'',value:''}]).forEach(c=>renderCustomRow(cf,c));
+  // 重置预览区
   document.getElementById('eMeaningPreview').classList.add('hidden');
-  document.getElementById('eThinkingPreview').classList.add('hidden');
   document.getElementById('eMeaningToggle').textContent='👁 实时预览';
-  document.getElementById('eThinkingToggle').textContent='👁 实时预览';
   document.getElementById('eDupHint').classList.add('hidden');
-  const cpv=document.getElementById('eComparePreview');
-  cpv.classList.remove('hidden');
-  cpv.innerHTML=md(document.getElementById('eCompare').value);
   document.getElementById('editor').classList.remove('hidden');
 }
 function closeEditor(){document.getElementById('editor').classList.add('hidden');}
+// 渲染一个自定义栏目行 (obj={label,value})
+function renderCustomRow(container,obj){
+  const row=document.createElement('div');
+  row.className='custom-row';
+  row.innerHTML=`
+    <input class="c-name" placeholder="栏目名" value="${esc(obj.label||'')}" maxlength="12">
+    <textarea class="c-val auto-grow" placeholder="内容（支持 Markdown）">${esc(obj.value||'')}</textarea>
+    <button class="c-del" title="删除栏目">✕</button>`;
+  container.appendChild(row);
+  // 自适应高度
+  bindAutoGrow(row.querySelector('.c-val'));
+  row.querySelector('.c-del').onclick=()=>{ row.remove(); };
+  row.querySelector('.c-name').addEventListener('input',()=>updateCustomFields());
+  row.querySelector('.c-val').addEventListener('input',()=>updateCustomFields());
+  updateCustomFields();
+}
+function addCustomField(){
+  renderCustomRow(document.getElementById('eCustomFields'),{label:'',value:''});
+}
+// 从 DOM 收集自定义栏目到 customFields
+function updateCustomFields(){
+  customFields=[];
+  document.querySelectorAll('#eCustomFields .custom-row').forEach(row=>{
+    const label=row.querySelector('.c-name').value.trim();
+    const value=row.querySelector('.c-val').value.trim();
+    if(label||value) customFields.push({label,value});
+  });
+}
+// textarea 自适应高度（随输入增多变高）
+function bindAutoGrow(ta){
+  ta.addEventListener('input',()=>{ ta.style.height='auto'; ta.style.height=(ta.scrollHeight)+'px'; });
+  ta.style.height='auto'; ta.style.height=(ta.scrollHeight)+'px';
+}
 // Markdown 实时预览：点 toggle 切换 编辑/预览；无 toggle 时（toogleId=null）自动常显预览
 function bindMdPreview(textareaId, previewId, toggleId){
   const ta=document.getElementById(textareaId);
@@ -278,8 +325,10 @@ function bindEditor(){
   document.getElementById('editor').querySelector('[data-close]').onclick=closeEditor;
   document.getElementById('editor').addEventListener('click',e=>{if(e.target===document.getElementById('editor'))closeEditor();});
   bindMdPreview('eMeaning','eMeaningPreview','eMeaningToggle');
-  bindMdPreview('eCompare','eComparePreview',null);
-  bindMdPreview('eThinking','eThinkingPreview','eThinkingToggle');
+  // 添加自定义栏目
+  document.getElementById('eAddCustom').onclick=addCustomField;
+  // 自适应高度
+  ['eMeaning','eCollocation','eMisconstrue'].forEach(id=>{ const t=document.getElementById(id); if(t) bindAutoGrow(t); });
   // 词语重复实时提示
   document.getElementById('eWord').addEventListener('input',()=>{
     const w=document.getElementById('eWord').value.trim();
@@ -290,14 +339,14 @@ function bindEditor(){
     else{hint.classList.add('hidden');}
   });
   // Markdown 快捷键：Tab 缩进、Ctrl+B 粗体、Ctrl+I 斜体、Ctrl+` 行内代码
-  ['eMeaning','eCompare','eThinking'].forEach(id=>addMdShortcuts(id));
+  ['eMeaning','eCollocation','eMisconstrue'].forEach(id=>addMdShortcuts(id));
   document.getElementById('eSave').onclick=()=>{
     const word=document.getElementById('eWord').value.trim();
     const meaning=document.getElementById('eMeaning').value.trim();
     const focus=document.getElementById('eFocus').value.trim();
-    const tone=document.getElementById('eTone').value;
-    const compare=document.getElementById('eCompare').value.trim();
-    const thinking=document.getElementById('eThinking').value.trim();
+    const tone=document.getElementById('eTone').value.trim();
+    const collocation=document.getElementById('eCollocation').value.trim();
+    const misconstrue=document.getElementById('eMisconstrue').value.trim();
     if(!word){toast('请输入词语');return;}
     // 重复检查：同一词语（忽略大小写）已存在则提示，不保存
     const dup=allCards.find(c=>c.word.toLowerCase()===word.toLowerCase());
@@ -305,10 +354,11 @@ function bindEditor(){
       toast(`「${dup.word}」已经存在，不用重复添加`);
       return;
     }
+    updateCustomFields(); // 收集自定义栏目到 customFields
     let card;
     if(editingId)card=allCards.find(c=>c.id===editingId);
-    if(card){card.word=word;card.meaning=meaning;card.focus=focus;card.tone=tone;card.compare=compare;card.thinking=thinking;card.updated_at=new Date().toISOString();}
-    else{card=newCard({word,meaning,focus,tone,compare,thinking});allCards.push(card);}
+    if(card){card.word=word;card.meaning=meaning;card.focus=focus;card.tone=tone;card.collocation=collocation;card.misconstrue=misconstrue;card.custom=customFields;card.updated_at=new Date().toISOString();}
+    else{card=newCard({word,meaning,focus,tone,collocation,misconstrue,custom:customFields});allCards.push(card);}
     saveCards();closeEditor();renderCurrentView();updateSummary();
     if(ghReady()){
       const ok=pushAll(); // 异步，不阻塞
@@ -340,8 +390,9 @@ function renderStudyCard(){
   if(c.meaning){p+=`<div class="back-label">📖 释义</div><div class="back-text">${md(c.meaning)}</div>`;}
   if(c.focus){p+=`<div class="back-label">🎯 侧重</div><div class="back-text">${md(c.focus)}</div>`;}
   if(c.tone){p+=`<div class="back-label">🎭 感情色彩</div><div class="back-text">${esc(c.tone)}</div>`;}
-  if(c.compare){p+=`<div class="back-label">⚖️ 易混对比</div><div class="back-text">${md(c.compare)}</div>`;}
-  if(c.thinking){p+=`<div class="back-label">💡 思考</div><div class="back-think">${md(c.thinking)}</div>`;}
+  if(c.collocation){p+=`<div class="back-label">🔗 常见搭配</div><div class="back-text">${md(c.collocation)}</div>`;}
+  if(c.misconstrue||c.compare){p+=`<div class="back-label">⚖️ 易错易混</div><div class="back-text">${md(c.misconstrue||c.compare)}</div>`;}
+  if(Array.isArray(c.custom)){c.custom.forEach(it=>{ if(it&&it.label&&it.value){ p+=`<div class="back-label">✏️ ${esc(it.label)}</div><div class="back-text">${md(it.value)}</div>`; } });}
   refs.back.innerHTML=p;
   refs.flipCard.classList.remove('flipped');refs.hint.classList.remove('hidden');refs.gradeRow.classList.add('hidden');
   refs.back.scrollTop=0;
