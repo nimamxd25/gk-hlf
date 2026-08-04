@@ -27,37 +27,36 @@ function md(src){
   s=s.replace(/_([^_]+)_/g,'<i>$1</i>');
   // 换行 -> 逐行处理
   const lines=s.split('\n');
-  let html='', listStack=[]; // listStack 存 {tag, indent}
-  const closeListsDownTo=(depth)=>{
-    while(listStack.length>depth){ const e=listStack.pop(); html+='</'+e.tag+'>'; }
-  };
-  const listTag=(line)=>line.match(/^([-*•])\s+/)?'ul':(line.match(/^\d+[.)]\s+/) ?'ol':null);
+  let html='';
+  // Typora 风格多级列表：每项渲染为带缩进的 div，符号用 CSS 按层级区分
+  let olCounters=[]; // 记录每层有序列表的计数
   for(const raw of lines){
-    if(!raw.trim()){ closeListsDownTo(0); html+=''; continue; }
-    // 计算缩进级别（2空格一级）
+    if(!raw.trim()){ html+=''; continue; }
     const indent=Math.floor((raw.match(/^ */)[0].length)/2);
     const line=raw.trim();
     const cm=line.match(/^%%CODE(\d+)%%$/);
-    if(cm){ closeListsDownTo(0); html+=codeBlocks[+cm[1]]; continue; }
+    if(cm){ html+=codeBlocks[+cm[1]]; continue; }
     const h=line.match(/^(#{1,6})\s+(.+)$/);
-    if(h){ closeListsDownTo(0); const lv=h[1].length; html+=`<h${lv}>${h[2]}</h${lv}>`; continue; }
-    // 列表
-    const tag=listTag(line);
-    if(tag){
-      // 进入更深层级
-      closeListsDownTo(indent);
-      const top=listStack[listStack.length-1];
-      if(!top||top.tag!==tag){ html+=`<${tag}>`; listStack.push({tag,indent}); }
+    if(h){ const lv=h[1].length; html+=`<h${lv}>${h[2]}</h${lv}>`; continue; }
+    const isUl=/^[-*•]/.test(line);
+    const isOl=/^\d+[.)]/.test(line);
+    if(isUl||isOl){
       const content=line.replace(/^([-*•]|\d+[.)])\s+/,'');
-      html+=`<li>${content}</li>`;
+      const cls=isUl?`md-ul lv${indent}`:`md-ol lv${indent}`;
+      // 有序列表计数器
+      let marker='';
+      if(isOl){
+        olCounters[indent]=(olCounters[indent]||0)+1;
+        marker=olCounters[indent];
+      }
+      // 超过缩进层级则重置更深层计数（简单处理）
+      olCounters=olCounters.slice(0,indent+1);
+      html+=`<div class="md-li ${cls}" ${marker!==''?`data-n="${marker}"`:''}>${content}</div>`;
       continue;
     }
-    // 引用（esc 后 > 变成 &gt;）
-    if(line.indexOf('&gt;')===0||line.startsWith('>')){ closeListsDownTo(0); html+=`<blockquote>${line.replace(/^(&gt;|>)\s?/,'')}</blockquote>`; continue; }
-    closeListsDownTo(0);
+    if(line.indexOf('&gt;')===0||line.startsWith('>')){ html+=`<blockquote>${line.replace(/^(&gt;|>)\s?/,'')}</blockquote>`; continue; }
     html+=`<p>${line}</p>`;
   }
-  closeListsDownTo(0);
   return html;
 }
 
@@ -234,8 +233,8 @@ function renderCustomRow(container,obj){
   const row=document.createElement('div');
   row.className='custom-row';
   row.innerHTML=`
-    <input class="c-name" placeholder="栏目名" value="${esc(obj.label||'')}" maxlength="12">
-    <textarea class="c-val auto-grow" placeholder="内容（支持 Markdown）">${esc(obj.value||'')}</textarea>
+    <input class="c-name" value="${esc(obj.label||'')}" maxlength="12">
+    <textarea class="c-val auto-grow">${esc(obj.value||'')}</textarea>
     <button class="c-del" title="删除栏目">✕</button>`;
   container.appendChild(row);
   // 自适应高度
@@ -328,7 +327,7 @@ function bindEditor(){
   // 添加自定义栏目
   document.getElementById('eAddCustom').onclick=addCustomField;
   // 自适应高度
-  ['eMeaning','eCollocation','eMisconstrue'].forEach(id=>{ const t=document.getElementById(id); if(t) bindAutoGrow(t); });
+  ['eMeaning','eFocus','eCollocation','eMisconstrue'].forEach(id=>{ const t=document.getElementById(id); if(t) bindAutoGrow(t); });
   // 词语重复实时提示
   document.getElementById('eWord').addEventListener('input',()=>{
     const w=document.getElementById('eWord').value.trim();
@@ -339,7 +338,7 @@ function bindEditor(){
     else{hint.classList.add('hidden');}
   });
   // Markdown 快捷键：Tab 缩进、Ctrl+B 粗体、Ctrl+I 斜体、Ctrl+` 行内代码
-  ['eMeaning','eCollocation','eMisconstrue'].forEach(id=>addMdShortcuts(id));
+  ['eMeaning','eFocus','eCollocation','eMisconstrue'].forEach(id=>addMdShortcuts(id));
   document.getElementById('eSave').onclick=()=>{
     const word=document.getElementById('eWord').value.trim();
     const meaning=document.getElementById('eMeaning').value.trim();
