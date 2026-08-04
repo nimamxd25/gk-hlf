@@ -1,6 +1,6 @@
 {
   "app": "gkCiHui",
-  "updated": "2026-08-04T02:55:33.083Z",
+  "updated": "2026-08-04T03:03:33.383Z",
   "cards": [
     {
       "id": "cmsbc32t5rrx2",
@@ -117,6 +117,17 @@
           "grade": 2
         }
       ]
+    },
+    {
+      "id": "cmse2pxud6pyc",
+      "status": "fresh",
+      "ef": 2.5,
+      "interval": 0,
+      "reps": 0,
+      "lapses": 0,
+      "due": "2026-08-04",
+      "totalRating": 0,
+      "history": []
     }
   ]
 }
