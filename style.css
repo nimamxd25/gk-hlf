@@ -96,6 +96,15 @@ body{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei
 .wc-think li,.back-text li,.back-think li{margin:2px 0;}
 .wc-think blockquote,.back-text blockquote,.back-think blockquote{margin:6px 0;padding:2px 12px;border-left:3px solid var(--accent);color:var(--muted);background:rgba(255,107,53,.05);border-radius:0 6px 6px 0;}
 .wc-think code,.back-text code,.back-think code{background:rgba(79,109,245,.1);padding:1px 5px;border-radius:4px;font-size:.9em;font-family:ui-monospace,Menlo,monospace;}
+/* Typora 风格多级列表：缩进 + 按层级符号 */
+.md-li{padding-left:18px;position:relative;margin:2px 0;line-height:1.6;}
+.md-ul.lv0{padding-left:18px;} .md-ul.lv0::before{content:'•';position:absolute;left:4px;color:var(--text);}
+.md-ul.lv1{padding-left:36px;} .md-ul.lv1::before{content:'◦';position:absolute;left:20px;color:var(--muted);}
+.md-ul.lv2{padding-left:54px;} .md-ul.lv2::before{content:'▪';position:absolute;left:38px;color:var(--muted);}
+.md-ul.lv3,.md-ul.lv4,.md-ul.lv5{padding-left:72px;} .md-ul.lv3::before,.md-ul.lv4::before,.md-ul.lv5::before{content:'▸';position:absolute;left:56px;color:var(--muted);}
+.md-ol{padding-left:18px;}.md-ol::before{content:attr(data-n)'.';position:absolute;left:2px;color:var(--text);width:16px;text-align:right;}
+.md-ol.lv1{padding-left:36px;}.md-ol.lv1::before{left:18px;}
+.md-ol.lv2{padding-left:54px;}.md-ol.lv2::before{left:36px;}
 .wc-think pre,.back-text pre,.back-think pre{background:#f1f2f5;padding:8px 10px;border-radius:8px;overflow-x:auto;margin:6px 0;}
 [data-theme=dark] .wc-think pre,[data-theme=dark] .back-text pre,[data-theme=dark] .back-think pre{background:#2a2f3e;}
 .wc-think pre code,.back-text pre code,.back-think pre code{background:none;padding:0;}
@@ -126,13 +135,12 @@ body{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei
 /* 自定义栏目 */
 .add-custom{font-size:12px;color:var(--primary);cursor:pointer;padding:3px 8px;border-radius:6px;background:rgba(79,109,245,.1);font-weight:600;}
 .custom-tip{font-size:11px;color:var(--muted);margin-top:6px;}
-.custom-row{display:flex;gap:8px;margin-bottom:10px;align-items:flex-start;}
-.custom-row .c-label{width:84px;flex:none;font-size:13px;font-weight:600;color:var(--muted);line-height:44px;}
-.custom-row input.c-name{width:84px;flex:none;margin:0;padding:12px 10px;}
-.custom-row .c-del{border:none;background:var(--border);border-radius:8px;width:34px;height:44px;flex:none;color:var(--bad);cursor:pointer;font-size:15px;margin:0;}
-.custom-row textarea.c-val{flex:1;margin:0;}
-/* textarea 自适应高度 */
-.auto-grow, textarea.c-val{overflow-y:hidden;min-height:60px;resize:none;}
+.custom-row{display:flex;gap:8px;margin-bottom:10px;align-items:stretch;}
+.custom-row input.c-name{width:84px;flex:none;margin:0;padding:12px 10px;border-radius:10px;border:1px solid var(--border);background:var(--bg);color:var(--text);font-size:15px;outline:none;min-height:58px;}
+.custom-row textarea.c-val{flex:1;margin:0;min-height:56px;padding:12px 14px;border-radius:10px;border:1px solid var(--border);background:var(--bg);color:var(--text);font-size:15px;line-height:1.6;font-family:inherit;overflow-y:hidden;resize:none;outline:none;}
+.custom-row .c-del{border:none;background:var(--border);border-radius:8px;width:34px;min-height:56px;flex:none;color:var(--bad);cursor:pointer;font-size:15px;margin:0;align-self:stretch;}
+/* textarea 自适应高度（两行起、随输入增长） */
+.auto-grow, textarea.c-val{overflow-y:hidden;min-height:56px;resize:none;}
 .md-toggle:active{opacity:.7;}
 .md-preview{background:var(--bg);border:1px dashed var(--border);border-radius:10px;padding:12px 14px;margin-top:8px;font-size:14px;line-height:1.7;color:var(--text);}
 .md-preview p{margin:4px 0;}
@@ -147,8 +155,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei
 .editor-body input,.editor-body textarea,.editor-body select{width:100%;padding:14px 16px;border:1px solid var(--border);border-radius:12px;background:var(--bg);color:var(--text);font-size:16px;font-family:inherit;resize:vertical;outline:none;line-height:1.6;}
 .editor-body select{appearance:auto;height:48px;padding:0 12px;font-size:15px;cursor:pointer;}
 .editor-body input#eWord{font-size:18px;font-weight:600;padding-top:16px;padding-bottom:16px;}
-.editor-body textarea#eMeaning{min-height:110px;}
-.editor-body textarea#eThinking{min-height:240px;}
+.editor-body textarea#eMeaning{min-height:56px;}
 .editor-body input:focus,.editor-body textarea:focus{border-color:var(--primary);background:#fff;}
 [data-theme=dark] .editor-body input:focus,[data-theme=dark] .editor-body textarea:focus{background:#262b3a;}
 .editor-footer{padding:12px 0 0;flex:none;}
