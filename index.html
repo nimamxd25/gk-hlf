@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <title>我的生词本</title>
-<link rel="stylesheet" href="style.css?v=48">
+<link rel="stylesheet" href="style.css?v=50">
 </head>
 <body>
 <div id="app">
@@ -73,33 +73,33 @@
       <button class="editor-close" data-close>✕</button>
     </div>
     <div class="editor-body">
-      <div class="editor-field"><label>词语 / 成语</label><input id="eWord" placeholder="如：沆瀣一气" autocomplete="off"><div class="dup-hint hidden" id="eDupHint"></div></div>
+      <div class="editor-field"><label>词语 / 成语</label><input id="eWord" autocomplete="off"><div class="dup-hint hidden" id="eDupHint"></div></div>
       <div class="editor-field">
         <div class="field-head"><label>释义</label><span class="md-toggle" id="eMeaningToggle">👁 实时预览</span></div>
-        <textarea id="eMeaning" rows="4" placeholder="简要释义（支持 Markdown）"></textarea>
+        <textarea id="eMeaning" rows="3" class="auto-grow"></textarea>
         <div class="md-preview hidden" id="eMeaningPreview"></div>
       </div>
       <div class="editor-field">
-        <div class="field-head"><label>侧重 / 适用场景</label></div>
-        <input id="eFocus" placeholder="用于什么语境、搭配对象等">
+        <div class="field-head"><label>侧重</label></div>
+        <textarea id="eFocus" rows="3" class="auto-grow"></textarea>
       </div>
       <div class="editor-field">
         <div class="field-head"><label>感情色彩</label></div>
-        <input id="eTone" placeholder="如：褒义 / 贬义 / 中性 / 含贬义语境…">
+        <input id="eTone">
       </div>
       <div class="editor-field">
         <div class="field-head"><label>常见搭配</label></div>
-        <textarea id="eCollocation" rows="3" placeholder="如：~~的身影、~~的局面（支持 Markdown）" class="auto-grow"></textarea>
+        <textarea id="eCollocation" rows="3" class="auto-grow"></textarea>
       </div>
       <div class="editor-field">
         <div class="field-head"><label>易错易混</label></div>
-        <textarea id="eMisconstrue" rows="3" placeholder="和易混淆的词对比辨析（支持 Markdown）" class="auto-grow"></textarea>
+        <textarea id="eMisconstrue" rows="3" class="auto-grow"></textarea>
       </div>
       <!-- 自定义栏目 -->
       <div class="editor-field">
         <div class="field-head"><label>自定义栏目</label><span class="add-custom" id="eAddCustom">＋ 添加栏目</span></div>
         <div id="eCustomFields"></div>
-        <div class="custom-tip">可添加任意栏目，如：成语出处、近义词、例句…</div>
+        <div class="custom-tip"></div>
       </div>
     </div>
     <div class="editor-footer"><button class="save-btn" id="eSave">保存</button></div>
@@ -134,6 +134,6 @@
 
 <div id="toast" class="toast hidden"></div>
 
-<script src="app.js?v=48"></script>
+<script src="app.js?v=50"></script>
 </body>
 </html>
