@@ -224,24 +224,41 @@ function openEditor(card){
   // 重置预览区
   document.getElementById('eMeaningPreview').classList.add('hidden');
   document.getElementById('eMeaningToggle').textContent='👁 实时预览';
+  document.getElementById('eFocusPreview').classList.add('hidden');
+  document.getElementById('eFocusToggle').textContent='👁 实时预览';
+  document.getElementById('eCollocationPreview').classList.add('hidden');
+  document.getElementById('eCollocationToggle').textContent='👁 实时预览';
+  document.getElementById('eMisconstruePreview').classList.add('hidden');
+  document.getElementById('eMisconstrueToggle').textContent='👁 实时预览';
   document.getElementById('eDupHint').classList.add('hidden');
   document.getElementById('editor').classList.remove('hidden');
 }
 function closeEditor(){document.getElementById('editor').classList.add('hidden');}
 // 渲染一个自定义栏目行 (obj={label,value})
 function renderCustomRow(container,obj){
-  const row=document.createElement('div');
-  row.className='custom-row';
-  row.innerHTML=`
-    <input class="c-name" value="${esc(obj.label||'')}" maxlength="12">
-    <textarea class="c-val auto-grow">${esc(obj.value||'')}</textarea>
-    <button class="c-del" title="删除栏目">✕</button>`;
-  container.appendChild(row);
-  // 自适应高度
-  bindAutoGrow(row.querySelector('.c-val'));
-  row.querySelector('.c-del').onclick=()=>{ row.remove(); };
-  row.querySelector('.c-name').addEventListener('input',()=>updateCustomFields());
-  row.querySelector('.c-val').addEventListener('input',()=>updateCustomFields());
+  const wrap=document.createElement('div');
+  wrap.className='custom-field';
+  wrap.innerHTML=`
+    <div class="custom-row">
+      <input class="c-name" value="${esc(obj.label||'')}" maxlength="12">
+      <textarea class="c-val auto-grow">${esc(obj.value||'')}</textarea>
+      <button class="c-del" title="删除栏目">✕</button>
+    </div>
+    <div class="custom-preview-wrap">
+      <span class="custom-prev-toggle">👁 预览</span>
+      <div class="md-preview hidden custom-pv"></div>
+    </div>`;
+  container.appendChild(wrap);
+  const cval=wrap.querySelector('.c-val');
+  const pv=wrap.querySelector('.custom-pv');
+  const tg=wrap.querySelector('.custom-prev-toggle');
+  bindAutoGrow(cval);
+  bindMdShortcutsOn(cval); // markdown 快捷键 + 换行续序列
+  const render=()=>{ pv.innerHTML=md(cval.value); };
+  cval.addEventListener('input',()=>{ updateCustomFields(); if(!pv.classList.contains('hidden')) render(); });
+  tg.onclick=()=>{ const hidden=pv.classList.contains('hidden'); pv.classList.toggle('hidden'); tg.textContent=hidden?'✏️ 编辑':'👁 预览'; if(hidden)render(); };
+  wrap.querySelector('.c-del').onclick=()=>{ wrap.remove(); updateCustomFields(); };
+  wrap.querySelector('.c-name').addEventListener('input',updateCustomFields);
   updateCustomFields();
 }
 function addCustomField(){
@@ -287,12 +304,26 @@ function bindMdPreview(textareaId, previewId, toggleId){
 }
 
 // Markdown 编辑快捷键：Tab缩进、Ctrl+B粗体、Ctrl+I斜体、Ctrl+` 行内代码
-function addMdShortcuts(id){
-  const ta=document.getElementById(id);
+function addMdShortcuts(id){ const t=document.getElementById(id); if(t) bindMdShortcutsOn(t); }
+function bindMdShortcutsOn(ta){
   if(!ta)return;
   ta.addEventListener('keydown',e=>{
     const selStart=ta.selectionStart, selEnd=ta.selectionEnd;
     const v=ta.value;
+    // 换行自动续序列（列表续项 + 有序自动递增）
+    if(e.key==='Enter'){
+      // 取光标所在行的前缀（含前导空格和列表标记）
+      const lineStart=v.lastIndexOf('\n',selStart-1)+1;
+      const leading=v.slice(lineStart,selStart);
+      let m=leading.match(/^(\s*)(\d+)[.)]\s+/);     // 有序 1. / 1)
+      let mu=leading.match(/^(\s*)([-*•])\s+/);      // 无序 - / * / •
+      if(m||mu){
+        const pad=m?m[1]:mu[1];
+        if(m){ const nxt=parseInt(m[2],10)+1; e.preventDefault(); ta.value=v.slice(0,selStart)+'\n'+pad+nxt+'. '+v.slice(selEnd); const pos=selStart+1+pad.length+String(nxt).length+3; ta.setSelectionRange(pos,pos); ta.dispatchEvent(new Event('input',{bubbles:true})); }
+        else{ const marker=mu[2]==='*'?'*':'•'; e.preventDefault(); ta.value=v.slice(0,selStart)+'\n'+pad+marker+' '+v.slice(selEnd); const pos=selStart+1+pad.length+2; ta.setSelectionRange(pos,pos); ta.dispatchEvent(new Event('input',{bubbles:true})); }
+        return;
+      }
+    }
     // Tab：插入两个空格缩进
     if(e.key==='Tab'){
       e.preventDefault();
@@ -324,6 +355,9 @@ function bindEditor(){
   document.getElementById('editor').querySelector('[data-close]').onclick=closeEditor;
   document.getElementById('editor').addEventListener('click',e=>{if(e.target===document.getElementById('editor'))closeEditor();});
   bindMdPreview('eMeaning','eMeaningPreview','eMeaningToggle');
+  bindMdPreview('eFocus','eFocusPreview','eFocusToggle');
+  bindMdPreview('eCollocation','eCollocationPreview','eCollocationToggle');
+  bindMdPreview('eMisconstrue','eMisconstruePreview','eMisconstrueToggle');
   // 添加自定义栏目
   document.getElementById('eAddCustom').onclick=addCustomField;
   // 自适应高度
