@@ -1,6 +1,6 @@
 {
   "app": "gkCiHui",
-  "updated": "2026-08-06T02:32:27.542Z",
+  "updated": "2026-08-06T02:35:56.874Z",
   "cards": [
     {
       "id": "cmsbc32t5rrx2",
@@ -164,6 +164,17 @@
     },
     {
       "id": "cmsgwhkym9ubu",
+      "status": "fresh",
+      "ef": 2.5,
+      "interval": 0,
+      "reps": 0,
+      "lapses": 0,
+      "due": "2026-08-06",
+      "totalRating": 0,
+      "history": []
+    },
+    {
+      "id": "cmsgwm4rbqffg",
       "status": "fresh",
       "ef": 2.5,
       "interval": 0,
