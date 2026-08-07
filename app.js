@@ -587,6 +587,81 @@ function saveGhForm(){
   saveGh({user:document.getElementById('ghUser').value.trim(),repo:document.getElementById('ghRepo').value.trim(),branch:document.getElementById('ghBranch').value.trim()||'main',token:document.getElementById('ghToken').value.trim()});
 }
 
+// ---------- AI 查词 ----------
+function openAiLookup(){ document.getElementById('aiLookup').classList.remove('hidden'); document.getElementById('aiWord').value=''; document.getElementById('aiResultContent').classList.add('hidden'); document.getElementById('btnAiSave').classList.add('hidden'); }
+function closeAiLookup(){ document.getElementById('aiLookup').classList.add('hidden'); }
+async function doAiLookup(){
+  const word=document.getElementById('aiWord').value.trim();
+  if(!word){ toast('请输入词语'); return; }
+  document.getElementById('aiLoading').classList.remove('hidden');
+  document.getElementById('aiResultContent').classList.add('hidden');
+  document.getElementById('btnAiSave').classList.add('hidden');
+  const prompt=`请对成语/词语「${word}」做详细解析，按下面的栏目格式回答：
+
+【释义】
+（一句话解释，50字以内）
+【侧重】
+（适合语境、搭配对象、使用范围）
+【感情色彩】
+（褒义/贬义/中性或其他，简短标注）
+【常见搭配】
+（该词的常用搭配，列表，每项一行用 - 开头）
+【易错易混】
+（容易混淆的词及其区别，列表，每项一行用 - 开头）
+
+请严格按这个格式回答，每个栏目只输出内容，不要额外的解释或引导语。`;
+  const resp=await callAI(prompt);
+  document.getElementById('aiLoading').classList.add('hidden');
+  if(!resp){ document.getElementById('aiResultContent').innerHTML='<b>请求失败</b>，请检查 AI 设置。'; document.getElementById('aiResultContent').classList.remove('hidden'); return; }
+  // 解析 AI 返回
+  const fields={meaning:'',focus:'',tone:'',collocation:'',misconstrue:''};
+  const keys=['释义','侧重','感情色彩','常见搭配','易错易混'];
+  const map={释义:'meaning',侧重:'focus',感情色彩:'tone',常见搭配:'collocation',易错易混:'misconstrue'};
+  let cur='';
+  const lines=resp.split('\n');
+  for(const l of lines){
+    const tr=l.trim();
+    if(!tr)continue;
+    let found=false;
+    for(const k of keys){
+      if(tr.indexOf('【'+k+'】')===0||tr.indexOf('['+k+']')===0||tr.indexOf(k+'：')===0||tr.indexOf(k+':')===0||tr.indexOf(k+' ')===0){
+        cur=map[k];found=true;break;
+      }
+    }
+    if(found){
+      fields[cur]=(fields[cur]?'\n':'')+tr.replace(/^[【\[]?[^】\]]*[】\]]?\s*[:：]?\s*/,'').trim();
+    }else if(cur){
+      fields[cur]+=(fields[cur]?'\n':'')+tr;
+    }
+  }
+  // 渲染结果
+  let html='<div class="ai-result-fields">';
+  for(const k of keys){
+    const v=fields[map[k]];
+    if(v) html+=`<p><b>${k}</b></p><pre style="white-space:pre-wrap;margin:0 0 10px;font-family:inherit">${esc(v)}</pre>`;
+  }
+  html+='</div>';
+  document.getElementById('aiResultContent').innerHTML=html;
+  document.getElementById('aiResultContent').classList.remove('hidden');
+  document.getElementById('btnAiSave').classList.remove('hidden');
+  // 暂存解析结果
+  resolvedFields=fields;
+}
+let resolvedFields=null;
+function saveAiLookupResult(){
+  if(!resolvedFields||!resolvedFields.meaning){ toast('请先查询并等待结果'); return; }
+  const word=document.getElementById('aiWord').value.trim();
+  closeAiLookup();
+  openEditor();
+  document.getElementById('eWord').value=word;
+  document.getElementById('eMeaning').value=resolvedFields.meaning||'';
+  document.getElementById('eFocus').value=resolvedFields.focus||'';
+  document.getElementById('eTone').value=resolvedFields.tone||'';
+  document.getElementById('eCollocation').value=resolvedFields.collocation||'';
+  document.getElementById('eMisconstrue').value=resolvedFields.misconstrue||'';
+  toast('AI 结果已填入，确认后保存');
+}
+
 // ---------- 事件 ----------
 function bindEvents(){
   document.getElementById('btnStudy').onclick=()=>{browseMode=false;currentSearch='';document.getElementById('searchInput').value='';renderCurrentView();
@@ -611,6 +686,11 @@ function bindEvents(){
   });
   document.getElementById('btnAdd').onclick=()=>{browseMode=false;openEditor();};
   document.getElementById('btnSettings').onclick=openSettings;
+  // AI 查词
+  document.getElementById('btnAiLookup').addEventListener('click',()=>openAiLookup());
+  document.getElementById('aiLookupClose').addEventListener('click',closeAiLookup);
+  document.getElementById('btnAiLookupGo').addEventListener('click',doAiLookup);
+  document.getElementById('btnAiSave').addEventListener('click',saveAiLookupResult);
   document.getElementById('searchInput').addEventListener('input',e=>{browseMode=true;currentSearch=e.target.value;renderLibrary();});
   document.getElementById('flipCard').addEventListener('click',()=>{}); // 不再手动翻转
   document.getElementById('btnAiSubmit').addEventListener('click',submitToAI);
