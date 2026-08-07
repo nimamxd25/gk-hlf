@@ -38,7 +38,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei
 .main-btn{border:none;border-radius:14px;padding:15px;font-size:16px;font-weight:700;cursor:pointer;background:var(--card);color:var(--text);border:1px solid var(--border);box-shadow:var(--shadow);}
 .main-btn.primary{background:linear-gradient(135deg,#4f6df5,#7a5df5);color:#fff;border:none;}
 .main-btn.ghost{background:transparent;border:1px dashed var(--muted);color:var(--muted);box-shadow:none;}
-
+.main-btn.ai-query-btn{background:linear-gradient(135deg, #6366f1, #8b5cf6);color:#fff;border:none;}
 /* 搜索 */
 .searchbar input{width:100%;padding:12px 16px;border-radius:12px;border:1px solid var(--border);background:var(--card);color:var(--text);font-size:15px;box-shadow:var(--shadow);outline:none;margin-bottom:12px;}
 
@@ -157,7 +157,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei
 .custom-row input.c-name{width:84px;flex:none;margin:0;padding:12px 10px;border-radius:10px;border:1px solid var(--border);background:var(--bg);color:var(--text);font-size:15px;outline:none;min-height:58px;}
 .custom-row textarea.c-val{flex:1;margin:0;min-height:56px;padding:12px 14px;border-radius:10px;border:1px solid var(--border);background:var(--bg);color:var(--text);font-size:15px;line-height:1.6;font-family:inherit;overflow-y:hidden;resize:none;outline:none;}
 /* AI 查词 */
-.ai-lookup-btn{font-size:13px;color:var(--primary);cursor:pointer;padding:4px 10px;border-radius:8px;background:rgba(79,109,245,.1);font-weight:600;margin-right:auto;margin-left:12px;}
+.ai-lookup-btn{font-size:13px;color:#fff;cursor:pointer;padding:6px 12px;border-radius:10px;background:linear-gradient(135deg, #6366f1, #8b5cf6);font-weight:600;margin-right:auto;margin-left:12px;white-space:nowrap;}
 .ai-result{border:1px solid var(--border);border-radius:12px;padding:14px;margin-top:10px;background:var(--bg);}
 .ai-result-loading{color:var(--muted);font-size:14px;}
 .ai-result-content{font-size:14px;line-height:1.7;white-space:pre-wrap;word-break:break-word;}
