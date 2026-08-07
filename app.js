@@ -686,6 +686,9 @@ function bindEvents(){
   });
   document.getElementById('btnAdd').onclick=()=>{browseMode=false;openEditor();};
   document.getElementById('btnSettings').onclick=openSettings;
+  // AI 查词（主页入口 + 编辑器入口均指向同一面板）
+  document.getElementById('btnAiLookupHome').addEventListener('click',()=>openAiLookup());
+  document.getElementById('btnAiLookup').addEventListener('click',()=>openAiLookup());
   // AI 查词
   document.getElementById('btnAiLookup').addEventListener('click',()=>openAiLookup());
   document.getElementById('aiLookupClose').addEventListener('click',closeAiLookup);
