@@ -1,6 +1,6 @@
 {
   "app": "gkCiHui",
-  "updated": "2026-08-07T03:06:50.385Z",
+  "updated": "2026-08-07T03:09:28.086Z",
   "cards": [
     {
       "id": "cmsbc32t5rrx2",
@@ -180,14 +180,19 @@
     },
     {
       "id": "cmsgwm4rbqffg",
-      "status": "fresh",
+      "status": "reviewing",
       "ef": 2.5,
-      "interval": 0,
-      "reps": 0,
+      "interval": 2,
+      "reps": 1,
       "lapses": 0,
-      "due": "2026-08-06",
-      "totalRating": 0,
-      "history": []
+      "due": "2026-08-09",
+      "totalRating": 2,
+      "history": [
+        {
+          "date": "2026-08-07",
+          "grade": 2
+        }
+      ]
     }
   ]
 }
