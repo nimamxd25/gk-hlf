@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <title>我的生词本</title>
-<link rel="stylesheet" href="style.css?v=52">
+<link rel="stylesheet" href="style.css?v=53">
 </head>
 <body>
 <div id="app">
@@ -51,16 +51,39 @@
     </div>
     <div class="flip-card" id="flipCard">
       <div class="flip-inner">
-        <div class="flip-face front" id="cardFront"></div>
-        <div class="flip-face back" id="cardBack"></div>
+        <!-- 正面：词 + 输入理解 -->
+        <div class="flip-face front" id="cardFront">
+          <div class="front-body">
+            <div class="flip-word" id="frontWord"></div>
+            <div class="front-inputs">
+              <label>你的理解 <span class="inp-hint">（意思到的就算对）</span></label>
+              <textarea id="sMeaning" rows="3" placeholder="你理解的这个词是什么意思…"></textarea>
+              <label>感情色彩</label>
+              <input id="sTone" placeholder="你判断它的感情色彩…">
+              <label>侧重点</label>
+              <textarea id="sFocus" rows="2" placeholder="你理解它的侧重/适用语境…"></textarea>
+            </div>
+            <button class="ai-submit-btn" id="btnAiSubmit">🤖 提交 AI 判定</button>
+          </div>
+        </div>
+        <!-- 背面：AI 评价 + 完整释义 + 自评 -->
+        <div class="flip-face back" id="cardBack">
+          <div class="back-body">
+            <div class="ai-verdict" id="aiVerdict">
+              <div class="ai-label">🤖 AI 评价</div>
+              <div class="ai-text" id="aiText"></div>
+            </div>
+            <div class="back-word" id="backWord"></div>
+            <div class="back-content" id="backContent"></div>
+            <div class="grade-row self-grade" id="gradeRow">
+              <button class="grade bad" data-grade="0">很陌生</button>
+              <button class="grade hard" data-grade="1">有点难</button>
+              <button class="grade good" data-grade="2">记住了</button>
+              <button class="grade easy" data-grade="3">很简单</button>
+            </div>
+          </div>
+        </div>
       </div>
-    </div>
-    <div class="card-hint" id="cardHint">点卡片翻转查看答案</div>
-    <div class="grade-row hidden" id="gradeRow">
-      <button class="grade bad" data-grade="0">很陌生</button>
-      <button class="grade hard" data-grade="1">有点难</button>
-      <button class="grade good" data-grade="2">记住了</button>
-      <button class="grade easy" data-grade="3">很简单</button>
     </div>
   </div>
 </div>
@@ -131,12 +154,18 @@
         <button class="secondary-btn" id="sExport">导出备份</button>
       </div>
       <div style="font-size:12px;color:var(--muted);line-height:1.7;margin-top:8px">词条存 words.json，进度存 progress.json。Token 只存本机，不进仓库。</div>
+      <div class="form-block-title" style="margin-top:16px">🤖 AI 自测设置（学习时评估你的理解）</div>
+      <div class="form-group"><label>API Key（OpenAI 兼容）</label><input id="aiKey" type="password" placeholder="sk-..."></div>
+      <div class="form-group"><label>Base URL（可留空默认 OpenAI）</label><input id="aiBase" placeholder="https://api.openai.com/v1"></div>
+      <div class="form-group"><label>模型名</label><input id="aiModel" placeholder="如：gpt-4o-mini / deepseek-chat"></div>
+      <div class="form-group"><label>自定义提示词（可用 {标准释义} 等占位，留空用内置）</label><textarea id="aiPromptTmpl" rows="2" placeholder="留空则使用内置提示词"></textarea></div>
+      <div style="font-size:12px;color:var(--muted);line-height:1.7;margin-top:0">API Key 只存在本机 localStorage，不上传任何仓库。支持所有兼容 OpenAI 的模型（GPT/DeepSeek/通义千问等）。</div>
     </div>
   </div>
 </div>
 
 <div id="toast" class="toast hidden"></div>
 
-<script src="app.js?v=52"></script>
+<script src="app.js?v=53"></script>
 </body>
 </html>
