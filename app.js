@@ -439,7 +439,6 @@ function renderStudyCard(){
   document.getElementById('frontWord').textContent=c.word;
   document.getElementById('sMeaning').value='';
   document.getElementById('sTone').value='';
-  document.getElementById('sFocus').value='';
   // 背面初始为空
   document.getElementById('aiText').textContent='';
   document.getElementById('backWord').textContent='';
@@ -451,8 +450,7 @@ async function submitToAI(){
   const c=studyQueue[studyIndex];
   const uMeaning=document.getElementById('sMeaning').value.trim();
   const uTone=document.getElementById('sTone').value.trim();
-  const uFocus=document.getElementById('sFocus').value.trim();
-  if(!uMeaning&&!uTone&&!uFocus){ toast('请至少填一个理解字段'); return; }
+  if(!uMeaning&&!uTone){ toast('请至少填一个理解字段'); return; }
   // 翻到背面，先显示加载
   refs.flipCard.classList.add('flipped');
   document.getElementById('aiText').textContent='正在请求 AI 评价…';
@@ -464,9 +462,8 @@ async function submitToAI(){
     c.focus?`标准侧重：${c.focus}`:'',
   ].filter(Boolean).join('\n');
   const userInfo=[
-    `用户的词义理解：${uMeaning||'(未填)'}`,
+    `用户的词义理解（含侧重）：${uMeaning||'(未填)'}`,
     `用户的感情色彩判断：${uTone||'(未填)'}`,
-    `用户的侧重点关注：${uFocus||'(未填)'}`,
   ].join('\n');
   const prompt=`你是一个考公词语记忆教练。请根据词条的标准信息和用户的输入，从**意思上**评价用户对该词的理解（不要拘泥于字面表述，意思到位即可）。
 
