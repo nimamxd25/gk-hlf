@@ -411,26 +411,116 @@ function startStudy(ids){
   const cards=ids.map(id=>allCards.find(c=>c.id===id)).filter(Boolean);
   if(!cards.length){toast('没有可选词');return;}
   studyQueue=cards;studyIndex=0;
-  refs.overlay.classList.remove('hidden');refs.hint.classList.remove('hidden');refs.gradeRow.classList.add('hidden');
+  refs.overlay.classList.remove('hidden');refs.gradeRow.classList.remove('hidden');
   refs.label.textContent=cards.every(c=>c.status==='fresh')?'今日新词':'复习';
   renderStudyCard();
 }
 function renderStudyCard(){
   const c=studyQueue[studyIndex];
   refs.pos.textContent=(studyIndex+1)+' / '+studyQueue.length;
-  refs.front.innerHTML=`<div class="flip-word">${esc(c.word)}</div><div class="flip-pos">来源：${esc(c.source||'手动')}</div>`;
-  let p=`<div class="back-word">${esc(c.word)}</div>`;
-  if(c.meaning){p+=`<div class="back-label">📖 释义</div><div class="back-text">${md(c.meaning)}</div>`;}
-  if(c.focus){p+=`<div class="back-label">🎯 侧重</div><div class="back-text">${md(c.focus)}</div>`;}
-  if(c.tone){p+=`<div class="back-label">🎭 感情色彩</div><div class="back-text">${esc(c.tone)}</div>`;}
-  if(c.collocation){p+=`<div class="back-label">🔗 常见搭配</div><div class="back-text">${md(c.collocation)}</div>`;}
-  if(c.misconstrue||c.compare){p+=`<div class="back-label">⚖️ 易错易混</div><div class="back-text">${md(c.misconstrue||c.compare)}</div>`;}
-  if(Array.isArray(c.custom)){c.custom.forEach(it=>{ if(it&&it.label&&it.value){ p+=`<div class="back-label">✏️ ${esc(it.label)}</div><div class="back-text">${md(it.value)}</div>`; } });}
-  refs.back.innerHTML=p;
-  refs.flipCard.classList.remove('flipped');refs.hint.classList.remove('hidden');refs.gradeRow.classList.add('hidden');
+  refs.flipCard.classList.remove('flipped');
+  // 正面：词 + 三个输入框（重置）
+  document.getElementById('frontWord').textContent=c.word;
+  document.getElementById('sMeaning').value='';
+  document.getElementById('sTone').value='';
+  document.getElementById('sFocus').value='';
+  // 背面初始为空
+  document.getElementById('aiText').textContent='';
+  document.getElementById('backWord').textContent='';
+  document.getElementById('backContent').innerHTML='';
   refs.back.scrollTop=0;
 }
-function flip(){refs.flipCard.classList.toggle('flipped');if(refs.flipCard.classList.contains('flipped')){refs.hint.classList.add('hidden');refs.gradeRow.classList.remove('hidden');}}
+// 提交 AI 判定：收集用户理解 → 翻到背面 → 调用 AI → 显示结果
+async function submitToAI(){
+  const c=studyQueue[studyIndex];
+  const uMeaning=document.getElementById('sMeaning').value.trim();
+  const uTone=document.getElementById('sTone').value.trim();
+  const uFocus=document.getElementById('sFocus').value.trim();
+  if(!uMeaning&&!uTone&&!uFocus){ toast('请至少填一个理解字段'); return; }
+  // 翻到背面，先显示加载
+  refs.flipCard.classList.add('flipped');
+  document.getElementById('aiText').textContent='正在请求 AI 评价…';
+  // 构建提示词
+  const cardInfo=[
+    `词语：${c.word}`,
+    c.meaning?`标准释义：${c.meaning}`:'',
+    c.tone?`标准感情色彩：${c.tone}`:'',
+    c.focus?`标准侧重：${c.focus}`:'',
+  ].filter(Boolean).join('\n');
+  const userInfo=[
+    `用户的词义理解：${uMeaning||'(未填)'}`,
+    `用户的感情色彩判断：${uTone||'(未填)'}`,
+    `用户的侧重点关注：${uFocus||'(未填)'}`,
+  ].join('\n');
+  const prompt=`你是一个考公词语记忆教练。请根据词条的标准信息和用户的输入，从**意思上**评价用户对该词的理解（不要拘泥于字面表述，意思到位即可）。
+
+${cardInfo}
+
+用户输入：
+${userInfo}
+
+请给出：
+1. **整体评价**（1-2句话，指出用户的优点和理解有偏差的地方）
+2. **掌握建议**：从「很陌生」「有点难」「记住了」「很简单」中选择一个
+3. **简短说明**（为什么建议这个等级）
+
+请用下面格式回复（保持简洁，每段不长）：
+整体评价：（评价内容）
+掌握建议：（等级）
+说明：（说明）`;
+  // 调用 AI
+  const aiResp=await callAI(prompt);
+  // 渲染背面：完整释义
+  document.getElementById('backWord').textContent=c.word;
+  const backParts=[];
+  if(c.meaning){ backParts.push(`<div class="back-label">📖 释义</div><div class="back-text">${md(c.meaning)}</div>`); }
+  if(c.focus){ backParts.push(`<div class="back-label">🎯 侧重</div><div class="back-text">${md(c.focus)}</div>`); }
+  if(c.tone){ backParts.push(`<div class="back-label">🎭 感情色彩</div><div class="back-text">${esc(c.tone)}</div>`); }
+  if(c.collocation){ backParts.push(`<div class="back-label">🔗 常见搭配</div><div class="back-text">${md(c.collocation)}</div>`); }
+  if(c.misconstrue||c.compare){ backParts.push(`<div class="back-label">⚖️ 易错易混</div><div class="back-text">${md(c.misconstrue||c.compare)}</div>`); }
+  if(Array.isArray(c.custom)){ c.custom.forEach(it=>{ if(it&&it.label&&it.value){ backParts.push(`<div class="back-label">✏️ ${esc(it.label)}</div><div class="back-text">${md(it.value)}</div>`); } }); }
+  document.getElementById('backContent').innerHTML=backParts.join('');
+  // 解析 AI 回应
+  if(aiResp){
+    const verdict=aiResp.replace(/<[^>]+>/g,'');
+    document.getElementById('aiText').textContent=verdict;
+    const sugMatch=verdict.match(/掌握建议\s*[：:]\s*(.+)/i);
+    if(sugMatch){
+      const sug=sugMatch[1].trim();
+      if(sug.indexOf('很简单')>=0||sug.indexOf('简单')>=0){ aiSuggest=3; }
+      else if(sug.indexOf('记住')>=0||sug.indexOf('掌握')>=0||sug.indexOf('良好')>=0){ aiSuggest=2; }
+      else if(sug.indexOf('有点难')>=0||sug.indexOf('困难')>=0||sug.indexOf('部分')>=0){ aiSuggest=1; }
+      else if(sug.indexOf('很陌生')>=0||sug.indexOf('陌生')>=0||sug.indexOf('重新')>=0){ aiSuggest=0; }
+    }
+    const btns=document.querySelectorAll('#gradeRow .grade');
+    btns.forEach(b=>b.style.outline='none');
+    if(aiSuggest>=0 && aiSuggest<=3){
+      btns[aiSuggest].style.outline='2px solid var(--primary)';
+    }
+  } else {
+    document.getElementById('aiText').textContent='AI 请求失败，请检查设置或稍后重试。';
+  }
+}
+let aiSuggest=2;
+
+// ---------- AI 调用 ----------
+async function callAI(prompt){
+  const ai=JSON.parse(localStorage.getItem('gk_ai')||'{}');
+  if(!ai||!ai.key){ toast('请先在设置里配置 AI（API Key/Base URL/模型）'); return null; }
+  const apiUrl=(ai.base||'https://api.openai.com/v1')+'/chat/completions';
+  const model=ai.model||'gpt-4o-mini';
+  const body=JSON.stringify({
+    model, messages:[{role:'user',content:prompt}],
+    max_tokens:300, temperature:0.3
+  });
+  try{
+    const resp=await fetch(apiUrl,{method:'POST',headers:{'Content-Type':'application/json','Authorization':'Bearer '+ai.key},body});
+    if(!resp.ok){ toast('AI 请求失败: HTTP '+resp.status); return null; }
+    const data=await resp.json();
+    return data.choices?.[0]?.message?.content||null;
+  }catch(e){ toast('AI 请求异常'); return null; }
+}
+
 function gradeFromButton(g){const c=studyQueue[studyIndex];applyGrade(c,g);saveCards();studyIndex++;if(studyIndex<studyQueue.length)renderStudyCard();else endStudy();}
 function endStudy(){refs.overlay.classList.add('hidden');toast('本组学习完成 🎉');saveCards();pushAll();updateSummary();renderCurrentView();}
 function applyGrade(c,g){
@@ -464,6 +554,12 @@ function openSettings(){
   document.getElementById('ghRepo').value=g.repo||'gk-hlf';
   document.getElementById('ghBranch').value=g.branch||'main';
   document.getElementById('ghToken').value=g.token||'';
+  // AI 配置
+  const ai=JSON.parse(localStorage.getItem('gk_ai')||'{}');
+  document.getElementById('aiKey').value=ai.key||'';
+  document.getElementById('aiBase').value=ai.base||'';
+  document.getElementById('aiModel').value=ai.model||'';
+  document.getElementById('aiPromptTmpl').value=ai.promptTmpl||'';
   document.getElementById('settings').classList.remove('hidden');
 }
 function closeSettings(){document.getElementById('settings').classList.add('hidden');}
@@ -471,10 +567,18 @@ function bindSettings(){
   const st=document.getElementById('settings');
   st.querySelector('[data-close]').onclick=closeSettings;
   st.addEventListener('click',e=>{if(e.target===st)closeSettings();});
-  document.getElementById('sSave').onclick=()=>{saveGhForm();toast('设置已保存 ✔');closeSettings();};
-  document.getElementById('sPull').onclick=async()=>{saveGhForm();toast('拉取中…');await pullAll();renderCurrentView();updateSummary();toast(ghReady()?'已拉取并合并 ✔':'⚠️ 未配置GitHub，请填写配置');};
+  document.getElementById('sSave').onclick=()=>{saveGhForm();saveAiConfig();toast('设置已保存 ✔');closeSettings();};
+  document.getElementById('sPull').onclick=async()=>{saveGhForm();saveAiConfig();toast('拉取中…');await pullAll();renderCurrentView();updateSummary();toast(ghReady()?'已拉取并合并 ✔':'⚠️ 未配置GitHub，请填写配置');};
   document.getElementById('sPush').onclick=async()=>{saveGhForm();const ok=await pushAll();toast(ok?'已同步到仓库 ✔':'⚠️ 同步失败，请检查配置是否填写正确');};
   document.getElementById('sExport').onclick=()=>{const blob=new Blob([JSON.stringify(allCards,null,2)],{type:'application/json'});const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='生词本备份_'+todayStr()+'.json';a.click();toast('已导出备份');};
+}
+function saveAiConfig(){
+  localStorage.setItem('gk_ai', JSON.stringify({
+    key: document.getElementById('aiKey').value.trim(),
+    base: document.getElementById('aiBase').value.trim(),
+    model: document.getElementById('aiModel').value.trim(),
+    promptTmpl: document.getElementById('aiPromptTmpl').value.trim()
+  }));
 }
 // 把设置表单里的 GitHub 配置立即写入 localStorage
 function saveGhForm(){
@@ -508,7 +612,8 @@ function bindEvents(){
   document.getElementById('btnAdd').onclick=()=>{browseMode=false;openEditor();};
   document.getElementById('btnSettings').onclick=openSettings;
   document.getElementById('searchInput').addEventListener('input',e=>{browseMode=true;currentSearch=e.target.value;renderLibrary();});
-  document.getElementById('flipCard').addEventListener('click',flip);
+  document.getElementById('flipCard').addEventListener('click',()=>{}); // 不再手动翻转
+  document.getElementById('btnAiSubmit').addEventListener('click',submitToAI);
   document.querySelectorAll('#gradeRow .grade').forEach(b=>b.onclick=()=>gradeFromButton(+b.dataset.grade));
   // 退出学习按钮：关闭覆盖层，回到主界面（保留已学进度并同步）
   document.getElementById('studyExit').addEventListener('click',()=>{
