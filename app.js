@@ -102,7 +102,7 @@ async function ghPutText(path,text,msg){
 
 // ---------- 同步 ----------
 function buildWordsJSON(){return JSON.stringify(allCards.map(c=>({id:c.id,word:c.word,meaning:c.meaning,focus:c.focus,tone:c.tone,collocation:c.collocation,misconstrue:c.misconstrue||c.compare,custom:c.custom||[],updated_at:c.updated_at})),null,2);}
-function buildProgressJSON(){return JSON.stringify({app:'gkCiHui',updated:new Date().toISOString(),cards:allCards.map(c=>({id:c.id,status:c.status,ef:c.ef,interval:c.interval,reps:c.reps,lapses:c.lapses,due:c.due,totalRating:c.totalRating,history:c.history}))},null,2);}
+function buildProgressJSON(){return JSON.stringify({app:'gkCiHui',updated:new Date().toISOString(),cards:allCards.map(c=>({id:c.id,status:c.status,ef:c.ef,interval:c.interval,reps:c.reps,lapses:c.lapses,due:c.due,totalRating:c.totalRating,lastStudyTime:new Date().toISOString(),history:c.history}))},null,2);}
 async function pushAll(){if(!ghReady())return false;await ghPutText('words.json',buildWordsJSON(),'auto sync words');await ghPutText('progress.json',buildProgressJSON(),'auto sync progress');return true;}
 async function pullAll(){
   if(!ghReady())return false;
@@ -113,6 +113,22 @@ async function pullAll(){
     map.forEach((c,id)=>{if(!allCards.some(x=>x.id===id))allCards.push({...newCard(c),...c});});
     saveCards();
   }}catch(e){}}
+  // 同步学习进度（progress.json）
+  const p=await ghGet('progress.json');
+  if(p&&p.content){try{const prog=JSON.parse(p.content);
+    if(prog&&Array.isArray(prog.cards)){
+      prog.cards.forEach(rc=>{
+        const local=allCards.find(c=>c.id===rc.id);
+        if(local){
+          // 合并：用更新时间取较新（远端优先，除非本地更后）
+          if(!local.lastStudyTime||(rc.lastStudyTime||'')>=(local.lastStudyTime||'')){
+            Object.assign(local,{status:rc.status,ef:rc.ef,interval:rc.interval,reps:rc.reps,lapses:rc.lapses,due:rc.due,totalRating:rc.totalRating,history:rc.history});
+          }
+        }
+      });
+      saveCards();
+    }
+  }catch(e){}}
   return true;
 }
 
