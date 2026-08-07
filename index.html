@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <title>我的生词本</title>
-<link rel="stylesheet" href="style.css?v=53">
+<link rel="stylesheet" href="style.css?v=54">
 </head>
 <body>
 <div id="app">
@@ -93,6 +93,7 @@
   <div class="editor-sheet">
     <div class="editor-head">
       <span class="editor-title" id="editorTitle">记录生词</span>
+      <span class="ai-lookup-btn" id="btnAiLookup">🤖 AI 查词</span>
       <button class="editor-close" data-close>✕</button>
     </div>
     <div class="editor-body">
@@ -132,6 +133,25 @@
   </div>
 </div>
 
+<!-- AI 查词面板（编辑器子面板） -->
+<div id="aiLookup" class="modal fullscreen hidden">
+  <div class="editor-sheet">
+    <div class="editor-head">
+      <span class="editor-title">🤖 AI 查词</span>
+      <button class="editor-close" id="aiLookupClose">✕</button>
+    </div>
+    <div class="editor-body">
+      <div class="editor-field"><label>输入词语 / 成语</label><input id="aiWord" placeholder="如：沆瀣一气" autocomplete="off"></div>
+      <button class="save-btn" id="btnAiLookupGo" style="margin:0 0 16px">查询 AI 解析</button>
+      <div class="ai-result" id="aiResult">
+        <div class="ai-result-loading hidden" id="aiLoading">正在请求 AI…</div>
+        <div class="ai-result-content hidden" id="aiResultContent"></div>
+        <button class="save-btn ai-save hidden" id="btnAiSave" style="background:#27ae60;margin-top:14px">⬇️ 一键保存为词条</button>
+      </div>
+    </div>
+  </div>
+</div>
+
 <!-- 设置面板 -->
 <div id="settings" class="modal hidden">
   <div class="editor-sheet">
@@ -166,6 +186,6 @@
 
 <div id="toast" class="toast hidden"></div>
 
-<script src="app.js?v=53"></script>
+<script src="app.js?v=54"></script>
 </body>
 </html>
