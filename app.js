@@ -596,20 +596,24 @@ async function doAiLookup(){
   document.getElementById('aiLoading').classList.remove('hidden');
   document.getElementById('aiResultContent').classList.add('hidden');
   document.getElementById('btnAiSave').classList.add('hidden');
-  const prompt=`请对成语/词语「${word}」做详细解析，按下面的栏目格式回答：
+  const prompt=`你是公务员考试「言语理解与表达·逻辑填空」的备考助教。请从考公逻辑填空词语辨析的角度，对「${word}」做精准解析，按以下栏目格式回答：
 
 【释义】
-（一句话解释，50字以内）
-【侧重】
-（适合语境、搭配对象、使用范围）
-【感情色彩】
-（褒义/贬义/中性或其他，简短标注）
-【常见搭配】
-（该词的常用搭配，列表，每项一行用 - 开头）
-【易错易混】
-（容易混淆的词及其区别，列表，每项一行用 - 开头）
+用一句话，从考公真题常见语境解释这个词（不要造词法分析、不要溯源，只说在实际考题中怎么用）。
 
-请严格按这个格式回答，每个栏目只输出内容，不要额外的解释或引导语。`;
+【侧重】
+该词在逻辑填空真题中的常见侧重方向和适用语境（如：侧重主观还是客观、侧重程度轻重、侧重正面还是负面、多用于人还是物等）。
+
+【感情色彩】
+褒义/贬义/中性/含贬义语境等，一句话标注即可。
+
+【常见搭配】
+该词在考公真题中常出现的搭配（每项一行，- 开头，例如：- 与……的新形势相伴生）。
+
+【易错易混】
+列出考公逻辑填空中与该词易混淆的词（每项一行，- 开头），说明区别要点（侧重/程度/对象/搭配之不同）。不要列举字音字形易错内容，只从逻辑填空做题角度辨析。
+
+请严格按此格式回答，不要输出无关内容（如读音、字形、成语故事、近义词列表等）。`;
   const resp=await callAI(prompt);
   document.getElementById('aiLoading').classList.add('hidden');
   if(!resp){ document.getElementById('aiResultContent').innerHTML='<b>请求失败</b>，请检查 AI 设置。'; document.getElementById('aiResultContent').classList.remove('hidden'); return; }
