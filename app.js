@@ -561,7 +561,7 @@ function openSettings(){
   document.getElementById('sDaily').value=settings.dailyNew;
   document.getElementById('sTheme').value=settings.theme;
   document.getElementById('ghUser').value=g.user||'nimamxd25';
-  document.getElementById('ghRepo').value=g.repo||'gk-hlf';
+  document.getElementById('ghRepo').value=g.repo||'gk-cq';
   document.getElementById('ghBranch').value=g.branch||'main';
   document.getElementById('ghToken').value=g.token||'';
   // AI 配置
