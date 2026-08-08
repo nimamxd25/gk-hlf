@@ -756,10 +756,12 @@ async function testAiConnectivitySilent(ai){
 async function doAiLookup(){
   const word=document.getElementById('aiWord').value.trim();
   if(!word){ toast('请输入词语'); return; }
+  const ai=getActiveAi();
+  if(!ai||!ai.model||!ai.key){ toast('请先在设置里配置 AI（API Key + 模型）'); return; }
   document.getElementById('aiLoading').classList.remove('hidden');
   document.getElementById('aiResultContent').classList.add('hidden');
   document.getElementById('btnAiSave').classList.add('hidden');
-  const ai=JSON.parse(localStorage.getItem('gk_ai')||'{}');
+  const aiData=JSON.parse(localStorage.getItem('gk_ai')||'{}');
   const defaultPrompt=`请对成语/词语「${word}」做详细解析，按下面的栏目格式回答：
 
 【释义】
