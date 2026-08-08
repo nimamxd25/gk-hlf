@@ -481,6 +481,8 @@ ${userInfo}
 整体评价：（评价内容）
 掌握建议：（等级）
 说明：（说明）`;
+  const ai=JSON.parse(localStorage.getItem('gk_ai')||'{}');
+  const finalPrompt=(ai.selfPromptTmpl||'').replace(/\{词语\}/g,c.word).replace(/\{标准信息\}/g,cardInfo).replace(/\{用户输入\}/g,userInfo)||prompt;
   // 调用 AI
   const aiResp=await callAI(prompt);
   // 渲染背面：完整释义
@@ -573,6 +575,7 @@ function openSettings(){
   document.getElementById('aiBase').value=ai.base||'';
   document.getElementById('aiModel').value=ai.model||'';
   document.getElementById('aiPromptTmpl').value=ai.promptTmpl||'';
+  document.getElementById('aiSelfPromptTmpl').value=ai.selfPromptTmpl||'';
   document.getElementById('settings').classList.remove('hidden');
 }
 function closeSettings(){document.getElementById('settings').classList.add('hidden');}
@@ -590,7 +593,8 @@ function saveAiConfig(){
     key: document.getElementById('aiKey').value.trim(),
     base: document.getElementById('aiBase').value.trim(),
     model: document.getElementById('aiModel').value.trim(),
-    promptTmpl: document.getElementById('aiPromptTmpl').value.trim()
+    promptTmpl: document.getElementById('aiPromptTmpl').value.trim(),
+    selfPromptTmpl: document.getElementById('aiSelfPromptTmpl').value.trim()
   }));
 }
 // 把设置表单里的 GitHub 配置立即写入 localStorage
@@ -609,7 +613,8 @@ async function doAiLookup(){
   document.getElementById('aiLoading').classList.remove('hidden');
   document.getElementById('aiResultContent').classList.add('hidden');
   document.getElementById('btnAiSave').classList.add('hidden');
-  const prompt=`请对成语/词语「${word}」做详细解析，按下面的栏目格式回答：
+  const ai=JSON.parse(localStorage.getItem('gk_ai')||'{}');
+  const defaultPrompt=`请对成语/词语「${word}」做详细解析，按下面的栏目格式回答：
 
 【释义】
 一句话精准解释，60字以内。重点是这个词在考公真题语境下的核心意思。
@@ -627,6 +632,7 @@ async function doAiLookup(){
 列出 2-3 个考公中易混淆的词（每项一行，- 开头），简要点明区别（侧重/对象/程度/搭配之不同）。
 
 请严格按此格式回答，只输出栏目内容，不要额外解释。`;
+  const prompt=(ai.promptTmpl||'').replace(/\{词语\}/g,word)||defaultPrompt;
   const resp=await callAI(prompt);
   document.getElementById('aiLoading').classList.add('hidden');
   if(!resp){ document.getElementById('aiResultContent').innerHTML='<b>请求失败</b>，请检查 AI 设置。'; document.getElementById('aiResultContent').classList.remove('hidden'); return; }
