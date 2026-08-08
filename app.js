@@ -520,22 +520,165 @@ let aiSuggest=2;
 
 // ---------- AI 调用 ----------
 async function callAI(prompt){
-  const ai=JSON.parse(localStorage.getItem('gk_ai')||'{}');
-  if(!ai||!ai.key){ toast('请先在设置里配置 AI（API Key/Base URL/模型）'); return null; }
+  const ai=getActiveAi(); if(!ai||!ai.key){ toast('请先在设置里配置 AI'); return null; }
   const apiUrl=(ai.base||'https://api.openai.com/v1')+'/chat/completions';
   const model=ai.model||'gpt-4o-mini';
-  const body=JSON.stringify({
-    model, messages:[{role:'user',content:prompt}],
-    max_tokens:300, temperature:0.3
-  });
-  try{
-    const resp=await fetch(apiUrl,{method:'POST',headers:{'Content-Type':'application/json','Authorization':'Bearer '+ai.key},body});
+  const body=JSON.stringify({model,messages:[{role:'user',content:prompt}],max_tokens:300,temperature:0.3});
+  try{ const resp=await fetch(apiUrl,{method:'POST',headers:{'Content-Type':'application/json','Authorization':'Bearer '+ai.key},body});
     if(!resp.ok){ toast('AI 请求失败: HTTP '+resp.status); return null; }
-    const data=await resp.json();
-    return data.choices?.[0]?.message?.content||null;
+    const data=await resp.json(); return data.choices?.[0]?.message?.content||null;
   }catch(e){ toast('AI 请求异常'); return null; }
 }
+function getActiveAi(){
+  const ai=JSON.parse(localStorage.getItem('gk_ai')||'{}');
+  if(Array.isArray(ai.profiles)){ return ai.profiles.find(p=>p.active)||null; }
+  return ai.key?ai:null;
+}
 
+// ---------- AI 设置 ----------
+const aiDefaultLookup=`请对成语/词语「\${word}」做详细解析，按下面的栏目格式回答：
+
+【释义】
+一句话精准解释，60字以内。重点是这个词在考公真题语境下的核心意思。
+
+【侧重】
+从考公逻辑填空角度，说明这个词的常用侧重和语境（用于人还是物、强调程度是轻还是重、是主观评价还是客观描述等）。
+
+【感情色彩】
+褒义/贬义/中性/含贬义语境等，简短标注即可。
+
+【常见搭配】
+该词在考公真题中常出现的搭配（每项一行，- 开头，如：- 与…相得益彰）。
+
+【易错易混】
+列出 2-3 个考公中易混淆的词（每项一行，- 开头），简要点明区别（侧重/对象/程度/搭配之不同）。
+
+请严格按此格式回答，只输出栏目内容，不要额外解释。`;
+const aiDefaultSelfTest=`你是一个考公词语记忆教练。请根据词条的标准信息和用户的输入，从**意思上**评价用户对该词的理解（不要拘泥于字面表述，意思到位即可）。\n\n标准信息：\n\${cardInfo}\n\n用户输入：\n\${userInfo}\n\n请给出：\n1. **整体评价**（1-2句话，指出用户的优点和理解有偏差的地方）\n2. **掌握建议**：从「很陌生」「有点难」「记住了」「很简单」中选择一个\n3. **简短说明**（为什么建议这个等级）\n\n请用下面格式回复：\n整体评价：（评价内容）\n掌握建议：（等级）\n说明：（说明）`;
+
+function openSettings(){
+  const g=ghConfig();
+  document.getElementById('sDaily').value=settings.dailyNew;
+  document.getElementById('sTheme').value=settings.theme;
+  document.getElementById('ghUser').value=g.user||'nimamxd25';
+  document.getElementById('ghRepo').value=g.repo||'gk-hlf';
+  document.getElementById('ghBranch').value=g.branch||'main';
+  document.getElementById('ghToken').value=g.token||'';
+  // AI 配置
+  const ai=JSON.parse(localStorage.getItem('gk_ai')||'{}');
+  if(!ai.promptTmpl) ai.promptTmpl=aiDefaultLookup;
+  if(!ai.selfPromptTmpl) ai.selfPromptTmpl=aiDefaultSelfTest;
+  document.getElementById('aiPromptTmpl').value=ai.promptTmpl||'';
+  document.getElementById('aiSelfPromptTmpl').value=ai.selfPromptTmpl||'';
+  if(!Array.isArray(ai.profiles)) ai.profiles=[];
+  renderAiProfiles(ai.profiles);
+  document.getElementById('settings').classList.remove('hidden');
+}
+function closeSettings(){document.getElementById('settings').classList.add('hidden');}
+function bindSettings(){
+  const st=document.getElementById('settings');
+  st.querySelector('[data-close]').onclick=closeSettings;
+  st.addEventListener('click',e=>{if(e.target===st)closeSettings();});
+  document.getElementById('sSave').onclick=()=>{saveGhForm();saveAiConfig();toast('设置已保存 ✔');closeSettings();};
+  document.getElementById('sPull').onclick=async()=>{saveGhForm();saveAiConfig();toast('拉取中…');await pullAll();renderCurrentView();updateSummary();toast(ghReady()?'已拉取并合并 ✔':'⚠️ 未配置GitHub，请填写配置');};
+  document.getElementById('sPush').onclick=async()=>{saveGhForm();const ok=await pushAll();toast(ok?'已同步到仓库 ✔':'⚠️ 同步失败，请检查配置是否填写正确');};
+  document.getElementById('sExport').onclick=()=>{const blob=new Blob([JSON.stringify(allCards,null,2)],{type:'application/json'});const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='生词本备份_'+todayStr()+'.json';a.click();toast('已导出备份');};
+  document.getElementById('btnAddAiProfile').onclick=()=>addAiProfile();
+}
+function renderAiProfiles(profiles){
+  const el=document.getElementById('aiProfiles');
+  if(!profiles.length){ profiles.push({id:'def',name:'默认',key:'',base:'',model:'',active:true}); }
+  el.innerHTML=profiles.map((p,i)=>`<div class="ai-profile${p.active?' active':''}" data-idx="${i}">
+    <div class="ai-profile-header">
+      <span class="ai-profile-name"><input value="${esc(p.name||'')}" data-field="name" placeholder="配置名称"></span>
+      ${p.active?'<span class="ai-profile-badge">使用中</span>':''}
+    </div>
+    <div class="ai-profile-body">
+      <input type="password" data-field="key" value="${esc(p.key||'')}" placeholder="API Key (sk-...)">
+      <input data-field="base" value="${esc(p.base||'')}" placeholder="https://api.openai.com/v1">
+      <div class="ai-profile-model-row">
+        <select data-field="model">${(p._models||['']).map(m=>`<option value="${esc(m)}" ${m===p.model?'selected':''}>${m||'自行输入'}</option>`).join('')}</select>
+        <button class="fetch-models" data-idx="${i}">获取模型</button>
+      </div>
+    </div>
+    <div class="ai-profile-actions">
+      ${profiles.length>1?`<button class="del-profile" data-idx="${i}">删除</button>`:''}
+      ${!p.active?`<button class="activate-btn" data-idx="${i}">启用</button>`:''}
+    </div>
+  </div>`).join('');
+  // 绑定事件：获取模型按钮
+  el.querySelectorAll('.fetch-models').forEach(b=>b.onclick=e=>{
+    e.preventDefault(); e.stopPropagation();
+    const idx=+b.dataset.idx;
+    fetchModelsForProfile(idx);
+  });
+  el.querySelectorAll('.activate-btn').forEach(b=>b.onclick=e=>{
+    const idx=+b.dataset.idx;
+    const profiles=getProfilesFromDOM(); profiles.forEach((p,i)=>{ p.active=i===idx; }); renderAiProfiles(profiles);
+  });
+  el.querySelectorAll('.del-profile').forEach(b=>b.onclick=e=>{
+    const idx=+b.dataset.idx;
+    let profiles=getProfilesFromDOM(); if(profiles.length<=1)return;
+    profiles.splice(idx,1); if(!profiles.some(p=>p.active))profiles[0].active=true; renderAiProfiles(profiles);
+  });
+}
+function addAiProfile(){
+  const profiles=getProfilesFromDOM();
+  profiles.push({id:'pro_'+Date.now().toString(36),name:'新配置',key:'',base:'',model:'',active:false, _models:[]});
+  renderAiProfiles(profiles);
+}
+function getProfilesFromDOM(){
+  const profiles=[];
+  document.querySelectorAll('#aiProfiles .ai-profile').forEach(el=>{
+    profiles.push({
+      id: el.dataset.xid||('pro_'+Date.now().toString(36)+Math.random().toString(36).slice(2,5)),
+      name: el.querySelector('[data-field="name"]').value.trim()||'默认',
+      key: el.querySelector('[data-field="key"]').value.trim(),
+      base: el.querySelector('[data-field="base"]').value.trim(),
+      model: el.querySelector('[data-field="model"]').value.trim(),
+      active: el.classList.contains('active'),
+      _models: Array.from(el.querySelector('[data-field="model"]').options).map(o=>o.value).filter(Boolean)
+    });
+  });
+  return profiles;
+}
+async function fetchModelsForProfile(idx){
+  const el=document.querySelectorAll('#aiProfiles .ai-profile')[idx];
+  const base=el.querySelector('[data-field="base"]').value.trim()||'https://api.openai.com/v1';
+  const key=el.querySelector('[data-field="key"]').value.trim();
+  if(!key){ toast('请先填写 API Key'); return; }
+  toast('获取模型列表…');
+  try{
+    const resp=await fetch(base+'/models',{headers:{'Authorization':'Bearer '+key}});
+    if(!resp.ok){ toast('获取失败: HTTP '+resp.status); return; }
+    const data=await resp.json();
+    const models=(data.data||[]).map(m=>m.id).sort();
+    if(!models.length){ toast('未获取到模型'); return; }
+    const sel=el.querySelector('[data-field="model"]');
+    sel.innerHTML=models.map(m=>`<option value="${esc(m)}">${m}</option>`).join('');
+    // pref chat model
+    const chatModels=['gpt-4o-mini','gpt-4o','gpt-3.5-turbo','deepseek-chat','qwen-turbo','qwen-plus','claude-3'];
+    for(const pref of chatModels){ const found=models.find(m=>m.includes(pref)); if(found){ sel.value=found; break; } }
+    toast(`获取到 ${models.length} 个模型`);
+  }catch(e){ toast('网络异常'); }
+}
+function saveAiConfig(){
+  const profiles=getProfilesFromDOM();
+  const ai={
+    profiles,
+    promptTmpl: document.getElementById('aiPromptTmpl').value.trim(),
+    selfPromptTmpl: document.getElementById('aiSelfPromptTmpl').value.trim()
+  };
+  localStorage.setItem('gk_ai', JSON.stringify(ai));
+}
+// 把设置表单里的 GitHub 配置立即写入 localStorage
+function saveGhForm(){
+  settings.dailyNew=Math.min(100,Math.max(1,+document.getElementById('sDaily').value||20));
+  settings.theme=document.getElementById('sTheme').value;saveSettings();
+  saveGh({user:document.getElementById('ghUser').value.trim(),repo:document.getElementById('ghRepo').value.trim(),branch:document.getElementById('ghBranch').value.trim()||'main',token:document.getElementById('ghToken').value.trim()});
+}
+
+// ---------- 学习流程收尾（SM-2 分级退出） ----------
 function gradeFromButton(g){const c=studyQueue[studyIndex];applyGrade(c,g);saveCards();studyIndex++;if(studyIndex<studyQueue.length)renderStudyCard();else endStudy();}
 function endStudy(){refs.overlay.classList.add('hidden');toast('本组学习完成 🎉');saveCards();pushAll();updateSummary();renderCurrentView();}
 function applyGrade(c,g){
@@ -558,50 +701,6 @@ function reviewFlow(){
   if(due.length){startStudy(due.map(c=>c.id));refs.label.textContent='复习';}
   else if(learned.length){startStudy(learned.slice(0,settings.dailyNew).map(c=>c.id));refs.label.textContent='巩固复习';}
   else toast('还没有已学词汇，先学习吧');
-}
-
-// ---------- 设置 ----------
-function openSettings(){
-  const g=ghConfig();
-  document.getElementById('sDaily').value=settings.dailyNew;
-  document.getElementById('sTheme').value=settings.theme;
-  document.getElementById('ghUser').value=g.user||'nimamxd25';
-  document.getElementById('ghRepo').value=g.repo||'gk-hlf';
-  document.getElementById('ghBranch').value=g.branch||'main';
-  document.getElementById('ghToken').value=g.token||'';
-  // AI 配置
-  const ai=JSON.parse(localStorage.getItem('gk_ai')||'{}');
-  document.getElementById('aiKey').value=ai.key||'';
-  document.getElementById('aiBase').value=ai.base||'';
-  document.getElementById('aiModel').value=ai.model||'';
-  document.getElementById('aiPromptTmpl').value=ai.promptTmpl||'';
-  document.getElementById('aiSelfPromptTmpl').value=ai.selfPromptTmpl||'';
-  document.getElementById('settings').classList.remove('hidden');
-}
-function closeSettings(){document.getElementById('settings').classList.add('hidden');}
-function bindSettings(){
-  const st=document.getElementById('settings');
-  st.querySelector('[data-close]').onclick=closeSettings;
-  st.addEventListener('click',e=>{if(e.target===st)closeSettings();});
-  document.getElementById('sSave').onclick=()=>{saveGhForm();saveAiConfig();toast('设置已保存 ✔');closeSettings();};
-  document.getElementById('sPull').onclick=async()=>{saveGhForm();saveAiConfig();toast('拉取中…');await pullAll();renderCurrentView();updateSummary();toast(ghReady()?'已拉取并合并 ✔':'⚠️ 未配置GitHub，请填写配置');};
-  document.getElementById('sPush').onclick=async()=>{saveGhForm();const ok=await pushAll();toast(ok?'已同步到仓库 ✔':'⚠️ 同步失败，请检查配置是否填写正确');};
-  document.getElementById('sExport').onclick=()=>{const blob=new Blob([JSON.stringify(allCards,null,2)],{type:'application/json'});const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='生词本备份_'+todayStr()+'.json';a.click();toast('已导出备份');};
-}
-function saveAiConfig(){
-  localStorage.setItem('gk_ai', JSON.stringify({
-    key: document.getElementById('aiKey').value.trim(),
-    base: document.getElementById('aiBase').value.trim(),
-    model: document.getElementById('aiModel').value.trim(),
-    promptTmpl: document.getElementById('aiPromptTmpl').value.trim(),
-    selfPromptTmpl: document.getElementById('aiSelfPromptTmpl').value.trim()
-  }));
-}
-// 把设置表单里的 GitHub 配置立即写入 localStorage
-function saveGhForm(){
-  settings.dailyNew=Math.min(100,Math.max(1,+document.getElementById('sDaily').value||20));
-  settings.theme=document.getElementById('sTheme').value;saveSettings();
-  saveGh({user:document.getElementById('ghUser').value.trim(),repo:document.getElementById('ghRepo').value.trim(),branch:document.getElementById('ghBranch').value.trim()||'main',token:document.getElementById('ghToken').value.trim()});
 }
 
 // ---------- AI 查词 ----------
