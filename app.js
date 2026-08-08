@@ -604,6 +604,7 @@ function renderAiProfiles(profiles){
     </div>
     <div class="ai-profile-actions">
       ${profiles.length>1?`<button class="del-profile" data-idx="${i}">删除</button>`:''}
+      <button class="test-profile" data-idx="${i}">测试连接</button>
       ${!p.active?`<button class="activate-btn" data-idx="${i}">启用</button>`:''}
     </div>
   </div>`).join('');
@@ -612,6 +613,11 @@ function renderAiProfiles(profiles){
     e.preventDefault(); e.stopPropagation();
     const idx=+b.dataset.idx;
     fetchModelsForProfile(idx);
+  });
+  el.querySelectorAll('.test-profile').forEach(b=>b.onclick=e=>{
+    e.preventDefault(); e.stopPropagation();
+    const idx=+b.dataset.idx;
+    testAiProfile(idx);
   });
   el.querySelectorAll('.activate-btn').forEach(b=>b.onclick=e=>{
     const idx=+b.dataset.idx;
@@ -668,6 +674,20 @@ async function fetchModelsForProfile(idx){
     toast(`获取到 ${models.length} 个模型`);
   }catch(e){ toast('网络异常'); }
 }
+// 测试 API 连通性
+async function testAiProfile(idx){
+  const el=document.querySelectorAll('#aiProfiles .ai-profile')[idx];
+  const base=(el.querySelector('[data-field="base"]').value.trim()||'https://api.openai.com/v1');
+  const key=el.querySelector('[data-field="key"]').value.trim();
+  if(!key){ toast('请先填写 API Key'); return; }
+  toast('测试中…');
+  try{
+    const resp=await fetch(base+'/models',{headers:{'Authorization':'Bearer '+key}});
+    if(resp.ok){ toast('✅ 连接成功'); }
+    else{ toast('❌ 连接失败: HTTP '+resp.status); }
+  }catch(e){ toast('❌ 网络异常'); }
+}
+
 function saveAiConfig(){
   const profiles=getProfilesFromDOM();
   const ai={
