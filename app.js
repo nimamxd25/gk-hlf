@@ -749,6 +749,7 @@ function openAiLookup(){
   if(modelEl){ modelEl.textContent=ai?`${ai.name||'API'} · ${ai.model||'未选模型'}`:'未配置 AI'; }
   if(ai){ testAiConnectivitySilent(ai).then(ok=>{ if(modelEl)modelEl.style.color=ok?'var(--good)':'var(--bad)'; }); }
 }
+function closeAiLookup(){ document.getElementById('aiLookup').classList.add('hidden'); }
 async function testAiConnectivitySilent(ai){
   try{ const resp=await fetch((ai.base||'https://api.openai.com/v1')+'/models',{headers:{'Authorization':'Bearer '+ai.key}}); return resp.ok; }
   catch(e){ return false; }
