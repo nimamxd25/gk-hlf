@@ -1,6 +1,6 @@
 {
   "app": "gkCiHui",
-  "updated": "2026-08-08T07:45:21.101Z",
+  "updated": "2026-08-08T07:51:23.121Z",
   "cards": [
     {
       "id": "cmsbc32t5rrx2",
@@ -11,7 +11,7 @@
       "lapses": 0,
       "due": "2026-08-04",
       "totalRating": 2,
-      "lastStudyTime": "2026-08-08T07:45:21.101Z",
+      "lastStudyTime": "2026-08-08T07:51:23.121Z",
       "history": [
         {
           "date": "2026-08-02",
@@ -28,7 +28,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 2,
-      "lastStudyTime": "2026-08-08T07:45:21.101Z",
+      "lastStudyTime": "2026-08-08T07:51:23.121Z",
       "history": [
         {
           "date": "2026-08-07",
@@ -45,7 +45,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 2,
-      "lastStudyTime": "2026-08-08T07:45:21.101Z",
+      "lastStudyTime": "2026-08-08T07:51:23.121Z",
       "history": [
         {
           "date": "2026-08-07",
@@ -62,7 +62,7 @@
       "lapses": 0,
       "due": "2026-08-04",
       "totalRating": 2,
-      "lastStudyTime": "2026-08-08T07:45:21.101Z",
+      "lastStudyTime": "2026-08-08T07:51:23.121Z",
       "history": [
         {
           "date": "2026-08-02",
@@ -72,15 +72,20 @@
     },
     {
       "id": "cmsbg87y7wia9",
-      "status": "fresh",
-      "ef": 2.5,
-      "interval": 0,
-      "reps": 0,
+      "status": "reviewing",
+      "ef": 2.6,
+      "interval": 4,
+      "reps": 1,
       "lapses": 0,
-      "due": "2026-08-02",
-      "totalRating": 0,
-      "lastStudyTime": "2026-08-08T07:45:21.102Z",
-      "history": []
+      "due": "2026-08-12",
+      "totalRating": 3,
+      "lastStudyTime": "2026-08-08T07:51:23.121Z",
+      "history": [
+        {
+          "date": "2026-08-08",
+          "grade": 3
+        }
+      ]
     },
     {
       "id": "cmsbgbrr9s5cs",
@@ -91,7 +96,7 @@
       "lapses": 0,
       "due": "2026-08-04",
       "totalRating": 2,
-      "lastStudyTime": "2026-08-08T07:45:21.102Z",
+      "lastStudyTime": "2026-08-08T07:51:23.121Z",
       "history": [
         {
           "date": "2026-08-02",
@@ -108,7 +113,7 @@
       "lapses": 0,
       "due": "2026-08-03",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-08T07:45:21.102Z",
+      "lastStudyTime": "2026-08-08T07:51:23.121Z",
       "history": []
     },
     {
@@ -120,7 +125,7 @@
       "lapses": 0,
       "due": "2026-08-07",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-08T07:45:21.102Z",
+      "lastStudyTime": "2026-08-08T07:51:23.121Z",
       "history": []
     },
     {
@@ -132,7 +137,7 @@
       "lapses": 0,
       "due": "2026-08-07",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-08T07:45:21.102Z",
+      "lastStudyTime": "2026-08-08T07:51:23.121Z",
       "history": []
     },
     {
@@ -144,7 +149,7 @@
       "lapses": 0,
       "due": "2026-08-07",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-08T07:45:21.102Z",
+      "lastStudyTime": "2026-08-08T07:51:23.121Z",
       "history": []
     },
     {
@@ -156,7 +161,7 @@
       "lapses": 0,
       "due": "2026-08-07",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-08T07:45:21.102Z",
+      "lastStudyTime": "2026-08-08T07:51:23.121Z",
       "history": []
     },
     {
@@ -168,7 +173,7 @@
       "lapses": 0,
       "due": "2026-08-07",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-08T07:45:21.102Z",
+      "lastStudyTime": "2026-08-08T07:51:23.121Z",
       "history": []
     },
     {
@@ -180,7 +185,7 @@
       "lapses": 0,
       "due": "2026-08-07",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-08T07:45:21.102Z",
+      "lastStudyTime": "2026-08-08T07:51:23.121Z",
       "history": []
     },
     {
@@ -192,7 +197,7 @@
       "lapses": 0,
       "due": "2026-08-07",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-08T07:45:21.102Z",
+      "lastStudyTime": "2026-08-08T07:51:23.121Z",
       "history": []
     },
     {
@@ -204,7 +209,7 @@
       "lapses": 0,
       "due": "2026-08-07",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-08T07:45:21.102Z",
+      "lastStudyTime": "2026-08-08T07:51:23.121Z",
       "history": []
     },
     {
@@ -216,7 +221,7 @@
       "lapses": 0,
       "due": "2026-08-07",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-08T07:45:21.102Z",
+      "lastStudyTime": "2026-08-08T07:51:23.121Z",
       "history": []
     },
     {
@@ -228,7 +233,7 @@
       "lapses": 0,
       "due": "2026-08-07",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-08T07:45:21.102Z",
+      "lastStudyTime": "2026-08-08T07:51:23.121Z",
       "history": []
     },
     {
@@ -240,7 +245,7 @@
       "lapses": 0,
       "due": "2026-08-07",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-08T07:45:21.102Z",
+      "lastStudyTime": "2026-08-08T07:51:23.121Z",
       "history": []
     },
     {
@@ -252,19 +257,7 @@
       "lapses": 0,
       "due": "2026-08-08",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-08T07:45:21.102Z",
-      "history": []
-    },
-    {
-      "id": "cmsk1dbmyi6sh",
-      "status": "fresh",
-      "ef": 2.5,
-      "interval": 0,
-      "reps": 0,
-      "lapses": 0,
-      "due": "2026-08-08",
-      "totalRating": 0,
-      "lastStudyTime": "2026-08-08T07:45:21.102Z",
+      "lastStudyTime": "2026-08-08T07:51:23.121Z",
       "history": []
     }
   ]
