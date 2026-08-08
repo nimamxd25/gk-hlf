@@ -597,7 +597,8 @@ function renderAiProfiles(profiles){
       <input type="password" data-field="key" value="${esc(p.key||'')}" placeholder="API Key (sk-...)">
       <input data-field="base" value="${esc(p.base||'')}" placeholder="https://api.openai.com/v1">
       <div class="ai-profile-model-row">
-        <select data-field="model">${(p._models||['']).map(m=>`<option value="${esc(m)}" ${m===p.model?'selected':''}>${m||'自行输入'}</option>`).join('')}</select>
+        <select data-field="model">${(p._models||['']).map(m=>`<option value="${esc(m)}" ${m===p.model?'selected':''}>${m||'自行输入'}</option>`).join('')}<option value="__custom__">✏️ 自行输入…</option></select>
+        <input data-field="modelCustom" style="${(p.model&&!p._models?.includes(p.model))?'':'display:none'}" value="${esc(p.model||'')}" placeholder="输入模型名">
         <button class="fetch-models" data-idx="${i}">获取模型</button>
       </div>
     </div>
@@ -611,6 +612,15 @@ function renderAiProfiles(profiles){
     e.preventDefault(); e.stopPropagation();
     const idx=+b.dataset.idx;
     fetchModelsForProfile(idx);
+  });
+  // 模型下拉：选"自行输入"时显示文本框
+  el.querySelectorAll('select[data-field="model"]').forEach(sel=>{
+    sel.onchange=()=>{
+      const row=sel.closest('.ai-profile-model-row');
+      const ci=row.querySelector('[data-field="modelCustom"]');
+      if(sel.value==='__custom__'){ ci.style.display=''; ci.focus(); }
+      else{ ci.style.display='none'; }
+    };
   });
   el.querySelectorAll('.activate-btn').forEach(b=>b.onclick=e=>{
     const idx=+b.dataset.idx;
@@ -635,7 +645,7 @@ function getProfilesFromDOM(){
       name: el.querySelector('[data-field="name"]').value.trim()||'默认',
       key: el.querySelector('[data-field="key"]').value.trim(),
       base: el.querySelector('[data-field="base"]').value.trim(),
-      model: el.querySelector('[data-field="model"]').value.trim(),
+      model: (()=>{ const sel=el.querySelector('[data-field="model"]'); const ci=el.querySelector('[data-field="modelCustom"]'); return sel.value==='__custom__'?ci.value.trim():sel.value; })(),
       active: el.classList.contains('active'),
       _models: Array.from(el.querySelector('[data-field="model"]').options).map(o=>o.value).filter(Boolean)
     });
@@ -655,10 +665,17 @@ async function fetchModelsForProfile(idx){
     const models=(data.data||[]).map(m=>m.id).sort();
     if(!models.length){ toast('未获取到模型'); return; }
     const sel=el.querySelector('[data-field="model"]');
-    sel.innerHTML=models.map(m=>`<option value="${esc(m)}">${m}</option>`).join('');
+    const ci=el.querySelector('[data-field="modelCustom"]');
+    // 保留当前选择（如果有自定义值）
+    const cur=sel.value==='__custom__'?ci.value:sel.value;
+    sel.innerHTML=models.map(m=>`<option value="${esc(m)}">${m}</option>`).join('')+'<option value="__custom__">✏️ 自行输入…</option>';
     // pref chat model
     const chatModels=['gpt-4o-mini','gpt-4o','gpt-3.5-turbo','deepseek-chat','qwen-turbo','qwen-plus','claude-3'];
-    for(const pref of chatModels){ const found=models.find(m=>m.includes(pref)); if(found){ sel.value=found; break; } }
+    let found=false;
+    for(const pref of chatModels){ const m=models.find(x=>x.includes(pref)); if(m){ sel.value=m; found=true; break; } }
+    if(!found&&cur&&models.includes(cur)){ sel.value=cur; }
+    else if(!found){ sel.value=models[0]||'__custom__'; }
+    ci.style.display=sel.value==='__custom__'?'':'none';
     toast(`获取到 ${models.length} 个模型`);
   }catch(e){ toast('网络异常'); }
 }
