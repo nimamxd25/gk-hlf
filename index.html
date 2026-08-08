@@ -177,7 +177,8 @@
       <div class="form-group"><label>API Key（OpenAI 兼容）</label><input id="aiKey" type="password" placeholder="sk-..."></div>
       <div class="form-group"><label>Base URL（可留空默认 OpenAI）</label><input id="aiBase" placeholder="https://api.openai.com/v1"></div>
       <div class="form-group"><label>模型名</label><input id="aiModel" placeholder="如：gpt-4o-mini / deepseek-chat"></div>
-      <div class="form-group"><label>自定义提示词（可用 {标准释义} 等占位，留空用内置）</label><textarea id="aiPromptTmpl" rows="2" placeholder="留空则使用内置提示词"></textarea></div>
+      <div class="form-group"><label>自定义查词提示词（AI 查词用，可用 `{词语}` 占位）</label><textarea id="aiPromptTmpl" rows="2" placeholder="留空则使用内置提示词"></textarea></div>
+      <div class="form-group"><label>自定义自测提示词（AI 自测用，可用 `{词语}`/`{标准信息}`/`{用户输入}` 占位）</label><textarea id="aiSelfPromptTmpl" rows="2" placeholder="留空则使用内置提示词"></textarea></div>
       <div style="font-size:12px;color:var(--muted);line-height:1.7;margin-top:0">API Key 只存在本机 localStorage，不上传任何仓库。支持所有兼容 OpenAI 的模型（GPT/DeepSeek/通义千问等）。</div>
     </div>
   </div>
@@ -185,6 +186,6 @@
 
 <div id="toast" class="toast hidden"></div>
 
-<script src="app.js?v=58"></script>
+<script src="app.js?v=60"></script>
 </body>
 </html>
