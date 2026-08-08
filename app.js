@@ -597,8 +597,8 @@ function renderAiProfiles(profiles){
       <input type="password" data-field="key" value="${esc(p.key||'')}" placeholder="API Key (sk-...)">
       <input data-field="base" value="${esc(p.base||'')}" placeholder="https://api.openai.com/v1">
       <div class="ai-profile-model-row">
-        <input list="aiModelList${i}" data-field="model" value="${esc(p.model||'')}" placeholder="输入或选择模型">
-        <datalist id="aiModelList${i}">${(p._models||[]).map(m=>`<option value="${esc(m)}">`).join('')}</datalist>
+        <select data-field="model">${(p._models||[]).map(m=>`<option value="${esc(m)}" ${m===p.model?'selected':''}>${m}</option>`).join('')}${(!p._models||!p._models.length||(p.model&&!p._models.includes(p.model)))?`<option value="${esc(p.model||'')}" selected>${p.model||'（未设置）'}</option>`:''}<option value="__custom__" ${!p.model?'selected':''}>✏️ 自行输入…</option></select>
+        <input data-field="modelCustom" style="${(!p._models||!p._models.includes(p.model)) && p.model?'':'display:none'}" value="${(!p._models||!p._models.includes(p.model))?esc(p.model||''):''}" placeholder="输入模型名">
         <button class="fetch-models" data-idx="${i}">获取</button>
       </div>
     </div>
@@ -618,6 +618,15 @@ function renderAiProfiles(profiles){
     e.preventDefault(); e.stopPropagation();
     const idx=+b.dataset.idx;
     testAiProfile(idx);
+  });
+  // 模型select联动：选"自行输入"显示文本框
+  el.querySelectorAll('select[data-field="model"]').forEach(sel=>{
+    sel.onchange=()=>{
+      const row=sel.closest('.ai-profile-model-row');
+      const ci=row.querySelector('[data-field="modelCustom"]');
+      if(sel.value==='__custom__'){ ci.style.display=''; ci.value=''; ci.focus(); }
+      else{ ci.style.display='none'; }
+    };
   });
   el.querySelectorAll('.activate-btn').forEach(b=>b.onclick=e=>{
     const idx=+b.dataset.idx;
@@ -642,9 +651,9 @@ function getProfilesFromDOM(){
       name: el.querySelector('[data-field="name"]').value.trim()||'默认',
       key: el.querySelector('[data-field="key"]').value.trim(),
       base: el.querySelector('[data-field="base"]').value.trim(),
-      model: el.querySelector('[data-field="model"]').value.trim(),
+      model: (()=>{ const s=el.querySelector('[data-field="model"]'); const ci=el.querySelector('[data-field="modelCustom"]'); return s.value==='__custom__'?ci.value.trim():s.value; })(),
       active: el.classList.contains('active'),
-      _models: Array.from(el.querySelector(`datalist[id^="aiModelList"]`)?.options||[],o=>o.value).filter(Boolean)
+      _models: Array.from(el.querySelector('select[data-field="model"]').options).map(o=>o.value).filter(v=>v!=='__custom__')
     });
   });
   return profiles;
@@ -661,9 +670,9 @@ async function fetchModelsForProfile(idx){
     const data=await resp.json();
     const models=(data.data||[]).map(m=>m.id).sort();
     if(!models.length){ toast('未获取到模型'); return; }
-    const sel=el.querySelector('[data-field="model"]');
-    const dl=el.querySelector(`datalist[id^="aiModelList"]`);
-    const cur=sel.value.trim();
+    const sel=el.querySelector('select[data-field="model"]');
+    const ci=el.querySelector('[data-field="modelCustom"]');
+    const cur=sel.value==='__custom__'?ci.value.trim():sel.value;
     dl.innerHTML=models.map(m=>`<option value="${esc(m)}">`).join('');
     // pref chat model
     const chatModels=['gpt-4o-mini','gpt-4o','gpt-3.5-turbo','deepseek-chat','qwen-turbo','qwen-plus','claude-3'];
@@ -671,6 +680,7 @@ async function fetchModelsForProfile(idx){
     for(const pref of chatModels){ const m=models.find(x=>x.includes(pref)); if(m){ sel.value=m; found=true; break; } }
     if(!found&&cur&&models.includes(cur)){ sel.value=cur; }
     else if(!found&&models.length){ sel.value=models[0]; }
+    ci.style.display='none';
     toast(`获取到 ${models.length} 个模型`);
   }catch(e){ toast('网络异常'); }
 }
@@ -730,8 +740,19 @@ function reviewFlow(){
 }
 
 // ---------- AI 查词 ----------
-function openAiLookup(){ document.getElementById('aiLookup').classList.remove('hidden'); document.getElementById('aiWord').value=''; document.getElementById('aiResultContent').classList.add('hidden'); document.getElementById('btnAiSave').classList.add('hidden'); }
-function closeAiLookup(){ document.getElementById('aiLookup').classList.add('hidden'); }
+function openAiLookup(){
+  document.getElementById('aiLookup').classList.remove('hidden');
+  document.getElementById('aiWord').value=''; document.getElementById('aiResultContent').classList.add('hidden'); document.getElementById('btnAiSave').classList.add('hidden');
+  // 显示当前模型 + 异步测试连通性
+  const ai=getActiveAi();
+  const modelEl=document.getElementById('aiLookupModel');
+  if(modelEl){ modelEl.textContent=ai?`${ai.name||'API'} · ${ai.model||'未选模型'}`:'未配置 AI'; }
+  if(ai){ testAiConnectivitySilent(ai).then(ok=>{ if(modelEl)modelEl.style.color=ok?'var(--good)':'var(--bad)'; }); }
+}
+async function testAiConnectivitySilent(ai){
+  try{ const resp=await fetch((ai.base||'https://api.openai.com/v1')+'/models',{headers:{'Authorization':'Bearer '+ai.key}}); return resp.ok; }
+  catch(e){ return false; }
+}
 async function doAiLookup(){
   const word=document.getElementById('aiWord').value.trim();
   if(!word){ toast('请输入词语'); return; }
