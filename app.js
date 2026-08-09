@@ -134,18 +134,18 @@ async function pullAll(){
 
 // 加载预制词库（从仓库 builtin_words.json）
 async function loadBuiltinWords(){
-  const b=await ghGet('builtin_words.json');
-  if(!b||!b.content)return false;
+  // 从 raw URL 直读（无需 token）
   try{
-    const builtin=JSON.parse(b.content);
-    if(Array.isArray(builtin)){
-      builtin.forEach(item=>{
-        if(!allCards.find(c=>c.word===item.word && c.meaning===item.meaning)){
-          allCards.push(newCard({...item, source:'内置'}));
-        }
-      });
-      saveCards(); return true;
-    }
+    const r=await fetch('https://raw.githubusercontent.com/nimamxd25/gk-hlf/main/builtin_words.json');
+    if(!r.ok)return false;
+    const builtin=await r.json();
+    if(!Array.isArray(builtin))return false;
+    builtin.forEach(item=>{
+      if(!allCards.find(c=>c.word===item.word && c.meaning===item.meaning)){
+        allCards.push(newCard({...item, source:'内置'}));
+      }
+    });
+    saveCards(); return true;
   }catch(e){}
   return false;
 }
@@ -202,13 +202,18 @@ function renderCurrentView(){
 }
 function cardHTML(c){
   const tag=STATUS[c.status]||'🆕 新词';
-  const srcTag=c.source==='内置'?'<span class="wc-src-tag">内置</span>':(c.source==='手动'?'':'（未知）');
+  const srcTag=c.source==='内置'?'<span class="wc-src-tag">内置</span>':'';
   const word=esc(c.word||'');
   const meaning=esc(c.meaning||'')||'<i style="color:var(--muted)">（暂无解释）</i>';
   const delBtn=c.source==='内置'?'':`<button class="del" data-id="${c.id}">删除</button>`;
+  // 上次学习信息
+  let learnInfo='';
+  if(c.lastStudyTime){ learnInfo=`<span class="wc-learn-info">📅 ${formatDate(c.lastStudyTime)} · ${STATUS[c.status]}</span>`; }
+  else if(c.updated_at){ learnInfo=`<span class="wc-learn-info">📥 ${formatDate(c.updated_at)}</span>`; }
   return `<div class="word-card" data-id="${c.id}">
     <div class="wc-top"><span class="wc-word">${word}</span>${srcTag}<span class="wc-tag">${tag}</span></div>
     <div class="wc-meaning">${meaning}</div>
+    ${learnInfo?`<div class="wc-foot">${learnInfo}</div>`:''}
     <div class="wc-action">
       <button class="edit" data-id="${c.id}">编辑</button>
       <button class="study" data-id="${c.id}">学习</button>
@@ -216,6 +221,8 @@ function cardHTML(c){
     </div>
   </div>`;
 }
+// 格式化日期为中文
+function formatDate(d){ if(!d)return''; const a=new Date(d); return `${a.getMonth()+1}/${a.getDate()} ${a.getHours().toString().padStart(2,'0')}:${a.getMinutes().toString().padStart(2,'0')}`; }
 function goLibrary(){browseMode=true;currentSearch='';currentFilter='all';document.getElementById('searchInput').value='';renderCurrentView();}
 // 按状态浏览（如：已掌握 / 待学 / 复习中）
 function goStatView(status){
@@ -915,9 +922,10 @@ function boot(){
   loadSettings();
   const stored=loadCards();
   if(stored&&Array.isArray(stored))allCards=stored;else{allCards=[];saveCards();}
-  // 加载预制词库（仅在本地无任何词条时自动加载一次）
-  if(!allCards.length&&ghReady()){
-    loadBuiltinWords().then(loaded=>{ if(loaded){ saveCards(); updateSummary(); renderCurrentView(); toast('已加载 713 预制词条'); } });
+  // 加载预制词库（仅首次，本地标记 builtin_v1 防重复加载）
+  const builtinLoaded = localStorage.getItem('builtin_v1');
+  if(!builtinLoaded){
+    loadBuiltinWords().then(loaded=>{ if(loaded){ localStorage.setItem('builtin_v1','1'); saveCards(); updateSummary(); renderCurrentView(); toast('已加载 713 预制词条'); } });
   }
   updateSummary();renderCurrentView();
   bindEditor();bindSettings();bindEvents();
