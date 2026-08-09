@@ -186,11 +186,19 @@ function renderCurrentView(){
     document.getElementById('emptyAdd').onclick=openEditor;
     return;
   }
-  const todayCards=fresh.slice(0, settings.dailyNew);
+  // 计算今日批次：每天第一次学习时从 fresh 中取出前 dailyNew 个
+  const todayKey='gk_daily_'+todayStr();
+  let dailyBatch=JSON.parse(localStorage.getItem(todayKey)||'null');
+  if(!dailyBatch){
+    dailyBatch=fresh.slice(0,settings.dailyNew).map(c=>c.id);
+    localStorage.setItem(todayKey,JSON.stringify(dailyBatch));
+  }
+  // 过滤出批次中仍为 fresh 的卡片
+  const batchCards=dailyBatch.map(id=>allCards.find(c=>c.id===id)).filter(c=>c&&c.status==='fresh');
   let html=`<div class="section-title"><span>📌 待学/待复习</span></div>`;
-  if(todayCards.length){
-    html+=`<div class="section-title"><span>🆕 今日待学（${todayCards.length} / ${fresh.length}）</span></div>`;
-    todayCards.forEach(c=>html+=cardHTML(c));
+  if(batchCards.length){
+    html+=`<div class="section-title"><span>🆕 今日待学（${batchCards.length} / ${dailyBatch.length}）</span></div>`;
+    batchCards.forEach(c=>html+=cardHTML(c));
   } else if(due.length){
     html+=`<div class="section-title"><span>⏰ 今日待复习（${due.length}）</span></div>`;
     due.slice(0,20).forEach(c=>html+=cardHTML(c));
@@ -875,8 +883,11 @@ function saveAiLookupResult(){
 // ---------- 事件 ----------
 function bindEvents(){
   document.getElementById('btnStudy').onclick=()=>{browseMode=false;currentSearch='';document.getElementById('searchInput').value='';renderCurrentView();
-    const fresh=allCards.filter(c=>c.status==='fresh');
-    if(fresh.length)startStudy(fresh.slice(0,settings.dailyNew).map(c=>c.id));
+    const todayKey='gk_daily_'+todayStr();
+    let dailyBatch=JSON.parse(localStorage.getItem(todayKey)||'null');
+    if(!dailyBatch){ const fresh=allCards.filter(c=>c.status==='fresh'); dailyBatch=fresh.slice(0,settings.dailyNew).map(c=>c.id); localStorage.setItem(todayKey,JSON.stringify(dailyBatch)); }
+    const batchCards=dailyBatch.map(id=>allCards.find(c=>c.id===id)).filter(c=>c&&c.status==='fresh');
+    if(batchCards.length)startStudy(batchCards.map(c=>c.id));
     else{const due=allCards.filter(c=>c.status!=='fresh'&&c.status!=='mastered'&&c.due<=todayStr());if(due.length)reviewFlow();else toast('还没有新词，先添加或去复习');}
   };
   document.getElementById('btnReview').onclick=()=>{browseMode=false;currentSearch='';document.getElementById('searchInput').value='';renderCurrentView();reviewFlow();};
