@@ -212,7 +212,6 @@ function cardHTML(c){
   else if(c.updated_at){ learnInfo=`<span class="wc-learn-info">📥 ${formatDate(c.updated_at)}</span>`; }
   return `<div class="word-card" data-id="${c.id}">
     <div class="wc-top"><span class="wc-word">${word}</span>${srcTag}<span class="wc-tag">${tag}</span></div>
-    <div class="wc-meaning">${meaning}</div>
     ${learnInfo?`<div class="wc-foot">${learnInfo}</div>`:''}
     <div class="wc-action">
       <button class="edit" data-id="${c.id}">编辑</button>
