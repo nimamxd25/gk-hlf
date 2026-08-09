@@ -166,6 +166,12 @@ body{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei
 .ai-result-content b{color:var(--primary);}
 .ai-result-content hr{border:none;border-top:1px solid var(--border);margin:10px 0;}
 .ai-save{margin-top:12px;}
+/* 同步状态条 */
+.sync-bar{display:flex;align-items:center;gap:6px;padding:10px 14px;margin:12px 0 4px;border-radius:12px;background:var(--card);border:1px solid var(--border);font-size:12px;color:var(--muted);}
+.sync-dot{width:8px;height:8px;border-radius:50%;flex:none;background:var(--muted);}
+.sync-dot.ok{background:var(--good);}
+.sync-dot.fail{background:var(--bad);}
+.sync-ver{margin-left:auto;color:var(--muted);font-size:11px;}
 /* 多 API 配置卡片 */
 .ai-profiles{margin-bottom:8px;}
 .ai-profile{background:var(--bg);border:1px solid var(--border);border-radius:12px;padding:12px;margin-bottom:8px;position:relative;}
