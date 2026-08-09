@@ -78,7 +78,7 @@ const ghReady=()=>{const g=ghConfig();return !!(g&&g.token&&g.user&&g.repo);};
 // ---------- 卡片 ----------
 function state0(){return{status:'fresh',ef:2.5,interval:0,reps:0,lapses:0,due:todayStr(),totalRating:0,history:[]};}
 function newCard(f){
-  const base={id:uid(),word:f.word||'',meaning:f.meaning||'',focus:f.focus||'',tone:f.tone||'',collocation:f.collocation||'',misconstrue:f.misconstrue||'',custom:Array.isArray(f.custom)?f.custom:[],updated_at:new Date().toISOString(),source:'手动',...state0()};
+  const base={id:uid(),word:f.word||'',meaning:f.meaning||'',focus:f.focus||'',tone:f.tone||'',collocation:f.collocation||'',misconstrue:f.misconstrue||'',custom:Array.isArray(f.custom)?f.custom:[],updated_at:new Date().toISOString(),source:f.source||'手动',...state0()};
   // 兼容旧数据：把旧 compare -> misconstrue，thinking 丢弃
   if(f.compare&&!f.misconstrue) base.misconstrue=f.compare;
   return base;
@@ -132,6 +132,24 @@ async function pullAll(){
   return true;
 }
 
+// 加载预制词库（从仓库 builtin_words.json）
+async function loadBuiltinWords(){
+  const b=await ghGet('builtin_words.json');
+  if(!b||!b.content)return false;
+  try{
+    const builtin=JSON.parse(b.content);
+    if(Array.isArray(builtin)){
+      builtin.forEach(item=>{
+        if(!allCards.find(c=>c.word===item.word&&c.source==='builtin')){
+          allCards.push(newCard({word:item.word,meaning:item.meaning,focus:item.focus,tone:item.tone,collocation:item.collocation,misconstrue:item.misconstrue||item.compare,custom:item.custom||[],source:'内置'}));
+        }
+      });
+      saveCards(); return true;
+    }
+  }catch(e){}
+  return false;
+}
+
 // ---------- 摘要 ----------
 function updateSummary(){
   const fresh=allCards.filter(c=>c.status==='fresh').length;
@@ -171,16 +189,17 @@ function renderCurrentView(){
 }
 function cardHTML(c){
   const tag=STATUS[c.status]||'🆕 新词';
+  const srcTag=c.source==='内置'?'<span class="wc-src-tag">内置</span>':(c.source==='手动'?'':'（未知）');
   const word=esc(c.word||'');
   const meaning=esc(c.meaning||'')||'<i style="color:var(--muted)">（暂无解释）</i>';
-  // 主页面仅显示释义（思考/侧重等在学习背面看）
+  const delBtn=c.source==='内置'?'':`<button class="del" data-id="${c.id}">删除</button>`;
   return `<div class="word-card" data-id="${c.id}">
-    <div class="wc-top"><span class="wc-word">${word}</span><span class="wc-tag">${tag}</span></div>
+    <div class="wc-top"><span class="wc-word">${word}</span>${srcTag}<span class="wc-tag">${tag}</span></div>
     <div class="wc-meaning">${meaning}</div>
     <div class="wc-action">
       <button class="edit" data-id="${c.id}">编辑</button>
       <button class="study" data-id="${c.id}">学习</button>
-      <button class="del" data-id="${c.id}">删除</button>
+      ${delBtn}
     </div>
   </div>`;
 }
@@ -883,6 +902,10 @@ function boot(){
   loadSettings();
   const stored=loadCards();
   if(stored&&Array.isArray(stored))allCards=stored;else{allCards=[];saveCards();}
+  // 加载预制词库（仅在本地无任何词条时自动加载一次）
+  if(!allCards.length&&ghReady()){
+    loadBuiltinWords().then(loaded=>{ if(loaded){ saveCards(); updateSummary(); renderCurrentView(); toast('已加载 713 预制词条'); } });
+  }
   updateSummary();renderCurrentView();
   bindEditor();bindSettings();bindEvents();
   if(ghReady())setTimeout(()=>pullAll().then(()=>{updateSummary();renderCurrentView();}),600);
