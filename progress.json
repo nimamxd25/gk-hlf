@@ -1,6 +1,6 @@
 {
   "app": "gkCiHui",
-  "updated": "2026-08-09T08:34:16.479Z",
+  "updated": "2026-08-09T08:38:58.812Z",
   "cards": [
     {
       "id": "cmsbc32t5rrx2",
@@ -11,7 +11,7 @@
       "lapses": 0,
       "due": "2026-08-04",
       "totalRating": 2,
-      "lastStudyTime": "2026-08-09T08:34:16.481Z",
+      "lastStudyTime": "2026-08-09T08:38:58.813Z",
       "history": [
         {
           "date": "2026-08-02",
@@ -28,7 +28,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 2,
-      "lastStudyTime": "2026-08-09T08:34:16.481Z",
+      "lastStudyTime": "2026-08-09T08:38:58.813Z",
       "history": [
         {
           "date": "2026-08-07",
@@ -45,7 +45,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 2,
-      "lastStudyTime": "2026-08-09T08:34:16.481Z",
+      "lastStudyTime": "2026-08-09T08:38:58.813Z",
       "history": [
         {
           "date": "2026-08-07",
@@ -62,7 +62,7 @@
       "lapses": 0,
       "due": "2026-08-04",
       "totalRating": 2,
-      "lastStudyTime": "2026-08-09T08:34:16.481Z",
+      "lastStudyTime": "2026-08-09T08:38:58.813Z",
       "history": [
         {
           "date": "2026-08-02",
@@ -79,7 +79,7 @@
       "lapses": 0,
       "due": "2026-08-12",
       "totalRating": 3,
-      "lastStudyTime": "2026-08-09T08:34:16.481Z",
+      "lastStudyTime": "2026-08-09T08:38:58.813Z",
       "history": [
         {
           "date": "2026-08-08",
@@ -96,7 +96,7 @@
       "lapses": 0,
       "due": "2026-08-04",
       "totalRating": 2,
-      "lastStudyTime": "2026-08-09T08:34:16.481Z",
+      "lastStudyTime": "2026-08-09T08:38:58.813Z",
       "history": [
         {
           "date": "2026-08-02",
@@ -106,15 +106,20 @@
     },
     {
       "id": "cmsck6fs0ei9z",
-      "status": "fresh",
+      "status": "reviewing",
       "ef": 2.5,
-      "interval": 0,
-      "reps": 0,
+      "interval": 2,
+      "reps": 1,
       "lapses": 0,
-      "due": "2026-08-03",
-      "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.481Z",
-      "history": []
+      "due": "2026-08-11",
+      "totalRating": 2,
+      "lastStudyTime": "2026-08-09T08:38:58.813Z",
+      "history": [
+        {
+          "date": "2026-08-09",
+          "grade": 2
+        }
+      ]
     },
     {
       "id": "cmse2pxud6pyc",
@@ -125,7 +130,7 @@
       "lapses": 0,
       "due": "2026-08-07",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.481Z",
+      "lastStudyTime": "2026-08-09T08:38:58.813Z",
       "history": []
     },
     {
@@ -137,7 +142,7 @@
       "lapses": 0,
       "due": "2026-08-07",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.481Z",
+      "lastStudyTime": "2026-08-09T08:38:58.813Z",
       "history": []
     },
     {
@@ -149,7 +154,7 @@
       "lapses": 0,
       "due": "2026-08-07",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.481Z",
+      "lastStudyTime": "2026-08-09T08:38:58.813Z",
       "history": []
     },
     {
@@ -161,7 +166,7 @@
       "lapses": 0,
       "due": "2026-08-07",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.481Z",
+      "lastStudyTime": "2026-08-09T08:38:58.813Z",
       "history": []
     },
     {
@@ -173,7 +178,7 @@
       "lapses": 0,
       "due": "2026-08-07",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.481Z",
+      "lastStudyTime": "2026-08-09T08:38:58.813Z",
       "history": []
     },
     {
@@ -185,7 +190,7 @@
       "lapses": 0,
       "due": "2026-08-07",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.481Z",
+      "lastStudyTime": "2026-08-09T08:38:58.813Z",
       "history": []
     },
     {
@@ -197,7 +202,7 @@
       "lapses": 0,
       "due": "2026-08-07",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.481Z",
+      "lastStudyTime": "2026-08-09T08:38:58.813Z",
       "history": []
     },
     {
@@ -209,7 +214,7 @@
       "lapses": 0,
       "due": "2026-08-07",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.481Z",
+      "lastStudyTime": "2026-08-09T08:38:58.813Z",
       "history": []
     },
     {
@@ -221,7 +226,7 @@
       "lapses": 0,
       "due": "2026-08-07",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.481Z",
+      "lastStudyTime": "2026-08-09T08:38:58.813Z",
       "history": []
     },
     {
@@ -233,7 +238,7 @@
       "lapses": 0,
       "due": "2026-08-07",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.481Z",
+      "lastStudyTime": "2026-08-09T08:38:58.813Z",
       "history": []
     },
     {
@@ -245,7 +250,7 @@
       "lapses": 0,
       "due": "2026-08-07",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.481Z",
+      "lastStudyTime": "2026-08-09T08:38:58.813Z",
       "history": []
     },
     {
@@ -257,7 +262,7 @@
       "lapses": 0,
       "due": "2026-08-08",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.481Z",
+      "lastStudyTime": "2026-08-09T08:38:58.813Z",
       "history": []
     },
     {
@@ -269,7 +274,7 @@
       "lapses": 0,
       "due": "2026-08-08",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.481Z",
+      "lastStudyTime": "2026-08-09T08:38:58.813Z",
       "history": []
     },
     {
@@ -281,7 +286,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.481Z",
+      "lastStudyTime": "2026-08-09T08:38:58.813Z",
       "history": []
     },
     {
@@ -293,7 +298,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.481Z",
+      "lastStudyTime": "2026-08-09T08:38:58.813Z",
       "history": []
     },
     {
@@ -305,7 +310,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.481Z",
+      "lastStudyTime": "2026-08-09T08:38:58.813Z",
       "history": []
     },
     {
@@ -317,7 +322,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.481Z",
+      "lastStudyTime": "2026-08-09T08:38:58.813Z",
       "history": []
     },
     {
@@ -329,7 +334,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.481Z",
+      "lastStudyTime": "2026-08-09T08:38:58.813Z",
       "history": []
     },
     {
@@ -341,7 +346,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.481Z",
+      "lastStudyTime": "2026-08-09T08:38:58.813Z",
       "history": []
     },
     {
@@ -353,7 +358,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.481Z",
+      "lastStudyTime": "2026-08-09T08:38:58.813Z",
       "history": []
     },
     {
@@ -365,7 +370,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.481Z",
+      "lastStudyTime": "2026-08-09T08:38:58.813Z",
       "history": []
     },
     {
@@ -377,7 +382,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.481Z",
+      "lastStudyTime": "2026-08-09T08:38:58.813Z",
       "history": []
     },
     {
@@ -389,7 +394,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.481Z",
+      "lastStudyTime": "2026-08-09T08:38:58.813Z",
       "history": []
     },
     {
@@ -401,7 +406,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.481Z",
+      "lastStudyTime": "2026-08-09T08:38:58.813Z",
       "history": []
     },
     {
@@ -413,7 +418,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.481Z",
+      "lastStudyTime": "2026-08-09T08:38:58.813Z",
       "history": []
     },
     {
@@ -425,7 +430,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.481Z",
+      "lastStudyTime": "2026-08-09T08:38:58.813Z",
       "history": []
     },
     {
@@ -437,7 +442,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.481Z",
+      "lastStudyTime": "2026-08-09T08:38:58.813Z",
       "history": []
     },
     {
@@ -449,7 +454,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.481Z",
+      "lastStudyTime": "2026-08-09T08:38:58.813Z",
       "history": []
     },
     {
@@ -461,7 +466,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.481Z",
+      "lastStudyTime": "2026-08-09T08:38:58.813Z",
       "history": []
     },
     {
@@ -473,7 +478,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.481Z",
+      "lastStudyTime": "2026-08-09T08:38:58.813Z",
       "history": []
     },
     {
@@ -485,7 +490,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.481Z",
+      "lastStudyTime": "2026-08-09T08:38:58.813Z",
       "history": []
     },
     {
@@ -497,7 +502,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.481Z",
+      "lastStudyTime": "2026-08-09T08:38:58.813Z",
       "history": []
     },
     {
@@ -509,7 +514,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.481Z",
+      "lastStudyTime": "2026-08-09T08:38:58.813Z",
       "history": []
     },
     {
@@ -521,7 +526,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.481Z",
+      "lastStudyTime": "2026-08-09T08:38:58.813Z",
       "history": []
     },
     {
@@ -533,7 +538,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.481Z",
+      "lastStudyTime": "2026-08-09T08:38:58.813Z",
       "history": []
     },
     {
@@ -545,7 +550,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.481Z",
+      "lastStudyTime": "2026-08-09T08:38:58.813Z",
       "history": []
     },
     {
@@ -557,7 +562,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.481Z",
+      "lastStudyTime": "2026-08-09T08:38:58.813Z",
       "history": []
     },
     {
@@ -569,7 +574,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.481Z",
+      "lastStudyTime": "2026-08-09T08:38:58.813Z",
       "history": []
     },
     {
@@ -581,7 +586,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.481Z",
+      "lastStudyTime": "2026-08-09T08:38:58.813Z",
       "history": []
     },
     {
@@ -593,7 +598,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.481Z",
+      "lastStudyTime": "2026-08-09T08:38:58.813Z",
       "history": []
     },
     {
@@ -605,7 +610,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.481Z",
+      "lastStudyTime": "2026-08-09T08:38:58.813Z",
       "history": []
     },
     {
@@ -617,7 +622,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.481Z",
+      "lastStudyTime": "2026-08-09T08:38:58.813Z",
       "history": []
     },
     {
@@ -629,7 +634,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.481Z",
+      "lastStudyTime": "2026-08-09T08:38:58.813Z",
       "history": []
     },
     {
@@ -641,7 +646,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.481Z",
+      "lastStudyTime": "2026-08-09T08:38:58.813Z",
       "history": []
     },
     {
@@ -653,7 +658,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.481Z",
+      "lastStudyTime": "2026-08-09T08:38:58.813Z",
       "history": []
     },
     {
@@ -665,7 +670,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.481Z",
+      "lastStudyTime": "2026-08-09T08:38:58.813Z",
       "history": []
     },
     {
@@ -677,7 +682,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.481Z",
+      "lastStudyTime": "2026-08-09T08:38:58.813Z",
       "history": []
     },
     {
@@ -689,7 +694,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.481Z",
+      "lastStudyTime": "2026-08-09T08:38:58.813Z",
       "history": []
     },
     {
@@ -701,7 +706,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.481Z",
+      "lastStudyTime": "2026-08-09T08:38:58.813Z",
       "history": []
     },
     {
@@ -713,7 +718,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.481Z",
+      "lastStudyTime": "2026-08-09T08:38:58.813Z",
       "history": []
     },
     {
@@ -725,7 +730,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.481Z",
+      "lastStudyTime": "2026-08-09T08:38:58.813Z",
       "history": []
     },
     {
@@ -737,7 +742,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.481Z",
+      "lastStudyTime": "2026-08-09T08:38:58.813Z",
       "history": []
     },
     {
@@ -749,7 +754,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.481Z",
+      "lastStudyTime": "2026-08-09T08:38:58.813Z",
       "history": []
     },
     {
@@ -761,7 +766,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.481Z",
+      "lastStudyTime": "2026-08-09T08:38:58.813Z",
       "history": []
     },
     {
@@ -773,7 +778,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.481Z",
+      "lastStudyTime": "2026-08-09T08:38:58.813Z",
       "history": []
     },
     {
@@ -785,7 +790,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.481Z",
+      "lastStudyTime": "2026-08-09T08:38:58.813Z",
       "history": []
     },
     {
@@ -797,7 +802,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.481Z",
+      "lastStudyTime": "2026-08-09T08:38:58.813Z",
       "history": []
     },
     {
@@ -809,7 +814,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.481Z",
+      "lastStudyTime": "2026-08-09T08:38:58.813Z",
       "history": []
     },
     {
@@ -821,7 +826,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.481Z",
+      "lastStudyTime": "2026-08-09T08:38:58.813Z",
       "history": []
     },
     {
@@ -833,7 +838,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.481Z",
+      "lastStudyTime": "2026-08-09T08:38:58.813Z",
       "history": []
     },
     {
@@ -845,7 +850,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.481Z",
+      "lastStudyTime": "2026-08-09T08:38:58.813Z",
       "history": []
     },
     {
@@ -857,7 +862,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.481Z",
+      "lastStudyTime": "2026-08-09T08:38:58.813Z",
       "history": []
     },
     {
@@ -869,7 +874,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.481Z",
+      "lastStudyTime": "2026-08-09T08:38:58.813Z",
       "history": []
     },
     {
@@ -881,7 +886,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.481Z",
+      "lastStudyTime": "2026-08-09T08:38:58.813Z",
       "history": []
     },
     {
@@ -893,7 +898,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.481Z",
+      "lastStudyTime": "2026-08-09T08:38:58.813Z",
       "history": []
     },
     {
@@ -905,7 +910,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.481Z",
+      "lastStudyTime": "2026-08-09T08:38:58.813Z",
       "history": []
     },
     {
@@ -917,7 +922,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.481Z",
+      "lastStudyTime": "2026-08-09T08:38:58.813Z",
       "history": []
     },
     {
@@ -929,7 +934,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.481Z",
+      "lastStudyTime": "2026-08-09T08:38:58.813Z",
       "history": []
     },
     {
@@ -941,7 +946,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.481Z",
+      "lastStudyTime": "2026-08-09T08:38:58.813Z",
       "history": []
     },
     {
@@ -953,7 +958,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.481Z",
+      "lastStudyTime": "2026-08-09T08:38:58.813Z",
       "history": []
     },
     {
@@ -965,7 +970,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.481Z",
+      "lastStudyTime": "2026-08-09T08:38:58.813Z",
       "history": []
     },
     {
@@ -977,7 +982,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.481Z",
+      "lastStudyTime": "2026-08-09T08:38:58.813Z",
       "history": []
     },
     {
@@ -989,7 +994,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.813Z",
       "history": []
     },
     {
@@ -1001,7 +1006,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.813Z",
       "history": []
     },
     {
@@ -1013,7 +1018,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.813Z",
       "history": []
     },
     {
@@ -1025,7 +1030,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.813Z",
       "history": []
     },
     {
@@ -1037,7 +1042,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.813Z",
       "history": []
     },
     {
@@ -1049,7 +1054,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.813Z",
       "history": []
     },
     {
@@ -1061,7 +1066,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.813Z",
       "history": []
     },
     {
@@ -1073,7 +1078,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.813Z",
       "history": []
     },
     {
@@ -1085,7 +1090,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.813Z",
       "history": []
     },
     {
@@ -1097,7 +1102,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.813Z",
       "history": []
     },
     {
@@ -1109,7 +1114,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.813Z",
       "history": []
     },
     {
@@ -1121,7 +1126,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.813Z",
       "history": []
     },
     {
@@ -1133,7 +1138,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.813Z",
       "history": []
     },
     {
@@ -1145,7 +1150,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.813Z",
       "history": []
     },
     {
@@ -1157,7 +1162,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.813Z",
       "history": []
     },
     {
@@ -1169,7 +1174,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.813Z",
       "history": []
     },
     {
@@ -1181,7 +1186,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.813Z",
       "history": []
     },
     {
@@ -1193,7 +1198,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.813Z",
       "history": []
     },
     {
@@ -1205,7 +1210,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.813Z",
       "history": []
     },
     {
@@ -1217,7 +1222,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.813Z",
       "history": []
     },
     {
@@ -1229,7 +1234,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.813Z",
       "history": []
     },
     {
@@ -1241,7 +1246,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.813Z",
       "history": []
     },
     {
@@ -1253,7 +1258,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.813Z",
       "history": []
     },
     {
@@ -1265,7 +1270,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.813Z",
       "history": []
     },
     {
@@ -1277,7 +1282,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.813Z",
       "history": []
     },
     {
@@ -1289,7 +1294,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.813Z",
       "history": []
     },
     {
@@ -1301,7 +1306,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.813Z",
       "history": []
     },
     {
@@ -1313,7 +1318,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.813Z",
       "history": []
     },
     {
@@ -1325,7 +1330,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.813Z",
       "history": []
     },
     {
@@ -1337,7 +1342,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.813Z",
       "history": []
     },
     {
@@ -1349,7 +1354,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.813Z",
       "history": []
     },
     {
@@ -1361,7 +1366,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.813Z",
       "history": []
     },
     {
@@ -1373,7 +1378,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.813Z",
       "history": []
     },
     {
@@ -1385,7 +1390,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.813Z",
       "history": []
     },
     {
@@ -1397,7 +1402,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.813Z",
       "history": []
     },
     {
@@ -1409,7 +1414,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.813Z",
       "history": []
     },
     {
@@ -1421,7 +1426,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.813Z",
       "history": []
     },
     {
@@ -1433,7 +1438,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.813Z",
       "history": []
     },
     {
@@ -1445,7 +1450,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.813Z",
       "history": []
     },
     {
@@ -1457,7 +1462,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.813Z",
       "history": []
     },
     {
@@ -1469,7 +1474,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.813Z",
       "history": []
     },
     {
@@ -1481,7 +1486,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.813Z",
       "history": []
     },
     {
@@ -1493,7 +1498,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.813Z",
       "history": []
     },
     {
@@ -1505,7 +1510,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.813Z",
       "history": []
     },
     {
@@ -1517,7 +1522,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.813Z",
       "history": []
     },
     {
@@ -1529,7 +1534,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.813Z",
       "history": []
     },
     {
@@ -1541,7 +1546,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.813Z",
       "history": []
     },
     {
@@ -1553,7 +1558,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.813Z",
       "history": []
     },
     {
@@ -1565,7 +1570,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.813Z",
       "history": []
     },
     {
@@ -1577,7 +1582,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.813Z",
       "history": []
     },
     {
@@ -1589,7 +1594,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.813Z",
       "history": []
     },
     {
@@ -1601,7 +1606,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.813Z",
       "history": []
     },
     {
@@ -1613,7 +1618,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.813Z",
       "history": []
     },
     {
@@ -1625,7 +1630,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.813Z",
       "history": []
     },
     {
@@ -1637,7 +1642,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.813Z",
       "history": []
     },
     {
@@ -1649,7 +1654,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.813Z",
       "history": []
     },
     {
@@ -1661,7 +1666,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.813Z",
       "history": []
     },
     {
@@ -1673,7 +1678,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.813Z",
       "history": []
     },
     {
@@ -1685,7 +1690,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.813Z",
       "history": []
     },
     {
@@ -1697,7 +1702,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.813Z",
       "history": []
     },
     {
@@ -1709,7 +1714,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.813Z",
       "history": []
     },
     {
@@ -1721,7 +1726,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.813Z",
       "history": []
     },
     {
@@ -1733,7 +1738,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.813Z",
       "history": []
     },
     {
@@ -1745,7 +1750,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.813Z",
       "history": []
     },
     {
@@ -1757,7 +1762,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.813Z",
       "history": []
     },
     {
@@ -1769,7 +1774,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.813Z",
       "history": []
     },
     {
@@ -1781,7 +1786,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.813Z",
       "history": []
     },
     {
@@ -1793,7 +1798,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.813Z",
       "history": []
     },
     {
@@ -1805,7 +1810,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.813Z",
       "history": []
     },
     {
@@ -1817,7 +1822,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.813Z",
       "history": []
     },
     {
@@ -1829,7 +1834,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.813Z",
       "history": []
     },
     {
@@ -1841,7 +1846,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.813Z",
       "history": []
     },
     {
@@ -1853,7 +1858,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.813Z",
       "history": []
     },
     {
@@ -1865,7 +1870,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.813Z",
       "history": []
     },
     {
@@ -1877,7 +1882,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.813Z",
       "history": []
     },
     {
@@ -1889,7 +1894,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.813Z",
       "history": []
     },
     {
@@ -1901,7 +1906,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.813Z",
       "history": []
     },
     {
@@ -1913,7 +1918,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.813Z",
       "history": []
     },
     {
@@ -1925,7 +1930,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.813Z",
       "history": []
     },
     {
@@ -1937,7 +1942,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.813Z",
       "history": []
     },
     {
@@ -1949,7 +1954,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.813Z",
       "history": []
     },
     {
@@ -1961,7 +1966,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.813Z",
       "history": []
     },
     {
@@ -1973,7 +1978,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.813Z",
       "history": []
     },
     {
@@ -1985,7 +1990,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.813Z",
       "history": []
     },
     {
@@ -1997,7 +2002,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.813Z",
       "history": []
     },
     {
@@ -2009,7 +2014,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.813Z",
       "history": []
     },
     {
@@ -2021,7 +2026,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.813Z",
       "history": []
     },
     {
@@ -2033,7 +2038,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.813Z",
       "history": []
     },
     {
@@ -2045,7 +2050,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.813Z",
       "history": []
     },
     {
@@ -2057,7 +2062,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.813Z",
       "history": []
     },
     {
@@ -2069,7 +2074,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.813Z",
       "history": []
     },
     {
@@ -2081,7 +2086,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.813Z",
       "history": []
     },
     {
@@ -2093,7 +2098,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.813Z",
       "history": []
     },
     {
@@ -2105,7 +2110,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.813Z",
       "history": []
     },
     {
@@ -2117,7 +2122,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.813Z",
       "history": []
     },
     {
@@ -2129,7 +2134,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.813Z",
       "history": []
     },
     {
@@ -2141,7 +2146,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.813Z",
       "history": []
     },
     {
@@ -2153,7 +2158,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.813Z",
       "history": []
     },
     {
@@ -2165,7 +2170,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.813Z",
       "history": []
     },
     {
@@ -2177,7 +2182,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.813Z",
       "history": []
     },
     {
@@ -2189,7 +2194,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.813Z",
       "history": []
     },
     {
@@ -2201,7 +2206,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.813Z",
       "history": []
     },
     {
@@ -2213,7 +2218,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.813Z",
       "history": []
     },
     {
@@ -2225,7 +2230,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.813Z",
       "history": []
     },
     {
@@ -2237,7 +2242,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.813Z",
       "history": []
     },
     {
@@ -2249,7 +2254,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.813Z",
       "history": []
     },
     {
@@ -2261,7 +2266,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.813Z",
       "history": []
     },
     {
@@ -2273,7 +2278,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.813Z",
       "history": []
     },
     {
@@ -2285,7 +2290,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.813Z",
       "history": []
     },
     {
@@ -2297,7 +2302,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.813Z",
       "history": []
     },
     {
@@ -2309,7 +2314,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.813Z",
       "history": []
     },
     {
@@ -2321,7 +2326,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.813Z",
       "history": []
     },
     {
@@ -2333,7 +2338,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.813Z",
       "history": []
     },
     {
@@ -2345,7 +2350,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.813Z",
       "history": []
     },
     {
@@ -2357,7 +2362,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.813Z",
       "history": []
     },
     {
@@ -2369,7 +2374,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.813Z",
       "history": []
     },
     {
@@ -2381,7 +2386,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.813Z",
       "history": []
     },
     {
@@ -2393,7 +2398,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.813Z",
       "history": []
     },
     {
@@ -2405,7 +2410,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.813Z",
       "history": []
     },
     {
@@ -2417,7 +2422,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.813Z",
       "history": []
     },
     {
@@ -2429,7 +2434,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.813Z",
       "history": []
     },
     {
@@ -2441,7 +2446,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.813Z",
       "history": []
     },
     {
@@ -2453,7 +2458,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.813Z",
       "history": []
     },
     {
@@ -2465,7 +2470,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.813Z",
       "history": []
     },
     {
@@ -2477,7 +2482,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.813Z",
       "history": []
     },
     {
@@ -2489,7 +2494,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.813Z",
       "history": []
     },
     {
@@ -2501,7 +2506,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.813Z",
       "history": []
     },
     {
@@ -2513,7 +2518,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.813Z",
       "history": []
     },
     {
@@ -2525,7 +2530,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.813Z",
       "history": []
     },
     {
@@ -2537,7 +2542,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.813Z",
       "history": []
     },
     {
@@ -2549,7 +2554,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.813Z",
       "history": []
     },
     {
@@ -2561,7 +2566,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.813Z",
       "history": []
     },
     {
@@ -2573,7 +2578,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.813Z",
       "history": []
     },
     {
@@ -2585,7 +2590,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.813Z",
       "history": []
     },
     {
@@ -2597,7 +2602,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.813Z",
       "history": []
     },
     {
@@ -2609,7 +2614,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.813Z",
       "history": []
     },
     {
@@ -2621,7 +2626,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.813Z",
       "history": []
     },
     {
@@ -2633,7 +2638,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.813Z",
       "history": []
     },
     {
@@ -2645,7 +2650,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.813Z",
       "history": []
     },
     {
@@ -2657,7 +2662,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.813Z",
       "history": []
     },
     {
@@ -2669,7 +2674,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.813Z",
       "history": []
     },
     {
@@ -2681,7 +2686,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.813Z",
       "history": []
     },
     {
@@ -2693,7 +2698,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.813Z",
       "history": []
     },
     {
@@ -2705,7 +2710,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.813Z",
       "history": []
     },
     {
@@ -2717,7 +2722,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.813Z",
       "history": []
     },
     {
@@ -2729,7 +2734,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.813Z",
       "history": []
     },
     {
@@ -2741,7 +2746,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.813Z",
       "history": []
     },
     {
@@ -2753,7 +2758,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.813Z",
       "history": []
     },
     {
@@ -2765,7 +2770,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.813Z",
       "history": []
     },
     {
@@ -2777,7 +2782,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.813Z",
       "history": []
     },
     {
@@ -2789,7 +2794,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.813Z",
       "history": []
     },
     {
@@ -2801,7 +2806,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.813Z",
       "history": []
     },
     {
@@ -2813,7 +2818,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.813Z",
       "history": []
     },
     {
@@ -2825,7 +2830,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.813Z",
       "history": []
     },
     {
@@ -2837,7 +2842,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.813Z",
       "history": []
     },
     {
@@ -2849,7 +2854,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.813Z",
       "history": []
     },
     {
@@ -2861,7 +2866,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.813Z",
       "history": []
     },
     {
@@ -2873,7 +2878,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.813Z",
       "history": []
     },
     {
@@ -2885,7 +2890,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.813Z",
       "history": []
     },
     {
@@ -2897,7 +2902,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.813Z",
       "history": []
     },
     {
@@ -2909,7 +2914,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.813Z",
       "history": []
     },
     {
@@ -2921,7 +2926,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.813Z",
       "history": []
     },
     {
@@ -2933,7 +2938,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.813Z",
       "history": []
     },
     {
@@ -2945,7 +2950,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.813Z",
       "history": []
     },
     {
@@ -2957,7 +2962,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.813Z",
       "history": []
     },
     {
@@ -2969,7 +2974,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.813Z",
       "history": []
     },
     {
@@ -2981,7 +2986,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.813Z",
       "history": []
     },
     {
@@ -2993,7 +2998,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.813Z",
       "history": []
     },
     {
@@ -3005,7 +3010,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.813Z",
       "history": []
     },
     {
@@ -3017,7 +3022,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.813Z",
       "history": []
     },
     {
@@ -3029,7 +3034,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.813Z",
       "history": []
     },
     {
@@ -3041,7 +3046,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.813Z",
       "history": []
     },
     {
@@ -3053,7 +3058,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.813Z",
       "history": []
     },
     {
@@ -3065,7 +3070,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.813Z",
       "history": []
     },
     {
@@ -3077,7 +3082,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.813Z",
       "history": []
     },
     {
@@ -3089,7 +3094,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.813Z",
       "history": []
     },
     {
@@ -3101,7 +3106,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.813Z",
       "history": []
     },
     {
@@ -3113,7 +3118,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.813Z",
       "history": []
     },
     {
@@ -3125,7 +3130,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.813Z",
       "history": []
     },
     {
@@ -3137,7 +3142,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.813Z",
       "history": []
     },
     {
@@ -3149,7 +3154,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.813Z",
       "history": []
     },
     {
@@ -3161,7 +3166,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.813Z",
       "history": []
     },
     {
@@ -3173,7 +3178,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.813Z",
       "history": []
     },
     {
@@ -3185,7 +3190,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.813Z",
       "history": []
     },
     {
@@ -3197,7 +3202,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.813Z",
       "history": []
     },
     {
@@ -3209,7 +3214,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.813Z",
       "history": []
     },
     {
@@ -3221,7 +3226,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.813Z",
       "history": []
     },
     {
@@ -3233,7 +3238,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.813Z",
       "history": []
     },
     {
@@ -3245,7 +3250,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.813Z",
       "history": []
     },
     {
@@ -3257,7 +3262,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.813Z",
       "history": []
     },
     {
@@ -3269,7 +3274,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.813Z",
       "history": []
     },
     {
@@ -3281,7 +3286,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.813Z",
       "history": []
     },
     {
@@ -3293,7 +3298,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.813Z",
       "history": []
     },
     {
@@ -3305,7 +3310,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.813Z",
       "history": []
     },
     {
@@ -3317,7 +3322,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.813Z",
       "history": []
     },
     {
@@ -3329,7 +3334,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.813Z",
       "history": []
     },
     {
@@ -3341,7 +3346,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.813Z",
       "history": []
     },
     {
@@ -3353,7 +3358,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.813Z",
       "history": []
     },
     {
@@ -3365,7 +3370,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.813Z",
       "history": []
     },
     {
@@ -3377,7 +3382,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.813Z",
       "history": []
     },
     {
@@ -3389,7 +3394,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.813Z",
       "history": []
     },
     {
@@ -3401,7 +3406,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.813Z",
       "history": []
     },
     {
@@ -3413,7 +3418,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.813Z",
       "history": []
     },
     {
@@ -3425,7 +3430,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.813Z",
       "history": []
     },
     {
@@ -3437,7 +3442,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.813Z",
       "history": []
     },
     {
@@ -3449,7 +3454,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.813Z",
       "history": []
     },
     {
@@ -3461,7 +3466,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.813Z",
       "history": []
     },
     {
@@ -3473,7 +3478,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.813Z",
       "history": []
     },
     {
@@ -3485,7 +3490,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.813Z",
       "history": []
     },
     {
@@ -3497,7 +3502,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.813Z",
       "history": []
     },
     {
@@ -3509,7 +3514,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.813Z",
       "history": []
     },
     {
@@ -3521,7 +3526,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.813Z",
       "history": []
     },
     {
@@ -3533,7 +3538,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.813Z",
       "history": []
     },
     {
@@ -3545,7 +3550,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.813Z",
       "history": []
     },
     {
@@ -3557,7 +3562,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.813Z",
       "history": []
     },
     {
@@ -3569,7 +3574,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.813Z",
       "history": []
     },
     {
@@ -3581,7 +3586,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.813Z",
       "history": []
     },
     {
@@ -3593,7 +3598,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.813Z",
       "history": []
     },
     {
@@ -3605,7 +3610,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.813Z",
       "history": []
     },
     {
@@ -3617,7 +3622,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.813Z",
       "history": []
     },
     {
@@ -3629,7 +3634,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.813Z",
       "history": []
     },
     {
@@ -3641,7 +3646,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.813Z",
       "history": []
     },
     {
@@ -3653,7 +3658,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.813Z",
       "history": []
     },
     {
@@ -3665,7 +3670,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.813Z",
       "history": []
     },
     {
@@ -3677,7 +3682,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.813Z",
       "history": []
     },
     {
@@ -3689,7 +3694,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.813Z",
       "history": []
     },
     {
@@ -3701,7 +3706,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.813Z",
       "history": []
     },
     {
@@ -3713,7 +3718,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.813Z",
       "history": []
     },
     {
@@ -3725,7 +3730,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.813Z",
       "history": []
     },
     {
@@ -3737,7 +3742,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.813Z",
       "history": []
     },
     {
@@ -3749,7 +3754,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.813Z",
       "history": []
     },
     {
@@ -3761,7 +3766,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.813Z",
       "history": []
     },
     {
@@ -3773,7 +3778,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.813Z",
       "history": []
     },
     {
@@ -3785,7 +3790,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.813Z",
       "history": []
     },
     {
@@ -3797,7 +3802,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.813Z",
       "history": []
     },
     {
@@ -3809,7 +3814,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.813Z",
       "history": []
     },
     {
@@ -3821,7 +3826,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.813Z",
       "history": []
     },
     {
@@ -3833,7 +3838,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.813Z",
       "history": []
     },
     {
@@ -3845,7 +3850,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.813Z",
       "history": []
     },
     {
@@ -3857,7 +3862,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.813Z",
       "history": []
     },
     {
@@ -3869,7 +3874,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.813Z",
       "history": []
     },
     {
@@ -3881,7 +3886,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.813Z",
       "history": []
     },
     {
@@ -3893,7 +3898,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.813Z",
       "history": []
     },
     {
@@ -3905,7 +3910,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.813Z",
       "history": []
     },
     {
@@ -3917,7 +3922,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.813Z",
       "history": []
     },
     {
@@ -3929,7 +3934,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.813Z",
       "history": []
     },
     {
@@ -3941,7 +3946,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.813Z",
       "history": []
     },
     {
@@ -3953,7 +3958,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.813Z",
       "history": []
     },
     {
@@ -3965,7 +3970,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.813Z",
       "history": []
     },
     {
@@ -3977,7 +3982,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.813Z",
       "history": []
     },
     {
@@ -3989,7 +3994,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.813Z",
       "history": []
     },
     {
@@ -4001,7 +4006,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.813Z",
       "history": []
     },
     {
@@ -4013,7 +4018,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.813Z",
       "history": []
     },
     {
@@ -4025,7 +4030,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.813Z",
       "history": []
     },
     {
@@ -4037,7 +4042,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.813Z",
       "history": []
     },
     {
@@ -4049,7 +4054,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.813Z",
       "history": []
     },
     {
@@ -4061,7 +4066,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.813Z",
       "history": []
     },
     {
@@ -4073,7 +4078,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.813Z",
       "history": []
     },
     {
@@ -4085,7 +4090,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.813Z",
       "history": []
     },
     {
@@ -4097,7 +4102,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.813Z",
       "history": []
     },
     {
@@ -4109,7 +4114,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.813Z",
       "history": []
     },
     {
@@ -4121,7 +4126,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.813Z",
       "history": []
     },
     {
@@ -4133,7 +4138,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.813Z",
       "history": []
     },
     {
@@ -4145,7 +4150,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.813Z",
       "history": []
     },
     {
@@ -4157,7 +4162,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.813Z",
       "history": []
     },
     {
@@ -4169,7 +4174,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.813Z",
       "history": []
     },
     {
@@ -4181,7 +4186,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.813Z",
       "history": []
     },
     {
@@ -4193,7 +4198,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -4205,7 +4210,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -4217,7 +4222,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -4229,7 +4234,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -4241,7 +4246,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -4253,7 +4258,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -4265,7 +4270,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -4277,7 +4282,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -4289,7 +4294,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -4301,7 +4306,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -4313,7 +4318,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -4325,7 +4330,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -4337,7 +4342,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -4349,7 +4354,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -4361,7 +4366,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -4373,7 +4378,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -4385,7 +4390,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -4397,7 +4402,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -4409,7 +4414,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -4421,7 +4426,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -4433,7 +4438,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -4445,7 +4450,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -4457,7 +4462,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -4469,7 +4474,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -4481,7 +4486,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -4493,7 +4498,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -4505,7 +4510,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -4517,7 +4522,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -4529,7 +4534,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -4541,7 +4546,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -4553,7 +4558,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -4565,7 +4570,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -4577,7 +4582,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -4589,7 +4594,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -4601,7 +4606,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -4613,7 +4618,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -4625,7 +4630,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -4637,7 +4642,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -4649,7 +4654,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -4661,7 +4666,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -4673,7 +4678,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -4685,7 +4690,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -4697,7 +4702,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -4709,7 +4714,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -4721,7 +4726,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -4733,7 +4738,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -4745,7 +4750,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -4757,7 +4762,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -4769,7 +4774,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -4781,7 +4786,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -4793,7 +4798,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -4805,7 +4810,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -4817,7 +4822,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -4829,7 +4834,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -4841,7 +4846,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -4853,7 +4858,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -4865,7 +4870,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -4877,7 +4882,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -4889,7 +4894,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -4901,7 +4906,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -4913,7 +4918,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -4925,7 +4930,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -4937,7 +4942,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -4949,7 +4954,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -4961,7 +4966,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -4973,7 +4978,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -4985,7 +4990,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -4997,7 +5002,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -5009,7 +5014,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -5021,7 +5026,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -5033,7 +5038,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -5045,7 +5050,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -5057,7 +5062,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -5069,7 +5074,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -5081,7 +5086,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -5093,7 +5098,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -5105,7 +5110,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -5117,7 +5122,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -5129,7 +5134,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -5141,7 +5146,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -5153,7 +5158,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -5165,7 +5170,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -5177,7 +5182,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -5189,7 +5194,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -5201,7 +5206,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -5213,7 +5218,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -5225,7 +5230,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -5237,7 +5242,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -5249,7 +5254,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -5261,7 +5266,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -5273,7 +5278,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -5285,7 +5290,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -5297,7 +5302,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -5309,7 +5314,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -5321,7 +5326,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -5333,7 +5338,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -5345,7 +5350,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -5357,7 +5362,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -5369,7 +5374,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -5381,7 +5386,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -5393,7 +5398,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -5405,7 +5410,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -5417,7 +5422,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -5429,7 +5434,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -5441,7 +5446,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -5453,7 +5458,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -5465,7 +5470,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -5477,7 +5482,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -5489,7 +5494,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -5501,7 +5506,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -5513,7 +5518,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -5525,7 +5530,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -5537,7 +5542,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -5549,7 +5554,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -5561,7 +5566,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -5573,7 +5578,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -5585,7 +5590,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -5597,7 +5602,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -5609,7 +5614,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -5621,7 +5626,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -5633,7 +5638,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -5645,7 +5650,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -5657,7 +5662,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -5669,7 +5674,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -5681,7 +5686,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -5693,7 +5698,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -5705,7 +5710,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -5717,7 +5722,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -5729,7 +5734,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -5741,7 +5746,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -5753,7 +5758,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -5765,7 +5770,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -5777,7 +5782,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -5789,7 +5794,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -5801,7 +5806,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -5813,7 +5818,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -5825,7 +5830,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -5837,7 +5842,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -5849,7 +5854,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -5861,7 +5866,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -5873,7 +5878,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -5885,7 +5890,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -5897,7 +5902,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -5909,7 +5914,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -5921,7 +5926,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -5933,7 +5938,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -5945,7 +5950,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -5957,7 +5962,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -5969,7 +5974,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -5981,7 +5986,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -5993,7 +5998,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -6005,7 +6010,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -6017,7 +6022,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -6029,7 +6034,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -6041,7 +6046,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -6053,7 +6058,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -6065,7 +6070,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -6077,7 +6082,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -6089,7 +6094,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -6101,7 +6106,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -6113,7 +6118,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -6125,7 +6130,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -6137,7 +6142,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -6149,7 +6154,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -6161,7 +6166,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -6173,7 +6178,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -6185,7 +6190,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -6197,7 +6202,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -6209,7 +6214,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -6221,7 +6226,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -6233,7 +6238,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -6245,7 +6250,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -6257,7 +6262,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -6269,7 +6274,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -6281,7 +6286,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -6293,7 +6298,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -6305,7 +6310,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -6317,7 +6322,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -6329,7 +6334,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -6341,7 +6346,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -6353,7 +6358,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -6365,7 +6370,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -6377,7 +6382,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -6389,7 +6394,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -6401,7 +6406,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -6413,7 +6418,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -6425,7 +6430,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -6437,7 +6442,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -6449,7 +6454,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -6461,7 +6466,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -6473,7 +6478,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -6485,7 +6490,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -6497,7 +6502,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -6509,7 +6514,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -6521,7 +6526,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -6533,7 +6538,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -6545,7 +6550,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -6557,7 +6562,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -6569,7 +6574,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -6581,7 +6586,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -6593,7 +6598,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -6605,7 +6610,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -6617,7 +6622,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -6629,7 +6634,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -6641,7 +6646,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -6653,7 +6658,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -6665,7 +6670,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -6677,7 +6682,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -6689,7 +6694,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -6701,7 +6706,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -6713,7 +6718,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -6725,7 +6730,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -6737,7 +6742,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -6749,7 +6754,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -6761,7 +6766,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -6773,7 +6778,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -6785,7 +6790,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -6797,7 +6802,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -6809,7 +6814,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -6821,7 +6826,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -6833,7 +6838,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -6845,7 +6850,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -6857,7 +6862,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -6869,7 +6874,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -6881,7 +6886,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -6893,7 +6898,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -6905,7 +6910,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -6917,7 +6922,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -6929,7 +6934,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -6941,7 +6946,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -6953,7 +6958,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -6965,7 +6970,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -6977,7 +6982,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -6989,7 +6994,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -7001,7 +7006,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -7013,7 +7018,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -7025,7 +7030,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -7037,7 +7042,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -7049,7 +7054,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -7061,7 +7066,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -7073,7 +7078,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -7085,7 +7090,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -7097,7 +7102,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -7109,7 +7114,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -7121,7 +7126,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -7133,7 +7138,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -7145,7 +7150,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -7157,7 +7162,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -7169,7 +7174,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -7181,7 +7186,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -7193,7 +7198,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -7205,7 +7210,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -7217,7 +7222,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -7229,7 +7234,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -7241,7 +7246,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -7253,7 +7258,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -7265,7 +7270,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -7277,7 +7282,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -7289,7 +7294,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -7301,7 +7306,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -7313,7 +7318,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -7325,7 +7330,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -7337,7 +7342,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -7349,7 +7354,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -7361,7 +7366,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -7373,7 +7378,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -7385,7 +7390,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -7397,7 +7402,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -7409,7 +7414,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -7421,7 +7426,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -7433,7 +7438,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -7445,7 +7450,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -7457,7 +7462,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -7469,7 +7474,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -7481,7 +7486,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -7493,7 +7498,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -7505,7 +7510,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -7517,7 +7522,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -7529,7 +7534,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -7541,7 +7546,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -7553,7 +7558,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -7565,7 +7570,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -7577,7 +7582,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -7589,7 +7594,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -7601,7 +7606,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -7613,7 +7618,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -7625,7 +7630,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -7637,7 +7642,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -7649,7 +7654,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -7661,7 +7666,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -7673,7 +7678,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -7685,7 +7690,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -7697,7 +7702,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -7709,7 +7714,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -7721,7 +7726,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -7733,7 +7738,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -7745,7 +7750,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -7757,7 +7762,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -7769,7 +7774,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -7781,7 +7786,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -7793,7 +7798,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -7805,7 +7810,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -7817,7 +7822,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -7829,7 +7834,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -7841,7 +7846,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -7853,7 +7858,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -7865,7 +7870,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -7877,7 +7882,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -7889,7 +7894,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -7901,7 +7906,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -7913,7 +7918,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -7925,7 +7930,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -7937,7 +7942,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -7949,7 +7954,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -7961,7 +7966,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -7973,7 +7978,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -7985,7 +7990,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -7997,7 +8002,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -8009,7 +8014,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -8021,7 +8026,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -8033,7 +8038,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -8045,7 +8050,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -8057,7 +8062,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -8069,7 +8074,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -8081,7 +8086,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -8093,7 +8098,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -8105,7 +8110,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -8117,7 +8122,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -8129,7 +8134,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -8141,7 +8146,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -8153,7 +8158,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -8165,7 +8170,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -8177,7 +8182,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -8189,7 +8194,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -8201,7 +8206,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -8213,7 +8218,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -8225,7 +8230,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -8237,7 +8242,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -8249,7 +8254,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -8261,7 +8266,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -8273,7 +8278,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -8285,7 +8290,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -8297,7 +8302,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -8309,7 +8314,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -8321,7 +8326,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -8333,7 +8338,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -8345,7 +8350,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -8357,7 +8362,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -8369,7 +8374,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -8381,7 +8386,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -8393,7 +8398,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -8405,7 +8410,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -8417,7 +8422,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -8429,7 +8434,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -8441,7 +8446,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -8453,7 +8458,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -8465,7 +8470,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -8477,7 +8482,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -8489,7 +8494,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -8501,7 +8506,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -8513,7 +8518,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -8525,7 +8530,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -8537,7 +8542,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -8549,7 +8554,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -8561,7 +8566,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -8573,7 +8578,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -8585,7 +8590,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -8597,7 +8602,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -8609,7 +8614,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -8621,7 +8626,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -8633,7 +8638,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -8645,7 +8650,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -8657,7 +8662,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -8669,7 +8674,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -8681,7 +8686,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -8693,7 +8698,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -8705,7 +8710,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -8717,7 +8722,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -8729,7 +8734,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -8741,7 +8746,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -8753,7 +8758,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -8765,7 +8770,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -8777,7 +8782,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -8789,7 +8794,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -8801,7 +8806,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -8813,7 +8818,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -8825,7 +8830,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -8837,7 +8842,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -8849,7 +8854,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -8861,7 +8866,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -8873,7 +8878,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -8885,7 +8890,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -8897,7 +8902,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -8909,7 +8914,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -8921,7 +8926,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -8933,7 +8938,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     },
     {
@@ -8945,7 +8950,7 @@
       "lapses": 0,
       "due": "2026-08-09",
       "totalRating": 0,
-      "lastStudyTime": "2026-08-09T08:34:16.482Z",
+      "lastStudyTime": "2026-08-09T08:38:58.814Z",
       "history": []
     }
   ]
