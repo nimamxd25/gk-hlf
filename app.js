@@ -109,7 +109,7 @@ async function pullAll(){
   const w=await ghGet('words.json');
   if(w&&w.content){try{const remote=JSON.parse(w.content);if(Array.isArray(remote)){
     const map=new Map(remote.map(c=>[c.id,c]));
-    allCards.forEach(c=>{if(map.has(c.id)){const r=map.get(c.id);Object.assign(c,{word:r.word,meaning:r.meaning,focus:r.focus||c.focus,tone:r.tone||c.tone,collocation:r.collocation||c.collocation,misconstrue:r.misconstrue||r.compare||c.misconstrue,custom:Array.isArray(r.custom)?r.custom:(c.custom||[]),updated_at:r.updated_at});}});
+    allCards.forEach(c=>{if(map.has(c.id)){const r=map.get(c.id);Object.assign(c,{word:r.word,meaning:r.meaning,focus:r.focus||c.focus,tone:r.tone||c.tone,collocation:r.collocation||c.collocation,misconstrue:r.misconstrue||r.compare||c.misconstrue,custom:Array.isArray(r.custom)?r.custom:(c.custom||[]),source:r.source||c.source||'手动',updated_at:r.updated_at});}});
     map.forEach((c,id)=>{if(!allCards.some(x=>x.id===id))allCards.push({...newCard(c),...c});});
     saveCards();
   }}catch(e){}}
@@ -140,8 +140,8 @@ async function loadBuiltinWords(){
     const builtin=JSON.parse(b.content);
     if(Array.isArray(builtin)){
       builtin.forEach(item=>{
-        if(!allCards.find(c=>c.word===item.word&&c.source==='builtin')){
-          allCards.push(newCard({word:item.word,meaning:item.meaning,focus:item.focus,tone:item.tone,collocation:item.collocation,misconstrue:item.misconstrue||item.compare,custom:item.custom||[],source:'内置'}));
+        if(!allCards.find(c=>c.word===item.word && c.meaning===item.meaning)){
+          allCards.push(newCard({...item, source:'内置'}));
         }
       });
       saveCards(); return true;
@@ -159,6 +159,18 @@ function updateSummary(){
   document.getElementById('sDue').textContent=due;
   document.getElementById('sMastered').textContent=mastered;
   document.getElementById('sTotal').textContent=allCards.length;
+  // 更新同步状态条
+  updateSyncBar();
+}
+function updateSyncBar(){
+  const dot=document.getElementById('syncDot');
+  const txt=document.getElementById('syncText');
+  if(!dot||!txt)return;
+  if(!ghReady()){
+    dot.className='sync-dot fail'; txt.textContent='未配置 GitHub，无法同步';
+  } else {
+    dot.className='sync-dot ok'; txt.textContent='已连接 GitHub（自动同步中）';
+  }
 }
 
 // ---------- 视图 ----------
@@ -174,10 +186,11 @@ function renderCurrentView(){
     document.getElementById('emptyAdd').onclick=openEditor;
     return;
   }
+  const todayCards=fresh.slice(0, settings.dailyNew);
   let html=`<div class="section-title"><span>📌 待学/待复习</span></div>`;
-  if(fresh.length){
-    html+=`<div class="section-title"><span>🆕 今日待学（${fresh.length}）</span></div>`;
-    fresh.slice(0,20).forEach(c=>html+=cardHTML(c));
+  if(todayCards.length){
+    html+=`<div class="section-title"><span>🆕 今日待学（${todayCards.length} / ${fresh.length}）</span></div>`;
+    todayCards.forEach(c=>html+=cardHTML(c));
   } else if(due.length){
     html+=`<div class="section-title"><span>⏰ 今日待复习（${due.length}）</span></div>`;
     due.slice(0,20).forEach(c=>html+=cardHTML(c));
@@ -734,7 +747,7 @@ function saveGhForm(){
 }
 
 // ---------- 学习流程收尾（SM-2 分级退出） ----------
-function gradeFromButton(g){const c=studyQueue[studyIndex];applyGrade(c,g);saveCards();studyIndex++;if(studyIndex<studyQueue.length)renderStudyCard();else endStudy();}
+function gradeFromButton(g){const c=studyQueue[studyIndex];applyGrade(c,g);saveCards();pushAll();studyIndex++;if(studyIndex<studyQueue.length)renderStudyCard();else endStudy();}
 function endStudy(){refs.overlay.classList.add('hidden');toast('本组学习完成 🎉');saveCards();pushAll();updateSummary();renderCurrentView();}
 function applyGrade(c,g){
   const s=c;
@@ -748,7 +761,7 @@ function applyGrade(c,g){
     else if(g===2){s.reps++;s.interval=s.reps===1?1:Math.round(s.interval*s.ef);s.due=addDays(todayStr(),s.interval);if(s.interval>=21)s.status='mastered';}
     else{s.ef=Math.min(2.9,s.ef+0.1);s.reps++;s.interval=s.reps===1?1:Math.round(s.interval*s.ef*1.3);s.due=addDays(todayStr(),s.interval);if(s.interval>=21)s.status='mastered';}
   }
-  s.totalRating+=g;s.history=s.history||[];s.history.push({date:todayStr(),grade:g});return s;
+  s.totalRating+=g;s.lastStudyTime=new Date().toISOString();s.history=s.history||[];s.history.push({date:todayStr(),grade:g});return s;
 }
 function reviewFlow(){
   const due=allCards.filter(c=>c.status!=='fresh'&&c.status!=='mastered'&&c.due<=todayStr());
