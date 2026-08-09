@@ -162,6 +162,21 @@ function updateSummary(){
   // 更新同步状态条
   updateSyncBar();
 }
+// 更新学习热力图（最近7天）
+function updateHeatmap(){
+  const days=JSON.parse(localStorage.getItem('gk_studyDays')||'[]');
+  const el=document.getElementById('heatmap');
+  if(!el)return;
+  let html='';
+  for(let i=6;i>=0;i--){
+    const d=new Date(); d.setDate(d.getDate()-i);
+    const ds=`${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;
+    const studied=days.includes(ds);
+    const today=ds===todayStr();
+    html+=`<div class="heatmap-cell${studied?' done':''}${today?' today':''}" title="${ds}${studied?' ✔':''}"></div>`;
+  }
+  el.innerHTML=html;
+}
 function updateSyncBar(){
   const dot=document.getElementById('syncDot');
   const txt=document.getElementById('syncText');
@@ -762,7 +777,15 @@ function saveGhForm(){
 
 // ---------- 学习流程收尾（SM-2 分级退出） ----------
 function gradeFromButton(g){const c=studyQueue[studyIndex];applyGrade(c,g);saveCards();pushAll();studyIndex++;if(studyIndex<studyQueue.length)renderStudyCard();else endStudy();}
-function endStudy(){refs.overlay.classList.add('hidden');toast('本组学习完成 🎉');saveCards();pushAll();updateSummary();renderCurrentView();}
+function endStudy(){refs.overlay.classList.add('hidden');toast('本组学习完成 🎉');saveCards();pushAll();markStudyDay();updateSummary();updateHeatmap();renderCurrentView();}
+function markStudyDay(){
+  const days=JSON.parse(localStorage.getItem('gk_studyDays')||'[]');
+  if(!days.includes(todayStr())){
+    days.push(todayStr());
+    if(days.length>100) days.shift();
+    localStorage.setItem('gk_studyDays',JSON.stringify(days));
+  }
+}
 function applyGrade(c,g){
   const s=c;
   if(s.status==='fresh'||s.status==='learning'){
@@ -937,7 +960,7 @@ function boot(){
   if(!builtinLoaded){
     loadBuiltinWords().then(loaded=>{ if(loaded){ localStorage.setItem('builtin_v1','1'); saveCards(); updateSummary(); renderCurrentView(); toast('已加载 713 预制词条'); } });
   }
-  updateSummary();renderCurrentView();
+  updateSummary();renderCurrentView();updateHeatmap();
   bindEditor();bindSettings();bindEvents();
   if(ghReady())setTimeout(()=>pullAll().then(()=>{updateSummary();renderCurrentView();}),600);
 }
