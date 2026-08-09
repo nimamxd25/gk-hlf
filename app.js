@@ -167,14 +167,22 @@ function updateHeatmap(){
   const days=JSON.parse(localStorage.getItem('gk_studyDays')||'[]');
   const el=document.getElementById('heatmap');
   if(!el)return;
-  let html='';
-  for(let i=6;i>=0;i--){
-    const d=new Date(); d.setDate(d.getDate()-i);
-    const ds=`${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;
+  const now=new Date(), y=now.getFullYear(), m=now.getMonth();
+  const firstDay=new Date(y,m,1).getDay(); // 1号是周几 (0=周日)
+  const totalDays=new Date(y,m+1,0).getDate();
+  const weekHeaders=['日','一','二','三','四','五','六'];
+  let html=`<div class="cal-title">${y}年${m+1}月</div><div class="cal-grid">`;
+  weekHeaders.forEach(w=>html+=`<div class="cal-cell cal-hd">${w}</div>`);
+  // 填充1号前的空位
+  for(let i=0;i<firstDay;i++) html+=`<div class="cal-cell cal-empty"></div>`;
+  for(let d=1;d<=totalDays;d++){
+    const ds=`${y}-${String(m+1).padStart(2,'0')}-${String(d).padStart(2,'0')}`;
     const studied=days.includes(ds);
     const today=ds===todayStr();
-    html+=`<div class="heatmap-cell${studied?' done':''}${today?' today':''}" title="${ds}${studied?' ✔':''}"></div>`;
+    const cls=studied?'cal-done':(today?'cal-today':'');
+    html+=`<div class="cal-cell ${cls}" title="${ds}${studied?' ✔':''}">${d}</div>`;
   }
+  html+=`</div>`;
   el.innerHTML=html;
 }
 function updateSyncBar(){
