@@ -174,11 +174,15 @@ body{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei
 .sync-dot.ok{background:var(--good);}
 .sync-dot.fail{background:var(--bad);}
 .sync-ver{margin-left:auto;color:var(--muted);font-size:11px;}
-/* 学习热力图 */
-.heatmap{display:flex;gap:4px;justify-content:center;padding:6px 0 10px;}
-.heatmap-cell{width:32px;height:32px;border-radius:6px;background:var(--border);}
-.heatmap-cell.done{background:var(--good);}
-.heatmap-cell.today{border:2px solid var(--primary);}
+/* 学习日历 */
+.heatmap{margin:6px 0 10px;}
+.cal-title{font-size:14px;font-weight:700;color:var(--text);text-align:center;margin-bottom:6px;}
+.cal-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:3px;}
+.cal-cell{border-radius:6px;text-align:center;padding:6px 0;font-size:12px;color:var(--muted);background:var(--bg);}
+.cal-hd{font-size:11px;font-weight:600;color:var(--muted);padding:4px 0;}
+.cal-empty{background:transparent;}
+.cal-done{background:var(--good);color:#fff;font-weight:700;}
+.cal-today{border:2px solid var(--primary);font-weight:700;color:var(--text);}
 /* 多 API 配置卡片 */
 .ai-profiles{margin-bottom:8px;}
 .ai-profile{background:var(--bg);border:1px solid var(--border);border-radius:12px;padding:12px;margin-bottom:8px;position:relative;}
