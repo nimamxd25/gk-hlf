@@ -959,6 +959,11 @@ function bindEvents(){
   // AI 查词（主页入口 + 编辑器入口均指向同一面板）
   document.getElementById('btnAiLookupHome').addEventListener('click',()=>openAiLookup());
   document.getElementById('btnAiLookup').addEventListener('click',()=>openAiLookup());
+  // 刷题
+  document.getElementById('btnQuiz').addEventListener('click',openQuiz);
+  document.getElementById('quizClose').addEventListener('click',closeQuiz);
+  document.getElementById('quizPrev').addEventListener('click',()=>{if(quizIdx>0){quizIdx--;renderQuiz();}});
+  document.getElementById('quizNext').addEventListener('click',()=>{if(quizIdx<quizQuestions.length-1){quizIdx++;renderQuiz();}});
   // AI 查词
   document.getElementById('btnAiLookup').addEventListener('click',()=>openAiLookup());
   document.getElementById('aiLookupClose').addEventListener('click',closeAiLookup);
@@ -1004,4 +1009,86 @@ window.__addCardFromShortcut=async function(word,meaning,thinking){
 };
 
 window.addEventListener('load',boot);
+
+// ---------- 刷题模块 ----------
+let quizQuestions=[], quizIdx=0, quizAnswered=null;
+async function loadQuiz(){
+  try{
+    const r=await fetch('https://raw.githubusercontent.com/nimamxd25/gk-hlf/main/questions.json');
+    quizQuestions=await r.json();
+  }catch(e){ toast('题库加载失败'); }
+}
+function openQuiz(){
+  document.getElementById('quizPage').classList.remove('hidden');
+  if(!quizQuestions.length){ loadQuiz().then(()=>renderQuiz()); }
+  else{ renderQuiz(); }
+}
+function closeQuiz(){ document.getElementById('quizPage').classList.add('hidden'); }
+function renderQuiz(){
+  if(!quizQuestions.length){ document.getElementById('quizBody').innerHTML='<p>加载中…</p>'; return; }
+  const q=quizQuestions[quizIdx];
+  document.getElementById('quizPos').textContent=`${quizIdx+1}/${quizQuestions.length}`;
+  q.userAnswer=null;
+  q.wordTags=null;
+  // 题干
+  const stemDisplay=q.stem.replace(/\([\s]*\)/g,'<b>(   )</b>');
+  let optionsHTML='';
+  const letters=['A','B','C','D'];
+  const correct=q.answer;
+  q.options.forEach((o,i)=>{
+    const cls=q.userAnswer===i?(correct===letters[i]?'correct':'wrong'):(q.userAnswer!==null&&letters[i]===correct?'reveal':'');
+    optionsHTML+=`<button class="quiz-option ${cls}" data-idx="${i}">${o}</button>`;
+  });
+  let resultHTML='';
+  if(q.userAnswer!==null){
+    resultHTML=`<div class="quiz-result ${letters[q.userAnswer]===correct?'ok':'fail'}">${letters[q.userAnswer]===correct?'✅ 正确！':'❌ 错误，正确答案是 '+correct}</div>`;
+    if(!q.wordTags){
+      const wl=extractWords(q);
+      q.wordTags=wl.map(w=>({word:w,inLib:allCards.some(c=>c.word===w)}));
+    }
+    resultHTML+='<div class="quiz-word-tags">'+q.wordTags.map(w=>
+      `<span class="quiz-word-tag ${w.inLib?'inlib':''}" data-word="${esc(w.word)}">${w.word}${w.inLib?' 📖':''}</span>`
+    ).join('')+'</div>';
+  }
+  document.getElementById('quizBody').innerHTML=`
+    <div class="quiz-stem">${stemDisplay}</div>
+    <div>${q.prompt||'依次填入最恰当的一项是：'}</div>
+    ${optionsHTML}
+    ${resultHTML}
+  `;
+  // 绑定选项点击
+  document.querySelectorAll('.quiz-option').forEach(b=>{
+    b.addEventListener('click',()=>{
+      if(q.userAnswer!==null)return;
+      q.userAnswer=+b.dataset.idx;
+      const correctLetter=letters[q.userAnswer]===correct;
+      if(correctLetter){ quizAnswered=quizIdx; }
+      renderQuiz();
+    });
+  });
+  // 绑定词语标签点击
+  document.querySelectorAll('.quiz-word-tag').forEach(tag=>{
+    tag.addEventListener('click',()=>{
+      const w=tag.dataset.word;
+      const card=allCards.find(c=>c.word===w);
+      if(card){
+        closeQuiz();
+        openEditor(card);
+      } else {
+        toast(`「${w}」不在词库中，可去 AI 查词添加`);
+      }
+    });
+  });
+}
+function extractWords(q){
+  const ws=new Set();
+  q.options.forEach(o=>{
+    o.replace(/^[A-D]\.\s*/,'').split(/\s+/).forEach(p=>{
+      p=p.replace(/[；;。，,.、]$/,'').trim();
+      if(p.length>=2&&!/^\d+$/.test(p)&&!/[a-zA-Z]/.test(p))ws.add(p);
+    });
+  });
+  // 也从题干提取括号里的词（如果有）
+  return Array.from(ws);
+}
 })();
