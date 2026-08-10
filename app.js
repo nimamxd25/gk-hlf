@@ -963,11 +963,12 @@ function bindEvents(){
   document.getElementById('btnAiLookup').addEventListener('click',()=>openAiLookup());
   // 刷题
   document.getElementById('btnQuiz').addEventListener('click',openQuiz);
-  document.getElementById('quizStatsBtn').addEventListener('click',toggleQuizStats);
+  document.getElementById('quizStartBtn').addEventListener('click',startQuizBatch);
   document.getElementById('quizClose').addEventListener('click',closeQuiz);
+  document.getElementById('quizEnd').addEventListener('click',showQuizHome);
   document.getElementById('quizPrev').addEventListener('click',()=>{if(quizIdx>0){quizIdx--;const qid=quizBatch[quizIdx];const q=quizQuestions.find(q=>q.id===qid);q.userAnswer=null;q.wordTags=null;renderQuizQuestion(q);}});
   document.getElementById('quizNext').addEventListener('click',()=>{if(quizIdx<quizBatch.length-1){quizIdx++;const qid=quizBatch[quizIdx];const q=quizQuestions.find(q=>q.id===qid);q.userAnswer=null;q.wordTags=null;renderQuizQuestion(q);}});
-  document.getElementById('quizBatchSize').addEventListener('change',()=>{ buildQuizBatch(); });
+  document.getElementById('quizBatchSize').addEventListener('change',()=>{});
   // AI 查词
   document.getElementById('btnAiLookup').addEventListener('click',()=>openAiLookup());
   document.getElementById('aiLookupClose').addEventListener('click',closeAiLookup);
@@ -1025,10 +1026,43 @@ async function loadQuiz(){
   }catch(e){ toast('题库加载失败'); }
 }
 function openQuiz(){
-  quizIdx=0; quizReturn=false;
-  if(!quizQuestions.length){ loadQuiz().then(()=>buildQuizBatch()); }
-  else{ buildQuizBatch(); }
+  quizReturn=false;
   document.getElementById('quizPage').classList.remove('hidden');
+  showQuizHome();
+}
+function showQuizHome(){
+  document.getElementById('quizHome').classList.remove('hidden');
+  document.getElementById('quizBody').classList.add('hidden');
+  document.getElementById('quizFoot').classList.add('hidden');
+  if(!quizQuestions.length){ loadQuiz().then(()=>renderQuizHomeStats()); }
+  else{ renderQuizHomeStats(); }
+}
+function renderQuizHomeStats(){
+  loadQuizStats();
+  const total=quizQuestions.length;
+  const done=new Set(Object.keys(quizStats).map(Number));
+  const doneCount=done.size;
+  const freshCount=total-doneCount;
+  let correctTotal=0, wrongTotal=0;
+  for(const id in quizStats){ correctTotal+=quizStats[id].correct||0; wrongTotal+=quizStats[id].wrong||0; }
+  const acc=correctTotal+wrongTotal>0?Math.round(correctTotal/(correctTotal+wrongTotal)*100):0;
+  const wrongPool=quizQuestions.filter(q=>quizStats[q.id]&&quizStats[q.id].wrong>0).length;
+  const mastered=Object.values(quizStats).filter(s=>s.streak>=3&&s.wrong===0).length;
+  document.getElementById('qsTotal').textContent=total;
+  document.getElementById('qsDone').textContent=doneCount;
+  document.getElementById('qsFresh').textContent=freshCount;
+  document.getElementById('qsAcc').textContent=correctTotal+wrongTotal>0?acc+'%':'--%';
+  document.getElementById('qsAcc').style.color=acc>=70?'var(--good)':(acc>0?'var(--bad)':'var(--muted)');
+  document.getElementById('qsCorrect').textContent=correctTotal;
+  document.getElementById('qsWrong').textContent=wrongTotal;
+  document.getElementById('qsWrongPool').textContent=wrongPool;
+  document.getElementById('qsMastered').textContent=mastered;
+}
+function startQuizBatch(){
+  buildQuizBatch();
+  document.getElementById('quizHome').classList.add('hidden');
+  document.getElementById('quizBody').classList.remove('hidden');
+  document.getElementById('quizFoot').classList.remove('hidden');
 }
 function buildQuizBatch(){
   loadQuizStats();
