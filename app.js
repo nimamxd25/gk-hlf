@@ -962,8 +962,8 @@ function bindEvents(){
   // 刷题
   document.getElementById('btnQuiz').addEventListener('click',openQuiz);
   document.getElementById('quizClose').addEventListener('click',closeQuiz);
-  document.getElementById('quizPrev').addEventListener('click',()=>{if(quizIdx>0){quizIdx--;renderQuiz();}});
-  document.getElementById('quizNext').addEventListener('click',()=>{if(quizIdx<quizQuestions.length-1){quizIdx++;renderQuiz();}});
+  document.getElementById('quizPrev').addEventListener('click',()=>{if(quizIdx>0){quizIdx--;goToQuiz(quizIdx);}});
+  document.getElementById('quizNext').addEventListener('click',()=>{if(quizIdx<quizQuestions.length-1){quizIdx++;goToQuiz(quizIdx);}});
   // AI 查词
   document.getElementById('btnAiLookup').addEventListener('click',()=>openAiLookup());
   document.getElementById('aiLookupClose').addEventListener('click',closeAiLookup);
@@ -1019,6 +1019,8 @@ async function loadQuiz(){
   }catch(e){ toast('题库加载失败'); }
 }
 function openQuiz(){
+  quizIdx=0; quizAnswered=null;
+  quizQuestions.forEach(q=>{q.userAnswer=null;q.wordTags=null;});
   document.getElementById('quizPage').classList.remove('hidden');
   if(!quizQuestions.length){ loadQuiz().then(()=>renderQuiz()); }
   else{ renderQuiz(); }
@@ -1030,12 +1032,15 @@ function quizOptionClick(idx){
   q.userAnswer=idx;
   renderQuiz();
 }
+function goToQuiz(idx){
+  const q=quizQuestions[idx]; q.userAnswer=null; q.wordTags=null;
+  renderQuiz();
+}
 function renderQuiz(){
   if(!quizQuestions.length){ document.getElementById('quizBody').innerHTML='<p>加载中…</p>'; return; }
   const q=quizQuestions[quizIdx];
   document.getElementById('quizPos').textContent=`${quizIdx+1}/${quizQuestions.length}`;
-  q.userAnswer=null;
-  q.wordTags=null;
+  // q.userAnswer=null 已在 startQuiz 时设置，此处不重置
   // 题干
   const stemDisplay=q.stem.replace(/\([\s]*\)/g,'<b>(   )</b>');
   let optionsHTML='';
