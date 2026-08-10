@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <title>我的生词本</title>
-<link rel="stylesheet" href="style.css?v=77">
+<link rel="stylesheet" href="style.css?v=78">
 </head>
 <body>
 <div id="app">
@@ -34,13 +34,14 @@
     <button class="main-btn" id="btnReview">🔁 复习</button>
     <button class="main-btn ghost" id="btnLibrary">📚 全部词库</button>
     <button class="main-btn ai-query-btn" id="btnAiLookupHome">🤖 AI 查词</button>
+    <button class="main-btn quiz-btn" id="btnQuiz">📝 刷题</button>
   </div>
 
   <!-- 同步状态条 -->
   <div class="sync-bar" id="syncBar">
     <span class="sync-dot" id="syncDot"></span>
     <span class="sync-text" id="syncText">检查中…</span>
-    <span class="sync-ver">v77</span>
+    <span class="sync-ver">v78</span>
   </div>
 
   <!-- 词库搜索 -->
@@ -197,8 +198,22 @@
   </div>
 </div>
 
+<!-- 刷题页面 -->
+<div id="quizPage" class="quiz-container hidden">
+  <div class="quiz-head">
+    <span class="quiz-title">📝 逻辑填空刷题</span>
+    <button class="quiz-close" id="quizClose">✕</button>
+  </div>
+  <div class="quiz-body" id="quizBody"></div>
+  <div class="quiz-foot">
+    <button class="quiz-prev" id="quizPrev">上一题</button>
+    <span class="quiz-pos" id="quizPos">1/578</span>
+    <button class="quiz-next" id="quizNext">下一题</button>
+  </div>
+</div>
+
 <div id="toast" class="toast hidden"></div>
 
-<script src="app.js?v=77"></script>
+<script src="app.js?v=78"></script>
 </body>
 </html>
