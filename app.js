@@ -478,9 +478,9 @@ function bindEditor(){
     if(card){card.word=word;card.meaning=meaning;card.focus=focus;card.tone=tone;card.collocation=collocation;card.misconstrue=misconstrue;card.custom=customFields;card.updated_at=new Date().toISOString();}
     else{card=newCard({word,meaning,focus,tone,collocation,misconstrue,custom:customFields});allCards.push(card);}
     saveCards();closeEditor();renderCurrentView();updateSummary();
-    if(ghReady()){
-      const ok=pushAll(); // 异步，不阻塞
-      // 用 Promise 结果给反馈（若 token 无效/网络失败会 false）
+    if(quizReturn){ quizReturn=false; openQuiz(); toast(`已保存「${word}」`); }
+    else if(ghReady()){
+      const ok=pushAll();
       Promise.resolve(ok).then(r=>{ toast(r?`已保存并同步「${word}」✔`:`已保存「${word}」但同步失败，请检查设置`); });
     } else {
       toast(`已保存「${word}」（未配置GitHub，未同步）`);
@@ -803,7 +803,8 @@ function saveGhForm(){
 
 // ---------- 学习流程收尾（SM-2 分级退出） ----------
 function gradeFromButton(g){const c=studyQueue[studyIndex];applyGrade(c,g);saveCards();pushAll();studyIndex++;if(studyIndex<studyQueue.length)renderStudyCard();else endStudy();}
-function endStudy(){refs.overlay.classList.add('hidden');toast('本组学习完成 🎉');saveCards();pushAll();markStudyDay();updateSummary();updateHeatmap();renderCurrentView();}
+function endStudy(){refs.overlay.classList.add('hidden');toast('本组学习完成 🎉');saveCards();pushAll();markStudyDay();updateSummary();updateHeatmap();renderCurrentView();
+  if(quizReturn){ quizReturn=false; openQuiz(); } }
 function markStudyDay(){
   const days=JSON.parse(localStorage.getItem('gk_studyDays')||'[]');
   if(!days.includes(todayStr())){
@@ -926,7 +927,8 @@ function saveAiLookupResult(){
   document.getElementById('eTone').value=resolvedFields.tone||'';
   document.getElementById('eCollocation').value=resolvedFields.collocation||'';
   document.getElementById('eMisconstrue').value=resolvedFields.misconstrue||'';
-  toast('AI 结果已填入，确认后保存');
+  if(quizReturn){ toast('请确认后点保存，将回到刷题页面'); }
+  else{ toast('AI 结果已填入，确认后保存'); }
 }
 
 // ---------- 事件 ----------
@@ -1011,7 +1013,7 @@ window.__addCardFromShortcut=async function(word,meaning,thinking){
 window.addEventListener('load',boot);
 
 // ---------- 刷题模块 ----------
-let quizQuestions=[], quizIdx=0, quizAnswered=null;
+let quizQuestions=[], quizIdx=0, quizAnswered=null, quizReturn=false;
 async function loadQuiz(){
   try{
     const r=await fetch('https://raw.githubusercontent.com/nimamxd25/gk-hlf/main/questions.json');
@@ -1075,16 +1077,23 @@ function renderQuiz(){
   });
   // 绑定词语标签点击
   document.querySelectorAll('.quiz-word-tag').forEach(tag=>{
-    tag.addEventListener('click',()=>{
+    tag.onclick=()=>{
       const w=tag.dataset.word;
       const card=allCards.find(c=>c.word===w);
       if(card){
-        closeQuiz();
-        openEditor(card);
+        // 词库已有 → 直接学习，学完回到刷题
+        document.getElementById('quizPage').classList.add('hidden');
+        quizReturn=true;
+        startStudy([card.id]);
       } else {
-        toast(`「${w}」不在词库中，可去 AI 查词添加`);
+        // 词库没有 → AI 查词并自动填入，保存后回到刷题
+        openAiLookup();
+        document.getElementById('aiWord').value=w;
+        quizReturn=true;
+        // 自动开始查词
+        setTimeout(()=>doAiLookup(),400);
       }
-    });
+    };
   });
 }
 function flatOptions(opts){
