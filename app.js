@@ -1024,6 +1024,12 @@ function openQuiz(){
   else{ renderQuiz(); }
 }
 function closeQuiz(){ document.getElementById('quizPage').classList.add('hidden'); }
+function quizOptionClick(idx){
+  const q=quizQuestions[quizIdx];
+  if(q.userAnswer!==null)return;
+  q.userAnswer=idx;
+  renderQuiz();
+}
 function renderQuiz(){
   if(!quizQuestions.length){ document.getElementById('quizBody').innerHTML='<p>加载中…</p>'; return; }
   const q=quizQuestions[quizIdx];
@@ -1058,15 +1064,9 @@ function renderQuiz(){
     ${optionsHTML}
     ${resultHTML}
   `;
-  // 绑定选项点击
+  // 绑定选项点击 — 使用内联 onclick 确保移动端触发
   document.querySelectorAll('.quiz-option').forEach(b=>{
-    b.addEventListener('click',()=>{
-      if(q.userAnswer!==null)return;
-      q.userAnswer=+b.dataset.idx;
-      const correctLetter=letters[q.userAnswer]===correct;
-      if(correctLetter){ quizAnswered=quizIdx; }
-      renderQuiz();
-    });
+    b.onclick = function(){ quizOptionClick(+this.dataset.idx); };
   });
   // 绑定词语标签点击
   document.querySelectorAll('.quiz-word-tag').forEach(tag=>{
