@@ -1035,9 +1035,11 @@ function renderQuiz(){
   let optionsHTML='';
   const letters=['A','B','C','D'];
   const correct=q.answer;
-  q.options.forEach((o,i)=>{
+  // 把合并的选项拆分（如 "A.xxx B.yyy" → ["A.xxx","B.yyy"]）
+  const allOptions=flatOptions(q.options);
+  allOptions.forEach((optTxt,i)=>{
     const cls=q.userAnswer===i?(correct===letters[i]?'correct':'wrong'):(q.userAnswer!==null&&letters[i]===correct?'reveal':'');
-    optionsHTML+=`<button class="quiz-option ${cls}" data-idx="${i}">${o}</button>`;
+    optionsHTML+=`<button class="quiz-option ${cls}" data-idx="${i}">${optTxt}</button>`;
   });
   let resultHTML='';
   if(q.userAnswer!==null){
@@ -1080,15 +1082,25 @@ function renderQuiz(){
     });
   });
 }
+function flatOptions(opts){
+  const result=[];
+  opts.forEach(o=>{
+    // 按 A. B. C. D. 拆分
+    const parts=o.replace(/([A-D])\./g,'||$1.').split('||').filter(Boolean);
+    parts.forEach(p=>result.push(p.trim()));
+  });
+  return result.length===4?result:opts; // fallback
+}
 function extractWords(q){
   const ws=new Set();
-  q.options.forEach(o=>{
+  const letters=['A','B','C','D'];
+  const allOpts=flatOptions(q.options);
+  allOpts.forEach(o=>{
     o.replace(/^[A-D]\.\s*/,'').split(/\s+/).forEach(p=>{
       p=p.replace(/[；;。，,.、]$/,'').trim();
       if(p.length>=2&&!/^\d+$/.test(p)&&!/[a-zA-Z]/.test(p))ws.add(p);
     });
   });
-  // 也从题干提取括号里的词（如果有）
   return Array.from(ws);
 }
 })();
