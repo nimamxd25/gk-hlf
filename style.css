@@ -246,12 +246,14 @@ body{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei
 .quiz-foot{display:flex;justify-content:space-between;align-items:center;padding:14px 18px calc(18px+env(safe-area-inset-bottom));border-top:1px solid var(--border);flex:none;background:var(--card);}
 .quiz-foot button{border:1px solid var(--border);border-radius:10px;background:var(--bg);color:var(--text);padding:12px 24px;font-size:16px;cursor:pointer;min-width:80px;}
 .quiz-pos{font-size:14px;color:var(--muted);}
-.quiz-stem{font-size:16px;line-height:1.9;color:var(--text);margin-bottom:18px;text-indent:2em;}
-.quiz-option{display:block;width:100%;text-align:left;padding:14px 16px;margin-bottom:8px;border:1.5px solid var(--border);border-radius:12px;background:var(--card);font-size:15px;line-height:1.6;cursor:pointer;color:var(--text);}
+.quiz-stem{font-size:17px;line-height:2.0;color:var(--text);margin-bottom:18px;text-indent:2em;}
+.quiz-stem b{color:var(--primary);font-size:17px;}
+.quiz-option{display:block;width:100%;text-align:left;padding:16px 18px;margin-bottom:10px;border:1.5px solid var(--border);border-radius:12px;background:var(--card);font-size:16px;line-height:1.7;cursor:pointer;color:var(--text);-webkit-tap-highlight-color:transparent;touch-action:manipulation;user-select:none;}
 .quiz-option.correct{border-color:var(--good);background:rgba(39,174,96,.08);}
 .quiz-option.wrong{border-color:var(--bad);background:rgba(239,75,81,.08);}
 .quiz-option.reveal{border-color:var(--primary);background:rgba(79,109,245,.08);}
-.quiz-result{font-size:14px;font-weight:700;margin:8px 0 14px;}
+.quiz-option:active{opacity:.7;}
+.quiz-result{font-size:16px;font-weight:700;margin:8px 0 14px;padding:8px 0;}
 .quiz-result.ok{color:var(--good);}
 .quiz-result.fail{color:var(--bad);}
 .quiz-word-tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px;}
