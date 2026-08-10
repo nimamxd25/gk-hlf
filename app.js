@@ -963,9 +963,11 @@ function bindEvents(){
   document.getElementById('btnAiLookup').addEventListener('click',()=>openAiLookup());
   // 刷题
   document.getElementById('btnQuiz').addEventListener('click',openQuiz);
+  document.getElementById('quizStatsBtn').addEventListener('click',toggleQuizStats);
   document.getElementById('quizClose').addEventListener('click',closeQuiz);
-  document.getElementById('quizPrev').addEventListener('click',()=>{if(quizIdx>0){quizIdx--;goToQuiz(quizIdx);}});
-  document.getElementById('quizNext').addEventListener('click',()=>{if(quizIdx<quizQuestions.length-1){quizIdx++;goToQuiz(quizIdx);}});
+  document.getElementById('quizPrev').addEventListener('click',()=>{if(quizIdx>0){quizIdx--;const qid=quizBatch[quizIdx];const q=quizQuestions.find(q=>q.id===qid);q.userAnswer=null;q.wordTags=null;renderQuizQuestion(q);}});
+  document.getElementById('quizNext').addEventListener('click',()=>{if(quizIdx<quizBatch.length-1){quizIdx++;const qid=quizBatch[quizIdx];const q=quizQuestions.find(q=>q.id===qid);q.userAnswer=null;q.wordTags=null;renderQuizQuestion(q);}});
+  document.getElementById('quizBatchSize').addEventListener('change',()=>{ buildQuizBatch(); });
   // AI 查词
   document.getElementById('btnAiLookup').addEventListener('click',()=>openAiLookup());
   document.getElementById('aiLookupClose').addEventListener('click',closeAiLookup);
@@ -1014,6 +1016,8 @@ window.addEventListener('load',boot);
 
 // ---------- 刷题模块 ----------
 let quizQuestions=[], quizIdx=0, quizAnswered=null, quizReturn=false;
+let quizBatch=[], quizBatchSize=20; // 抽取的批次
+let quizStats={}; // {id:{correct,wrong,streak,last}} 答题统计
 async function loadQuiz(){
   try{
     const r=await fetch('https://raw.githubusercontent.com/nimamxd25/gk-hlf/main/questions.json');
@@ -1021,34 +1025,98 @@ async function loadQuiz(){
   }catch(e){ toast('题库加载失败'); }
 }
 function openQuiz(){
-  quizIdx=0; quizAnswered=null;
-  quizQuestions.forEach(q=>{q.userAnswer=null;q.wordTags=null;});
+  quizIdx=0; quizReturn=false;
+  if(!quizQuestions.length){ loadQuiz().then(()=>buildQuizBatch()); }
+  else{ buildQuizBatch(); }
   document.getElementById('quizPage').classList.remove('hidden');
-  if(!quizQuestions.length){ loadQuiz().then(()=>renderQuiz()); }
-  else{ renderQuiz(); }
+}
+function buildQuizBatch(){
+  loadQuizStats();
+  const sz=parseInt(document.getElementById('quizBatchSize').value)||20;
+  quizBatchSize=sz;
+  const allIds=quizQuestions.map(q=>q.id);
+  // 优先错题 + 没做过 + 连续对>=3降频
+  const wrongPool=allIds.filter(id=>(quizStats[id]?.wrong||0)>0);
+  const freshPool=allIds.filter(id=>!quizStats[id]);
+  const goodPool=allIds.filter(id=>quizStats[id]&&(quizStats[id].wrong||0)===0&&quizStats[id].streak<3);
+  const masteredPool=allIds.filter(id=>quizStats[id]&&quizStats[id].streak>=3&&(quizStats[id].wrong||0)===0);
+  // 构建候选池：错题权重最高，没抽过的次之，其他正常
+  let pool=[];
+  pool=pool.concat(wrongPool); // 错题全部
+  pool=pool.concat(wrongPool); // 错题双倍权重
+  pool=pool.concat(freshPool); // 没做过的
+  pool=pool.concat(goodPool); // 做对但不足3次
+  pool=pool.concat(masteredPool.slice(0, Math.ceil(masteredPool.length/4))); // 已掌握的少量
+  // 随机打乱取 batchSize
+  shuffle(pool);
+  const batch=pool.slice(0, Math.min(pool.length, quizBatchSize));
+  quizBatch=batch;
+  quizQuestions.forEach(q=>{q.userAnswer=null;q.wordTags=null;});
+  if(!batch.length){ document.getElementById('quizBody').innerHTML='<p>没有可抽的题目</p>'; return; }
+  showQuizQuestion(0);
+}
+function showQuizQuestion(idx){
+  quizIdx=idx;
+  const qid=quizBatch[quizIdx];
+  const q=quizQuestions.find(q=>q.id===qid);
+  if(!q)return;
+  renderQuizQuestion(q);
+}
+function shuffle(a){ for(let i=a.length-1;i>0;i--){ const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]; } }
+function loadQuizStats(){ try{quizStats=JSON.parse(localStorage.getItem('quiz_stats')||'{}');}catch(e){quizStats={};} }
+function saveQuizStats(){ localStorage.setItem('quiz_stats',JSON.stringify(quizStats)); }
+function toggleQuizStats(){
+  const panel=document.getElementById('quizStatsPanel');
+  panel.classList.toggle('hidden');
+  if(!panel.classList.contains('hidden')) renderQuizStats();
+}
+function renderQuizStats(){
+  loadQuizStats();
+  const total=quizQuestions.length;
+  const done=new Set(Object.keys(quizStats).map(Number));
+  const doneCount=done.size;
+  const freshCount=total-doneCount;
+  let correctTotal=0, wrongTotal=0;
+  for(const id in quizStats){ correctTotal+=quizStats[id].correct||0; wrongTotal+=quizStats[id].wrong||0; }
+  const acc=correctTotal+wrongTotal>0?Math.round(correctTotal/(correctTotal+wrongTotal)*100):0;
+  const wrongPool=quizQuestions.filter(q=>quizStats[q.id]&&quizStats[q.id].wrong>0).length;
+  const html=`<button class="quiz-stats-close" onclick="document.getElementById('quizStatsPanel').classList.add('hidden')">✕</button>
+    <h3>📊 答题统计</h3>
+    <p>总题数：<b>${total}</b> · 已做：<b>${doneCount}</b> · 未做：<b>${freshCount}</b></p>
+    <p>总答题次数：<b>${correctTotal+wrongTotal}</b></p>
+    <p>正确率：<b style="color:${acc>=70?'var(--good)':'var(--bad)'}">${acc}%</b>（✅${correctTotal} ❌${wrongTotal}）</p>
+    <p>当前错题数：<b>${wrongPool}</b></p>
+    <p>连续正确≥3（已掌握）：<b>${Object.values(quizStats).filter(s=>s.streak>=3&&s.wrong===0).length}</b> 题</p>
+    <p style="font-size:12px;color:var(--muted)">错题优先抽取 · 未做题优先 · 连续对3次减少出现</p>
+  `;
+  document.getElementById('quizStatsContent').innerHTML=html;
 }
 function closeQuiz(){ document.getElementById('quizPage').classList.add('hidden'); }
+// 记录答题统计并在 renderQuizQuestion 中调用
+function recordQuizResult(q, correct){
+  const id=q.id;
+  if(!quizStats[id]) quizStats[id]={correct:0,wrong:0,streak:0,last:''};
+  if(correct){ quizStats[id].correct++; quizStats[id].streak++; }
+  else{ quizStats[id].wrong++; quizStats[id].streak=0; }
+  quizStats[id].last=new Date().toISOString();
+  saveQuizStats();
+}
 function quizOptionClick(idx){
-  const q=quizQuestions[quizIdx];
-  if(q.userAnswer!==null)return;
+  const qid=quizBatch[quizIdx];
+  const q=quizQuestions.find(q=>q.id===qid);
+  if(!q||q.userAnswer!==null)return;
   q.userAnswer=idx;
-  renderQuiz();
+  const letters=['A','B','C','D'];
+  const correct=letters[idx]===q.answer;
+  recordQuizResult(q, correct);
+  renderQuizQuestion(q);
 }
-function goToQuiz(idx){
-  const q=quizQuestions[idx]; q.userAnswer=null; q.wordTags=null;
-  renderQuiz();
-}
-function renderQuiz(){
-  if(!quizQuestions.length){ document.getElementById('quizBody').innerHTML='<p>加载中…</p>'; return; }
-  const q=quizQuestions[quizIdx];
-  document.getElementById('quizPos').textContent=`${quizIdx+1}/${quizQuestions.length}`;
-  // q.userAnswer=null 已在 startQuiz 时设置，此处不重置
-  // 题干
+function renderQuizQuestion(q){
+  document.getElementById('quizPos').textContent=`${quizIdx+1}/${quizBatch.length}`;
   const stemDisplay=q.stem.replace(/\([\s]*\)/g,'<b>(   )</b>');
   let optionsHTML='';
   const letters=['A','B','C','D'];
   const correct=q.answer;
-  // 把合并的选项拆分（如 "A.xxx B.yyy" → ["A.xxx","B.yyy"]）
   const allOptions=flatOptions(q.options);
   allOptions.forEach((optTxt,i)=>{
     const cls=q.userAnswer===i?(correct===letters[i]?'correct':'wrong'):(q.userAnswer!==null&&letters[i]===correct?'reveal':'');
@@ -1071,26 +1139,22 @@ function renderQuiz(){
     ${optionsHTML}
     ${resultHTML}
   `;
-  // 绑定选项点击 — 使用内联 onclick 确保移动端触发
   document.querySelectorAll('.quiz-option').forEach(b=>{
     b.onclick = function(){ quizOptionClick(+this.dataset.idx); };
   });
-  // 绑定词语标签点击
+  // 绑定词语标签点击（返回刷题回跳的）
   document.querySelectorAll('.quiz-word-tag').forEach(tag=>{
     tag.onclick=()=>{
       const w=tag.dataset.word;
       const card=allCards.find(c=>c.word===w);
       if(card){
-        // 词库已有 → 直接学习，学完回到刷题
         document.getElementById('quizPage').classList.add('hidden');
         quizReturn=true;
         startStudy([card.id]);
       } else {
-        // 词库没有 → AI 查词并自动填入，保存后回到刷题
         openAiLookup();
         document.getElementById('aiWord').value=w;
         quizReturn=true;
-        // 自动开始查词
         setTimeout(()=>doAiLookup(),400);
       }
     };
