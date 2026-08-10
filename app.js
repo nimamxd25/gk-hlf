@@ -1168,8 +1168,8 @@ function renderQuizQuestion(q){
     ).join('')+'</div>';
   }
   document.getElementById('quizBody').innerHTML=`
+    <div class="quiz-meta"><span class="quiz-year">${esc(q.year||'')}${q.prompt?' · '+esc(q.prompt):''}</span></div>
     <div class="quiz-stem">${stemDisplay}</div>
-    <div>${q.prompt||'依次填入最恰当的一项是：'}</div>
     ${optionsHTML}
     ${resultHTML}
   `;
