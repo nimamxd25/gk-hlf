@@ -87,6 +87,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei
 .inp-hint{font-size:11px;opacity:.7;font-weight:400;}
 .ai-submit-btn{width:100%;padding:14px;border:none;border-radius:12px;background:#fff;color:var(--primary);font-size:16px;font-weight:700;cursor:pointer;margin-top:4px;}
 .ai-submit-btn:active{opacity:.9;}
+.skip-btn{width:100%;padding:12px;border:1.5px solid rgba(255,255,255,.4);border-radius:12px;background:transparent;color:rgba(255,255,255,.8);font-size:14px;font-weight:600;cursor:pointer;margin-top:6px;}
 
 .flip-face.back{background:var(--card);color:var(--text);transform:rotateY(180deg);overflow-y:auto;}
 .back-body{padding:16px 18px 14px;flex:1;}
