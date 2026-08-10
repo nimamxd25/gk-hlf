@@ -585,6 +585,24 @@ ${userInfo}
     document.getElementById('aiText').textContent='AI 请求失败，请检查设置或稍后重试。';
   }
 }
+// 点击"我不会"：跳过AI评价，直接看答案，默认选择很陌生
+function skipWord(){
+  const c=studyQueue[studyIndex];
+  refs.flipCard.classList.add('flipped');
+  document.getElementById('backWord').textContent=c.word;
+  const backParts=[];
+  if(c.meaning){ backParts.push(`<div class="back-label">📖 释义</div><div class="back-text">${md(c.meaning)}</div>`); }
+  if(c.focus){ backParts.push(`<div class="back-label">🎯 侧重</div><div class="back-text">${md(c.focus)}</div>`); }
+  if(c.tone){ backParts.push(`<div class="back-label">🎭 感情色彩</div><div class="back-text">${esc(c.tone)}</div>`); }
+  if(c.collocation){ backParts.push(`<div class="back-label">🔗 常见搭配</div><div class="back-text">${md(c.collocation)}</div>`); }
+  if(c.misconstrue||c.compare){ backParts.push(`<div class="back-label">⚖️ 易错易混</div><div class="back-text">${md(c.misconstrue||c.compare)}</div>`); }
+  if(Array.isArray(c.custom)){ c.custom.forEach(it=>{ if(it&&it.label&&it.value){ backParts.push(`<div class="back-label">✏️ ${esc(it.label)}</div><div class="back-text">${md(it.value)}</div>`); } }); }
+  document.getElementById('backContent').innerHTML=backParts.join('');
+  document.getElementById('aiText').textContent='选择了"我不会"，建议评级：很陌生';
+  const btns=document.querySelectorAll('#gradeRow .grade');
+  btns.forEach(b=>b.style.outline='none');
+  btns[0].style.outline='2px solid var(--primary)'; // 高亮"很陌生"
+}
 let aiSuggest=2;
 
 // ---------- AI 调用 ----------
@@ -949,6 +967,7 @@ function bindEvents(){
   document.getElementById('searchInput').addEventListener('input',e=>{browseMode=true;currentSearch=e.target.value;renderLibrary();});
   document.getElementById('flipCard').addEventListener('click',()=>{}); // 不再手动翻转
   document.getElementById('btnAiSubmit').addEventListener('click',submitToAI);
+  document.getElementById('btnSkipWord').addEventListener('click',skipWord);
   document.querySelectorAll('#gradeRow .grade').forEach(b=>b.onclick=()=>gradeFromButton(+b.dataset.grade));
   // 退出学习按钮：关闭覆盖层，回到主界面（保留已学进度并同步）
   document.getElementById('studyExit').addEventListener('click',()=>{
